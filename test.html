@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Colibri House</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#top" id="top">
+        <div class="mark" aria-hidden="true">
+          <img src="img/logo.png" alt="Colibri logo" width="150">
+          
+        </div>
+        <div class="wordmark">
+          <b>Colibri House</b>
+          <span data-i18n="brand_sub">Українська кухня в Японії</span>
+        </div>
+      </a>
+
+      <nav>
+        <div class="navlinks" id="navLinks">
+          <a href="#menu" data-i18n="nav_menu">Меню</a>
+          <a href="#about" data-i18n="nav_about">Про нас</a>
+          <a href="#reserve" data-i18n="nav_reserve">Бронювання</a>
+          <a href="#access" data-i18n="nav_access">Як дістатися</a>
+        </div>
+
+        <div class="actions">
+          <div class="chip" role="group" aria-label="Language switcher">
+            <button class="langbtn" data-lang="uk" aria-pressed="true">UA</button>
+            <button class="langbtn" data-lang="en" aria-pressed="false">EN</button>
+            <button class="langbtn" data-lang="ja" aria-pressed="false">日本語</button>
+          </div>
+
+          <button class="btn primary small" id="openReserve" type="button" data-i18n="cta_reserve">
+            Забронювати
+          </button>
+
+          <button class="burger" id="burger" type="button" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <div class="sheetPanel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <b>Colibri House</b>
+        <button class="x" id="closeSheet" type="button" aria-label="Close">✕</button>
+      </div>
+      <div class="navlinks">
+        <a href="#menu" data-i18n="nav_menu">Меню</a>
+        <a href="#about" data-i18n="nav_about">Про нас</a>
+        <a href="#reserve" data-i18n="nav_reserve">Бронювання</a>
+        <a href="#access" data-i18n="nav_access">Як дістатися</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="container heroGrid">
+        <div class="card heroCard">
+          <div class="kicker"><i></i><span data-i18n="kicker">Домашні смаки • Тепла атмосфера</span></div>
+          <h1 data-i18n="hero_title">Українська кухня в Японії</h1>
+          <p class="lead" data-i18n="hero_desc">
+            Борщ, вареники, деруни та десерти — готуємо з любов’ю та пояснюємо страви трьома мовами.
+          </p>
+
+          <div class="heroBtns">
+            <button class="btn primary" id="openReserve2" type="button" data-i18n="cta_reserve">Забронювати</button>
+            <a class="btn ghost" href="#menu" data-i18n="cta_menu">Дивитись меню</a>
+          </div>
+
+          <div class="metaRow">
+            <span class="metaPill"><b data-i18n="hours_label">Години:</b> <span data-i18n="hours">11:30–22:00</span></span>
+            <span class="metaPill"><b data-i18n="city_label">Місто:</b> <span>Tokyo</span></span>
+          </div>
+        </div>
+
+        <div class="card photoCard">
+          <div class="photoInner">
+            <div class="mockPhoto" aria-hidden="true"></div>
+            <div class="photoCaption">
+              <span data-i18n="photo_caption">Затишна атмосфера, українські смаки та гостинність.</span>
+              <span class="badge">★ 4.9</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="sectionHead">
+          <h2 data-i18n="menu_title">Меню</h2>
+          <p data-i18n="menu_sub">Кілька хітів. Повне меню можна додати окремою сторінкою.</p>
+        </div>
+
+        <div class="grid" id="menuGrid"></div>
+
+        <div class="ctaRow">
+          <a class="btn ghost" href="#reserve" data-i18n="cta_reserve">Забронювати</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="sectionHead">
+          <h2 data-i18n="about_title">Про нас</h2>
+          <p data-i18n="about_sub">Традиційні рецепти, адаптовані з повагою до Японії.</p>
+        </div>
+
+        <div class="grid">
+          <div class="tile col-6">
+            <h3 data-i18n="about_card1_title">Домашня традиція</h3>
+            <p class="sub" data-i18n="about_card1_desc">Класика української кухні з любов’ю та якісних інгредієнтів.</p>
+          </div>
+          <div class="tile col-6">
+            <h3 data-i18n="about_card2_title">Комфорт для всіх</h3>
+            <p class="sub" data-i18n="about_card2_desc">Є вегетаріанські опції, takeaway та кейтеринг.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve">
+      <div class="container">
+        <div class="reserveBox">
+          <div class="reserveTop">
+            <div>
+              <h2 data-i18n="reserve_title">Бронювання</h2>
+              <p data-i18n="reserve_sub">Натисни “Забронювати” і ми отримаємо запит (поки що показує демо).</p>
+            </div>
+            <div class="reserveBtns">
+              <button class="btn primary" id="openReserve3" type="button" data-i18n="cta_reserve">Забронювати</button>
+              <a class="btn ghost" href="tel:+810000000000">☎ +81 00-0000-0000</a>
+            </div>
+          </div>
+          <p class="hint" data-i18n="reserve_hint">
+            Потім підключимо: LINE / Google Form / TableCheck.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="access">
+      <div class="container">
+        <div class="sectionHead">
+          <h2 data-i18n="access_title">Як дістатися</h2>
+          <p data-i18n="access_sub">Заміни адресу та станцію на реальні.</p>
+        </div>
+
+        <div class="tile">
+          <div class="accessList">
+            <div class="accessItem">
+              <b data-i18n="addr_label">Адреса</b>
+              <span id="addrText">〒000-0000 東京都〇〇区〇〇 1-2-3</span>
+              <button class="copyBtn" data-copy="#addrText" data-i18n="copy_btn">Копіювати</button>
+            </div>
+            <div class="accessItem">
+              <b data-i18n="station_label">Станція</b>
+              <span data-i18n="station_text">Найближча станція: ○○駅, вихід 3, 5 хв пішки.</span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <b>Colibri House</b><br/>
+        <span data-i18n="footer_note">Українська кухня в Японії</span>
+      </div>
+      <div>
+        <a href="#top" data-i18n="back_to_top">Наверх ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Reservation modal -->
+  <div class="modalBackdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHead">
+        <div>
+          <h3 id="modalTitle" data-i18n="modal_title">Бронювання столика</h3>
+          <p data-i18n="modal_sub">Це демо-форма. Потім підключимо відправку.</p>
+        </div>
+        <button class="x" id="closeModal" type="button" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <form class="form" id="reserveForm">
+          <div class="field">
+            <label data-i18n="f_name">Ім’я</label>
+            <input name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label data-i18n="f_phone">Телефон</label>
+            <input name="phone" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label data-i18n="f_date">Дата</label>
+            <input name="date" type="date" required />
+          </div>
+          <div class="field">
+            <label data-i18n="f_people">Кількість</label>
+            <select name="people" required>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label data-i18n="f_note">Коментар</label>
+            <textarea name="note" placeholder="Allergies, time, etc."></textarea>
+          </div>
+
+          <div class="modalFoot full">
+            <button class="btn ghost" type="button" id="cancelBtn" data-i18n="cancel">Скасувати</button>
+            <button class="btn primary" type="submit" data-i18n="send">Надіслати</button>
+          </div>
+        </form>
+        <div class="hint" data-i18n="privacy_hint">Ми не зберігаємо дані в демо-версії.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">OK</div>
+  <button class="toTop" id="toTop" title="Top">↑</button>
+<script src="js/scripts.js"></script>
+  <script src="js/content.js"></script>
+  
+</body>
+</html>

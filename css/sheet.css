@@ -1,0 +1,31 @@
+/* Mobile menu sheet */
+.sheet{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.45);
+  display:none;
+  z-index:90;
+}
+.sheet.open{display:block}
+.sheetPanel{
+  position:absolute; right:0; top:0; height:100%; width:min(360px, 92vw);
+  background:rgba(20, 19, 19, 0.92);
+  backdrop-filter: blur(12px);
+  border-left:1px solid rgba(223,230,227,.95);
+  box-shadow: -18px 0 50px rgba(0,0,0,.18);
+  padding:14px;
+  display:flex; flex-direction:column; gap:12px;
+  color: whitesmoke;
+  
+}
+.sheetPanel .navlinks{
+  display:flex; flex-direction:column; gap:8px;
+}
+.sheetPanel .navlinks a{
+  
+  
+  color:whitesmoke;
+  padding:12px;
+  border-radius:16px;
+  font-weight:700;
+}
+.sheetPanel .navlinks a:hover{filter:brightness(.98)}

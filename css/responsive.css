@@ -1,0 +1,63 @@
+/* Responsive */
+@media (max-width: 980px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 34px;
+  }
+  .igGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .col-4 {
+    grid-column: span 6;
+  }
+  .menuCard {
+    grid-column: span 6;
+  }
+}
+@media (max-width: 720px) {
+  .navlinks {
+    display: none;
+  }
+  .burger {
+    display: inline-block;
+  }
+  .brand {
+    min-width: auto;
+  }
+  .actions {
+    gap: 8px;
+  }
+  .chip {
+    padding: 6px 8px;
+  }
+  .heroCard {
+    padding: 18px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .col-6 {
+    grid-column: span 12;
+  }
+  .col-4 {
+    grid-column: span 12;
+  }
+  .form {
+    grid-template-columns: 1fr;
+  }
+  .menuCard {
+    grid-column: span 12;
+  }
+  .gmap {
+    height: 260px;
+  }
+  .mapActions {
+    justify-content: stretch;
+  }
+  .mapActions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,132 @@
+/* Header (with fallback) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(246, 243, 238, 0.92); /* fallback */
+  border-bottom: 1px solid rgba(223, 230, 227, 0.7);
+}
+@supports (backdrop-filter: blur(10px)) {
+  header {
+    backdrop-filter: saturate(1.2) blur(10px);
+    background: rgba(130, 128, 128, 0.72);
+  }
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 210px;
+}
+.brand .mark {
+  width: 140px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+.brand .wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.brand .wordmark b {
+  font-size: 15px;
+  letter-spacing: 0.2px;
+  color: blue;
+}
+.brand .wordmark span {
+  font-size: 12px;
+  color: yellow;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.navlinks {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.navlinks a {
+  padding: 10px 10px;
+  color: whitesmoke;
+  border-radius: 12px;
+  transition: 0.15s ease;
+  font-size: 14px;
+}
+.navlinks a:hover {
+  background: rgba(31, 122, 120, 0.08);
+  color: var(--ink);
+}
+.navlinks a.active {
+  background: rgba(31, 122, 120, 0.12);
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chip {
+  
+ 
+  padding: 8px 10px;
+  
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  
+}
+.langbtn {
+  border: none;
+  background: transparent;
+  padding: 6px 8px;
+  
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--muted);
+  transition: 0.15s ease;
+}
+.langbtn[aria-pressed="true"] {
+  background: rgba(244, 245, 245, 0.62);
+  color: var(--ink);
+  border-radius: 99px;
+}
+.langbtn.flag {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+.burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  border: 1px solid rgba(223, 230, 227, 0.95);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 24px rgba(10, 20, 20, 0.06);
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink);
+  margin: 5px auto;
+  border-radius: 999px;
+}
