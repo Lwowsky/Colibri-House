@@ -45,38 +45,7 @@
     gap: 10px;
     text-align: center;
   }
-.topbar {
-    position: relative;
-  }
 
-  /* лого лишається зліва */
-  .brand {
-    min-width: 0;
-  }
-
-  /* НАЗВА ПО ЦЕНТРУ МІЖ ЛОГО І БУРГЕРОМ */
-  .brand .wordmark {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    align-items: center;
-
-    /* щоб не налазило на лого/бургер */
-    max-width: 52vw;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    z-index: 2;
-  }
-
-  /* бургер/кнопки мають бути поверх, якщо десь перетинається */
-  .actions {
-    position: relative;
-    z-index: 3;
-  }
 }
 @media (max-width: 768px) {
   .navlinks {
