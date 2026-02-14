@@ -9,7 +9,7 @@ header {
 @supports (backdrop-filter: blur(10px)) {
   header {
     backdrop-filter: saturate(1.2) blur(10px);
-    background: rgba(130, 128, 128, 0.72);
+    background: rgba(14, 13, 13, 0.72);
   }
 }
 
@@ -42,6 +42,7 @@ header {
   letter-spacing: 0.2px;
   color: blue;
   font-family: cursive;
+  text-align: center;
 }
 .brand .wordmark span {
   font-size: 1rem;
