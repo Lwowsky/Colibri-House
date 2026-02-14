@@ -15,8 +15,37 @@
   .menuCard {
     grid-column: span 6;
   }
+  .actions .chip,
+  .actions #openReserve {
+    display: none;
+  }
+  .burger {
+    display: inline-block;
+  }
+  .topbar,
+  nav,
+  .actions {
+    align-items: center;
+  }
+  .navlinks {
+    display: none;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 10px;
+  }
+  .sheetPanel-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
 }
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .navlinks {
     display: none;
   }
@@ -59,5 +88,15 @@
   .mapActions .btn {
     width: 100%;
     justify-content: center;
+  }
+  .actions .chip,
+  .actions #openReserve {
+    display: none;
+  }
+    .sheetPanel-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
 }
