@@ -54,8 +54,13 @@ window.I18N = {
     cancel: "Скасувати",
     send: "Надіслати",
     privacy_hint: "Ми не зберігаємо дані в демо-версії.",
+    success_title: "Готово!",
+    success_sub:
+      "Повідомлення доставлено. Ми зв’яжемося з вами найближчим часом.",
+    success_ok: "OK",
 
-    toast_ok: "✅ OK",
+    toast_ok: "Запит надіслано! Ми зв’яжемося з вами.",
+    toast_failed: "Помилка відправки. Спробуйте ще раз або зателефонуйте.",
     toast_copied: "📋 Скопійовано",
     toast_copy_failed: "❌ Не вдалося скопіювати",
 
@@ -229,8 +234,12 @@ window.I18N = {
     cancel: "Cancel",
     send: "Send",
     privacy_hint: "Demo does not store any data.",
+    success_title: "Done!",
+    success_sub: "Message delivered. We’ll contact you soon.",
+    success_ok: "OK",
 
-    toast_ok: "✅ OK",
+    toast_ok: "Request sent! We’ll contact you soon.",
+    toast_failed: "Sending failed. Please try again or call us.",
     toast_copied: "📋 Copied",
     toast_copy_failed: "❌ Copy failed",
 
@@ -333,8 +342,13 @@ window.I18N = {
     cancel: "キャンセル",
     send: "送信",
     privacy_hint: "デモではデータを保存しません。",
+    success_title: "送信完了",
+    success_sub: "メッセージを送信しました。折り返しご連絡いたします。",
+    success_ok: "OK",
 
-    toast_ok: "✅ OK",
+    toast_ok: "送信しました。折り返しご連絡いたします。",
+    toast_failed:
+      "送信に失敗しました。もう一度お試しください。お急ぎの場合はお電話ください。",
     toast_copied: "📋 コピーしました",
     toast_copy_failed: "❌ コピーできませんでした",
 

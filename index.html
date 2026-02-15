@@ -548,7 +548,12 @@
         </div>
 
         <div class="modalBody">
-          <form class="form" id="reserveForm">
+          <form
+            class="form"
+            id="reserveForm"
+            action="https://formspree.io/f/xaqdopvg"
+            method="POST"
+          >
             <div class="field">
               <label data-i18n="f_name">Ім’я</label>
               <input name="name" autocomplete="name" required />
@@ -603,6 +608,41 @@
         </div>
       </div>
     </div>
+    <!-- Success modal -->
+    <div class="modalBackdrop" id="successModal" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="successTitle"
+      >
+        <div class="modalHead">
+          <div>
+            <h3 id="successTitle" data-i18n="success_title">Готово!</h3>
+            <p data-i18n="success_sub">
+              Повідомлення доставлено. Ми зв’яжемося з вами найближчим часом.
+            </p>
+          </div>
+          <button class="x" id="closeSuccess" type="button" aria-label="Close">
+            ✕
+          </button>
+        </div>
+
+        <div class="modalBody">
+          <div class="modalFoot full">
+            <button
+              class="btn primary"
+              id="okSuccess"
+              type="button"
+              data-i18n="success_ok"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Dish modal -->
     <div class="dishModalBackdrop" id="dishModal" aria-hidden="true">
       <div
