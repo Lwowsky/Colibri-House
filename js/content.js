@@ -9,7 +9,7 @@ window.I18N = {
     kicker: "Домашні смаки • Тепла атмосфера",
     hero_title: "Українська кухня в Японії",
     hero_desc:
-      "Борщ, вареники та інші традиційні страви — готуємо з любов’ю, щоб ви відчули справжній смак українського дому навіть у Японії. Якщо ви вперше знайомитеся з українською кухнею — із радістю підкажемо, що обрати, чим відрізняються начинки та які поєднання найкраще смакують. Тут можна прийти на спокійну вечерю, тепло провести час і просто насолодитися домашньою атмосферою. Для зручності гостей меню доступне англійською та японською.",
+      "Страв у нас більше, ніж борщ і вареники — у меню є різні гарячі позиції та закуски, щоб кожен знайшов щось під свій настрій. Це комфортний простір із теплою подачею та увагою до деталей, а також кафе-баром для приємного вечора. Якщо не знаєте, з чого почати, ми із задоволенням підкажемо й допоможемо обрати найкращий варіант. Меню доступне англійською та японською.",
 
     hours_label: "Години:",
     hours: "17:00–23:00",
@@ -190,7 +190,7 @@ window.I18N = {
     kicker: "Home-style flavors • Warm atmosphere",
     hero_title: "Ukrainian Cuisine in Japan",
     hero_desc:
-      "Borscht, varenyky, deruny and desserts — we cook with love and explain dishes in 3 languages.",
+      "We offer much more than just borscht and vareniki — our menu includes a variety of hot dishes and appetizers, so everyone can find something that fits their mood. Enjoy a comfortable space with warm service and attention to detail, plus a café-bar for a pleasant evening. If you’re not sure where to start, we’ll be happy to recommend favorites and help you choose the best option. The menu is available in English and Japanese",
 
     hours_label: "Hours:",
     hours: "17:00–23:00",
@@ -298,7 +298,7 @@ window.I18N = {
     kicker: "家庭の味 • あたたかな雰囲気",
     hero_title: "日本のウクライナ料理",
     hero_desc:
-      "ボルシチ、ヴァレーニキ、デルニー、デザートまで。3言語で分かりやすくご案内します。",
+      "ボルシチやヴァレーニキだけでなく、さまざまな温かい料理や前菜をご用意しており、その日の気分に合わせてお選びいただけます。落ち着いた空間で、丁寧なサービスと細やかなこだわりをお楽しみください。カフェバーもございますので、ゆっくりとした夜の時間にもぴったりです。何を選べばよいか迷ったら、おすすめをご案内し、最適な一皿選びをお手伝いします。メニューは英語と日本語に対応しています。",
 
     hours_label: "営業時間:",
     hours: "17:00–23:00",
