@@ -85,7 +85,7 @@ section {
 }
 .reserveTop {
   display: flex;
-  align-items: flex-start;
+  align-items: center; 
   justify-content: space-between;
   gap: 16px;
 }
@@ -104,6 +104,14 @@ section {
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+}
+.reserveBtns .btn{
+  min-height: 46px;             /* однакова висота */
+  width: 230px;                 /* однакова ширина (під себе підкоригуй) */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;          /* не переносити текст */
 }
 
 /* Access */
