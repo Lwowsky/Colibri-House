@@ -134,6 +134,81 @@ section {
 .phoneText {
   white-space: nowrap;
 }
+/* reserve time selector */
+.timeSelect{
+  position: relative;
+}
+
+.timeInput{
+  width: 100%;
+  padding-right: 44px; /* місце під стрілку */
+  cursor: pointer;
+}
+
+/* кнопка-стрілочка справа */
+.timeChevron{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(223, 230, 227, 0.95);
+  background: rgba(255,255,255,0.85);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+/* dropdown всередині модалки */
+.timeDropdown{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 60;
+
+  display: none;
+  max-height: 220px;
+  overflow: auto;
+
+  background: #fff;
+  border: 1px solid rgba(223, 230, 227, 0.95);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+}
+
+.timeSelect.open .timeDropdown{
+  display: block;
+}
+
+.timeOption{
+  width: 100%;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.timeOption:hover{
+  background: rgba(31, 122, 120, 0.08);
+}
+
+.timeOption.isSelected{
+  background: rgba(31, 122, 120, 0.12);
+}
+
+.timeHint{
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
 
 /* Access */
 .accessList {

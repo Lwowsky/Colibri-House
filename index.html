@@ -578,9 +578,7 @@
         <div class="modalHead">
           <div>
             <h3 id="modalTitle" data-i18n="modal_title">Бронювання столика</h3>
-            <p data-i18n="modal_sub">
-              Це демо-форма. Потім підключимо відправку.
-            </p>
+            <p data-i18n="modal_sub"></p>
           </div>
           <button class="x" id="closeModal" type="button" aria-label="Close">
             ✕
@@ -606,6 +604,44 @@
               <label data-i18n="f_date">Дата</label>
               <input name="date" type="date" required />
             </div>
+
+            <div class="field">
+              <label data-i18n="f_time">Час</label>
+
+              <div class="timeSelect" id="timeSelect">
+                <input
+                  class="timeInput"
+                  id="timeInput"
+                  type="text"
+                  placeholder="Оберіть час"
+                  readonly
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="timeDropdown"
+                />
+
+                <!-- СЮДИ реально записується значення для форми -->
+                <input type="hidden" name="time" id="timeHidden" required />
+
+                <button
+                  class="timeChevron"
+                  id="timeToggle"
+                  type="button"
+                  aria-label="Open time"
+                >
+                  ▾
+                </button>
+
+                <div
+                  class="timeDropdown"
+                  id="timeDropdown"
+                  role="listbox"
+                ></div>
+              </div>
+
+              <small class="timeHint">Доступно: 17:00–22:00</small>
+            </div>
+
             <div class="field">
               <label data-i18n="f_people">Кількість</label>
               <select name="people" required>
@@ -619,6 +655,7 @@
                 <option>8+</option>
               </select>
             </div>
+
             <div class="field full">
               <label data-i18n="f_note">Коментар</label>
               <textarea
@@ -642,9 +679,7 @@
               </button>
             </div>
           </form>
-          <div class="hint" data-i18n="privacy_hint">
-            Ми не зберігаємо дані в демо-версії.
-          </div>
+          <div class="hint" data-i18n="privacy_hint"></div>
         </div>
       </div>
     </div>

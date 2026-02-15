@@ -105,7 +105,8 @@
     // If endpoint not set
     if (!url || url.includes("PASTE_YOUR_ID")) {
       toast.show(
-        getDict()?.toast_form_link_missing || "Додай Formspree URL у form action"
+        getDict()?.toast_form_link_missing ||
+          "Додай Formspree URL у form action",
       );
       return;
     }
@@ -117,7 +118,12 @@
     // Disable submit button while sending
     const submitBtn = form.querySelector('button[type="submit"]');
     submitBtn?.setAttribute("disabled", "disabled");
-
+    const timeHidden = form.querySelector("#timeHidden");
+    if (!timeHidden?.value) {
+      toast.show("Оберіть час (17:00–22:00)");
+      submitBtn?.removeAttribute("disabled");
+      return;
+    }
     try {
       const res = await fetch(url, {
         method: "POST",
@@ -134,7 +140,9 @@
       // (optional) auto close after 2.5s:
       // setTimeout(closeSuccessModal, 2500);
     } catch (err) {
-      toast.show(getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.");
+      toast.show(
+        getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.",
+      );
     } finally {
       submitBtn?.removeAttribute("disabled");
     }
@@ -164,7 +172,11 @@
       .filter(Boolean);
 
     const navLinks = $$("#navLinks a");
-    if (!sections.length || !navLinks.length || !("IntersectionObserver" in window))
+    if (
+      !sections.length ||
+      !navLinks.length ||
+      !("IntersectionObserver" in window)
+    )
       return;
 
     const obs = new IntersectionObserver(
@@ -173,11 +185,11 @@
           if (!en.isIntersecting) return;
           const id = en.target.id;
           navLinks.forEach((a) =>
-            a.classList.toggle("active", a.getAttribute("href") === "#" + id)
+            a.classList.toggle("active", a.getAttribute("href") === "#" + id),
           );
         });
       },
-      { rootMargin: "-120px 0px -60% 0px", threshold: 0.01 }
+      { rootMargin: "-120px 0px -60% 0px", threshold: 0.01 },
     );
 
     sections.forEach((s) => obs.observe(s));
@@ -192,11 +204,11 @@
       () => {
         toTop.classList.toggle("show", window.scrollY > 600);
       },
-      { passive: true }
+      { passive: true },
     );
 
     toTop.addEventListener("click", () =>
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      window.scrollTo({ top: 0, behavior: "smooth" }),
     );
   })();
 
@@ -205,7 +217,7 @@
     b.addEventListener("click", () => {
       setLang(b.dataset.lang);
       setTimeout(syncFormLang, 0);
-    })
+    }),
   );
 
   setLang(detectLang());

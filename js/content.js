@@ -44,7 +44,8 @@ window.I18N = {
     copy_btn: "Копіювати",
 
     modal_title: "Бронювання столика",
-    modal_sub: "Це демо-форма. Потім підключимо відправку.",
+    modal_sub:
+      "Дзвінки приймаємо з 17:15 до 22:45. Запити через форму розглядаємо протягом 48 годин, тож якщо потрібно швидше — краще зателефонувати.",
     f_name: "Ім’я",
     f_phone: "Телефон",
     f_date: "Дата",
@@ -53,7 +54,6 @@ window.I18N = {
     f_note_ph: "Алергії, час, побажання…",
     cancel: "Скасувати",
     send: "Надіслати",
-    privacy_hint: "Ми не зберігаємо дані в демо-версії.",
     success_title: "Готово!",
     success_sub:
       "Повідомлення доставлено. Ми зв’яжемося з вами найближчим часом.",
@@ -210,7 +210,8 @@ window.I18N = {
     about_card2_desc: "Vegetarian options, takeaway, and catering available.",
 
     reserve_title: "Reservations",
-    reserve_sub: "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:15 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
+    reserve_sub:
+      "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:15 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
     reserve_hint: "Later: LINE / Google Form / TableCheck.",
     cta_reserve: "Reserve",
     cta_menu: "View menu",
@@ -224,7 +225,8 @@ window.I18N = {
     copy_btn: "Copy",
 
     modal_title: "Table reservation",
-    modal_sub: "Demo form — submission can be connected later.",
+    modal_sub:
+      "We accept calls from 17:15 to 22:45. Requests submitted via the form are processed within 48 hours, so if you need a faster response, it’s best to call us.",
     f_name: "Name",
     f_phone: "Phone",
     f_date: "Date",
@@ -233,7 +235,6 @@ window.I18N = {
     f_note_ph: "Allergies, time, requests...",
     cancel: "Cancel",
     send: "Send",
-    privacy_hint: "Demo does not store any data.",
     success_title: "Done!",
     success_sub: "Message delivered. We’ll contact you soon.",
     success_ok: "OK",
@@ -318,7 +319,8 @@ window.I18N = {
       "Colibri Houseは横浜にある小さな家族経営のウクライナ料理店です。「温かくてどこか懐かしいもの」を食べたくなったときに、ふらっと立ち寄れる場所を目指しています。私たちは自分たちの家族に作るように心を込めて料理し、しっかり満足できる家庭の味を大切にしています。ボルシチやヴァレーニキなどの定番料理をはじめ、体も心も温まる伝統的なウクライナ料理をお楽しみいただけます。テイクアウトも可能で、店内では落ち着いた雰囲気の中でゆっくりお過ごしいただけます。メニューは英語と日本語に対応しています。",
 
     reserve_title: "予約",
-    reserve_sub: "ご予約は事前のご連絡がおすすめです。遅れそうな場合は、メッセージまたはお電話でお知らせください。ご予約のご連絡は48時間以内に返信いたしますが、お急ぎの場合はお電話が最も早いです（受付時間：17:15〜22:45）。月曜日は定休日で、火曜日〜日曜日は営業しています。",
+    reserve_sub:
+      "ご予約は事前のご連絡がおすすめです。遅れそうな場合は、メッセージまたはお電話でお知らせください。ご予約のご連絡は48時間以内に返信いたしますが、お急ぎの場合はお電話が最も早いです（受付時間：17:15〜22:45）。月曜日は定休日で、火曜日〜日曜日は営業しています。",
     reserve_hint: "後で：LINE / Googleフォーム / TableCheck。",
     cta_reserve: "予約する",
     cta_menu: "メニューを見る",
@@ -332,7 +334,8 @@ window.I18N = {
     copy_btn: "コピー",
 
     modal_title: "席の予約",
-    modal_sub: "デモフォーム（送信は後で接続可能）",
+    modal_sub:
+      "お電話の受付時間は 17:15〜22:45 です。フォームからのご予約リクエストは 48時間以内 に対応いたしますので、お急ぎの場合は お電話 ください。",
     f_name: "お名前",
     f_phone: "電話番号",
     f_date: "日付",
@@ -341,7 +344,6 @@ window.I18N = {
     f_note_ph: "アレルギー、時間、要望など…",
     cancel: "キャンセル",
     send: "送信",
-    privacy_hint: "デモではデータを保存しません。",
     success_title: "送信完了",
     success_sub: "メッセージを送信しました。折り返しご連絡いたします。",
     success_ok: "OK",
