@@ -1,7 +1,7 @@
 /* Responsive */
 @media (max-width: 980px) {
   .heroGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   h1 {
     font-size: 34px;
@@ -45,7 +45,6 @@
     gap: 10px;
     text-align: center;
   }
-
 }
 @media (max-width: 768px) {
   .navlinks {
@@ -95,11 +94,14 @@
   .actions #openReserve {
     display: none;
   }
-    .sheetPanel-menu {
+  .sheetPanel-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
     text-align: center;
+  }
+  .heroGrid {
+    grid-template-columns: 1fr;
   }
 }
