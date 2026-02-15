@@ -104,4 +104,8 @@
   .heroGrid {
     grid-template-columns: 1fr;
   }
+    .carSlide { height: 260px; }
+  .dishModal { border-radius: 18px; }
+  .dishModalBody { padding: 12px 14px 14px; }
+  .dishModalHead { padding: 12px 14px; }
 }
