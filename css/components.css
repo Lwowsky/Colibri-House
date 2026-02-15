@@ -212,6 +212,8 @@
   justify-content: center;
   padding: 18px;
   z-index: 1000;
+  overflow-y: auto; /* ✅ щоб влізало в landscape */
+  -webkit-overflow-scrolling: touch;
 }
 .dishModalBackdrop.open {
   display: flex;
@@ -251,7 +253,7 @@
 
 .dishModalBody {
   padding: 14px 18px 18px;
-    display: grid;
+  display: grid;
   gap: 12px;
 }
 #dishDesc {
@@ -283,7 +285,7 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  object-position: center
+  object-position: center;
 }
 .carSlide.placeholder {
   height: 320px;
