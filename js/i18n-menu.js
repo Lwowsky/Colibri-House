@@ -284,9 +284,6 @@
     if (e.key === "ArrowRight") nextDish();
   });
 
-  // ---- “слайди” всередині модалки (показуємо 1-й img страви або робимо кілька, якщо хочеш) ----
-  // Тут я роблю просто: якщо у страви кілька imgs — показуємо їх як горизонтальний трек.
-  // Але Prev/Next — по стравах, а не по imgs.
   function buildDishSlides(imgs, title) {
     carTrack.innerHTML = "";
     carDots.innerHTML = "";
