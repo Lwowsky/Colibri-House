@@ -45,6 +45,9 @@
     gap: 10px;
     text-align: center;
   }
+  .carSlide {
+    height: 50dvh;
+  }
 }
 @media (max-width: 768px) {
   .navlinks {
@@ -104,8 +107,16 @@
   .heroGrid {
     grid-template-columns: 1fr;
   }
-    .carSlide { height: 260px; }
-  .dishModal { border-radius: 18px; }
-  .dishModalBody { padding: 12px 14px 14px; }
-  .dishModalHead { padding: 12px 14px; }
+  .carSlide {
+    height: 50dvh;
+  }
+  .dishModal {
+    border-radius: 18px;
+  }
+  .dishModalBody {
+    padding: 12px 14px 14px;
+  }
+  .dishModalHead {
+    padding: 12px 14px;
+  }
 }
