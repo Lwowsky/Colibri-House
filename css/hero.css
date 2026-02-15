@@ -3,15 +3,7 @@
   padding: 26px 0 12px;
   position: relative;
 }
-#heroPhoto{
-  opacity: 1;
-  transition: opacity 1000ms ease;
-  will-change: opacity;
-}
 
-#heroPhoto.fade-out{
-  opacity: 1;
-}
 .heroGrid {
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;

@@ -24,32 +24,10 @@ const photos = [
   "img/hero/photo13.jpg",
 ];
 
-const img = document.getElementById("heroPhoto");
 let i = 0;
+const img = document.getElementById("heroPhoto");
 
-const SHOW_MS = 3500;   // скільки показуємо кадр
-const FADE_MS = 700;    // тривалість fade (має збігатися з CSS)
-
-// (необов'язково) попереднє завантаження, щоб переходи були ще рівніші
-photos.forEach(src => { const pre = new Image(); pre.src = src; });
-
-function сменитьФото() {
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    i = (i + 1) % photos.length;
-    const nextSrc = photos[i];
-
-    // чекаємо, поки наступне фото завантажиться
-    const pre = new Image();
-    pre.src = nextSrc;
-    pre.onload = () => {
-      img.src = nextSrc;
-      img.classList.remove("fade-out");
-      setTimeout(сменитьФото, SHOW_MS);
-    };
-  }, FADE_MS);
-}
-
-// старт
-setTimeout(сменитьФото, SHOW_MS);
+setInterval(() => {
+  i = (i + 1) % photos.length;
+  img.src = photos[i];
+}, 5500);
