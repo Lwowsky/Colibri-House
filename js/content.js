@@ -30,7 +30,7 @@ window.I18N = {
 
     reserve_title: "Бронювання",
     reserve_sub:
-      "Натисни “Забронювати” і ми отримаємо запит (поки що показує демо).",
+      "Бронювання краще робити заздалегідь. Якщо запізнюєтесь — напишіть або зателефонуйте, ми зачекаємо. На запити відповідаємо протягом 48 годин, тож якщо потрібно швидше — найкраще зателефонувати (приймаємо дзвінки з 17:15 до 22:45). Понеділок — вихідний, працюємо з вівторка по неділю.",
     reserve_hint: "Потім підключимо: LINE / Google Form / TableCheck.",
     cta_reserve: "Забронювати",
     cta_menu: "Дивитись меню",
@@ -210,7 +210,7 @@ window.I18N = {
     about_card2_desc: "Vegetarian options, takeaway, and catering available.",
 
     reserve_title: "Reservations",
-    reserve_sub: "Tap “Reserve” — demo form for now.",
+    reserve_sub: "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:15 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
     reserve_hint: "Later: LINE / Google Form / TableCheck.",
     cta_reserve: "Reserve",
     cta_menu: "View menu",
@@ -318,7 +318,7 @@ window.I18N = {
       "Colibri Houseは横浜にある小さな家族経営のウクライナ料理店です。「温かくてどこか懐かしいもの」を食べたくなったときに、ふらっと立ち寄れる場所を目指しています。私たちは自分たちの家族に作るように心を込めて料理し、しっかり満足できる家庭の味を大切にしています。ボルシチやヴァレーニキなどの定番料理をはじめ、体も心も温まる伝統的なウクライナ料理をお楽しみいただけます。テイクアウトも可能で、店内では落ち着いた雰囲気の中でゆっくりお過ごしいただけます。メニューは英語と日本語に対応しています。",
 
     reserve_title: "予約",
-    reserve_sub: "「予約する」— いまはデモフォームです。",
+    reserve_sub: "ご予約は事前のご連絡がおすすめです。遅れそうな場合は、メッセージまたはお電話でお知らせください。ご予約のご連絡は48時間以内に返信いたしますが、お急ぎの場合はお電話が最も早いです（受付時間：17:15〜22:45）。月曜日は定休日で、火曜日〜日曜日は営業しています。",
     reserve_hint: "後で：LINE / Googleフォーム / TableCheck。",
     cta_reserve: "予約する",
     cta_menu: "メニューを見る",
