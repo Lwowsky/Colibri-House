@@ -216,3 +216,74 @@
   font-weight:900;
   color:var(--ink);
 }
+.dishModalBackdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+.dishModalBackdrop.isOpen{ display: flex; }
+
+.dishModal{
+  width: min(760px, 100%);
+  background: rgba(255,255,255,.95);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0,0,0,.30);
+  border: 1px solid rgba(0,0,0,.08);
+}
+
+.dishModalHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.dishModalHead h3{
+  margin:0;
+  font-size: 18px;
+}
+
+.dishModalBody{
+  padding: 16px;
+  display:grid;
+  gap: 12px;
+}
+
+.dishModalImg{
+  width:100%;
+  border-radius: 14px;
+  overflow:hidden;
+  background: rgba(0,0,0,.03);
+}
+.dishModalImg img{
+  width:100%;
+  max-height: 420px;
+  object-fit: contain;
+  display:block;
+}
+
+.dishModalBottom{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  gap: 12px;
+}
+.dishTag{
+  display:inline-flex;
+  align-items:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(31,122,120,.08);
+  border: 1px solid rgba(31,122,120,.18);
+  font-size: 12px;
+}
+.dishPrice{
+  font-weight: 800;
+}

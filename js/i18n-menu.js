@@ -1,17 +1,17 @@
-(function(){
+(function () {
   const { $, $$, escapeHtml } = window.App;
 
   const DEFAULT_LANG = "uk";
-  const supported = ["uk","en","ja"];
+  const supported = ["uk", "en", "ja"];
 
   const menuGrid = $("#menuGrid");
   const menuTabs = $("#menuTabs");
 
   let currentDict = null;
-  let activeCat = null;      // буде перша категорія зі списку
+  let activeCat = null; // буде перша категорія зі списку
   let lastItems = [];
 
-  function detectLang(){
+  function detectLang() {
     const saved = localStorage.getItem("lang");
     if (saved && supported.includes(saved)) return saved;
 
@@ -21,7 +21,7 @@
     return "en";
   }
 
-  function renderMenu(items){
+  function renderMenu(items) {
     if (!menuGrid) return;
     menuGrid.innerHTML = "";
 
@@ -29,40 +29,50 @@
       const div = document.createElement("div");
       div.className = "menuCard";
 
+      // ✅ збережемо все, що треба для модалки
+      div.dataset.title = it.title || "";
+      div.dataset.desc = it.sub || "";
+      div.dataset.price = it.price || "";
+      div.dataset.tag = it.tag || "";
+      div.dataset.img = it.img || "";
+
       const imgHtml = it.img
         ? `<img src="${escapeHtml(it.img)}" alt="${escapeHtml(it.title)}" loading="lazy" decoding="async">`
         : `<div style="height:100%;width:100%;background:rgba(0,0,0,.04)"></div>`;
 
       div.innerHTML = `
-        <div class="menuImgWrap">${imgHtml}</div>
-        <div class="menuBody">
-          <h3 class="menuTitle">${escapeHtml(it.title)}</h3>
-          <p class="menuDesc">${escapeHtml(it.sub || "")}</p>
+      <div class="menuImgWrap">${imgHtml}</div>
+      <div class="menuBody">
+        <h3 class="menuTitle">${escapeHtml(it.title)}</h3>
+        <p class="menuDesc">${escapeHtml(it.sub || "")}</p>
 
-          <div class="menuBottom">
-            ${it.tag ? `<span class="menuTag">${escapeHtml(it.tag)}</span>` : `<span></span>`}
-            <span class="menuPrice">${escapeHtml(it.price || "")}</span>
-          </div>
+        <div class="menuBottom">
+          ${it.tag ? `<span class="menuTag">${escapeHtml(it.tag)}</span>` : `<span></span>`}
+          <span class="menuPrice">${escapeHtml(it.price || "")}</span>
         </div>
-      `;
+      </div>
+    `;
 
       menuGrid.appendChild(div);
     });
   }
 
-  function filteredItems(){
+  function filteredItems() {
     if (!activeCat) return lastItems;
-    return lastItems.filter(it => (it.cat || "mains") === activeCat);
+    return lastItems.filter((it) => (it.cat || "mains") === activeCat);
   }
 
-  function setActiveTabUI(){
+  function setActiveTabUI() {
     if (!menuTabs) return;
-    $$(".tabBtn", menuTabs).forEach(b => {
-      b.setAttribute("aria-selected", b.dataset.cat === activeCat ? "true" : "false");
+    $$(".tabBtn", menuTabs).forEach((b) => {
+      b.setAttribute(
+        "aria-selected",
+        b.dataset.cat === activeCat ? "true" : "false",
+      );
     });
   }
 
-  function buildTabs(dict){
+  function buildTabs(dict) {
     if (!menuTabs) return;
     const cats = dict.menu_categories || [];
 
@@ -91,13 +101,16 @@
     setActiveTabUI();
   }
 
-  function setLang(lang){
+  function setLang(lang) {
     if (!supported.includes(lang)) lang = DEFAULT_LANG;
     localStorage.setItem("lang", lang);
     document.documentElement.lang = lang;
 
-    $$(".langbtn").forEach(b =>
-      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false")
+    $$(".langbtn").forEach((b) =>
+      b.setAttribute(
+        "aria-pressed",
+        b.dataset.lang === lang ? "true" : "false",
+      ),
     );
 
     const dict = window.I18N?.[lang] || window.I18N?.[DEFAULT_LANG];
@@ -106,7 +119,7 @@
     currentDict = dict;
     lastItems = dict.menu_items || [];
 
-    $$("[data-i18n]").forEach(el => {
+    $$("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) el.textContent = dict[key];
     });
@@ -118,7 +131,63 @@
     renderMenu(filteredItems());
   }
 
-  function getDict(){ return currentDict; }
+  function getDict() {
+    return currentDict;
+  }
 
   window.AppI18n = { detectLang, setLang, getDict };
 })();
+
+// ===== Dish modal logic =====
+const dishModal = document.getElementById("dishModal");
+const dishClose = document.getElementById("dishClose");
+const dishTitle = document.getElementById("dishTitle");
+const dishDesc  = document.getElementById("dishDesc");
+const dishPrice = document.getElementById("dishPrice");
+const dishTag   = document.getElementById("dishTag");
+const dishImg   = document.getElementById("dishImg");
+
+function openDishModal(card){
+  dishTitle.textContent = card.dataset.title || "";
+  dishDesc.textContent  = card.dataset.desc || "";
+  dishPrice.textContent = card.dataset.price || "";
+  dishTag.textContent   = card.dataset.tag || "";
+  const img = card.dataset.img || "";
+
+  if (img) {
+    dishImg.src = img;
+    dishImg.style.display = "block";
+  } else {
+    dishImg.removeAttribute("src");
+    dishImg.style.display = "none";
+  }
+  dishImg.alt = card.dataset.title || "";
+
+  dishModal.classList.add("isOpen");
+  dishModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeDishModal(){
+  dishModal.classList.remove("isOpen");
+  dishModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+menuGrid?.addEventListener("click", (e) => {
+  // ✅ якщо хочеш відкривати тільки по картинці — лишай так:
+  const clickedImg = e.target.closest(".menuImgWrap");
+  if (!clickedImg) return;
+
+  const card = e.target.closest(".menuCard");
+  if (!card) return;
+
+  openDishModal(card);
+});
+
+dishClose?.addEventListener("click", closeDishModal);
+dishModal?.addEventListener("click", (e) => { if (e.target === dishModal) closeDishModal(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && dishModal?.classList.contains("isOpen")) closeDishModal();
+});
+
