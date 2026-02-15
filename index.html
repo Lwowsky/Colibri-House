@@ -11,7 +11,7 @@
     <!-- Anchor for "back to top" -->
     <div id="top" aria-hidden="true"></div>
 
-    <header>
+    <header class="cardOptions">
       <div class="container topbar">
         <a class="brand" href="#top">
           <div class="mark" aria-hidden="true">
@@ -178,9 +178,14 @@
                 <img id="heroPhoto" src="img/hero/photo1.jpg" alt="" />
               </div>
               <div class="photoCaption">
-                <span data-i18n="photo_caption"
-                  >Затишна атмосфера, українські смаки та гостинність.</span
+                <a
+                  class="btn primary"
+                  href="https://search.google.com/local/writereview?placeid=ChIJU5W8kBJdGGAR3NAK_AAfh2o"
+                  target="_blank"
+                  rel="noopener"
                 >
+                  Написати відгук
+                </a>
                 <span class="badge">★ 5.0</span>
               </div>
             </div>
@@ -193,7 +198,6 @@
           <div class="sectionHead">
             <h2 data-i18n="menu_title">Меню</h2>
           </div>
-
           <div class="menuTabsWrap">
             <div
               class="menuTabs"
@@ -202,17 +206,9 @@
               aria-label="Menu categories"
             ></div>
           </div>
-
           <div class="grid" id="menuGrid"></div>
-
-          <div class="ctaRow">
-            <a class="btn ghost" href="#reserve" data-i18n="cta_reserve"
-              >Забронювати</a
-            >
-          </div>
         </div>
       </section>
-
       <section id="about">
         <div class="container">
           <div class="sectionHead">
@@ -220,17 +216,40 @@
           </div>
 
           <div class="grid">
-            <div class="tile col-6">
+            <div class="tile col-6 card">
               <h3 data-i18n="about_card1_title">Домашня традиція</h3>
               <p class="sub" data-i18n="about_card1_desc">
-                Класика української кухні з любов’ю та якісних інгредієнтів.
+                Colibri House — це маленьке сімейне місце української кухні в
+                Йокогамі, куди хочеться зайти “на щось тепле й знайоме”. Ми
+                готуємо з турботою, як для своїх: щоб було смачно, ситно й
+                по-домашньому. У нас можна скуштувати українську класику — борщ,
+                вареники та інші традиційні страви, які добре зігрівають і
+                піднімають настрій. Ми завжди раді гостям і стараємося, щоб
+                кожному було комфортно: можна взяти страви з собою (takeaway), а
+                також спокійно провести час у затишній атмосфері. Для зручності
+                меню доступне англійською та японською мовами.
               </p>
             </div>
-            <div class="tile col-6">
+            <div class="tile col-6 card">
               <h3 data-i18n="about_card2_title">Комфорт для всіх</h3>
-              <p class="sub" data-i18n="about_card2_desc">
-                Є вегетаріанські опції, takeaway та кейтеринг.
-              </p>
+              <ul class="featureList" aria-label="Комфорт для всіх">
+                <li><span data-i18n="about_feat_bar_cafe">Бар і кафе</span></li>
+                <li><span data-i18n="about_feat_hookah">Кальян</span></li>
+                <li>
+                  <span data-i18n="about_feat_veg">Вегетаріанські опції</span>
+                </li>
+                <li>
+                  <span data-i18n="about_feat_wc">Туалет для гостей</span>
+                </li>
+                <li>
+                  <span data-i18n="about_feat_takeaway"
+                    >Takeaway / з собою</span
+                  >
+                </li>
+                <li>
+                  <span data-i18n="about_feat_reserve">Бронювання столика</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -323,7 +342,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="cardOptions">
       <div class="footer">
         <a
           class="iconBtn"

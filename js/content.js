@@ -24,7 +24,7 @@ window.I18N = {
     about_sub: "Традиційні рецепти, адаптовані з повагою до Японії.",
     about_card1_title: "Домашня традиція",
     about_card1_desc:
-      "Класика української кухні з любов’ю та якісних інгредієнтів.",
+      "Colibri House — це маленьке сімейне місце української кухні в Йокогамі, куди хочеться зайти «на щось тепле й знайоме». Ми готуємо з турботою, як для своїх: щоб було смачно, ситно й по-домашньому. У нас можна скуштувати українську класику — борщ, вареники та інші традиційні страви, які добре зігрівають і піднімають настрій. Ми завжди раді гостям і стараємося, щоб кожному було комфортно: можна взяти страви з собою (takeaway) або спокійно провести час у затишній атмосфері. Для зручності меню доступне англійською та японською мовами.",
     about_card2_title: "Комфорт для всіх",
     about_card2_desc: "Є вегетаріанські опції, takeaway та кейтеринг.",
 
@@ -62,6 +62,12 @@ window.I18N = {
     footer_note: "Українська кухня в Японії",
     back_to_top: "Наверх ↑",
 
+    about_feat_bar_cafe: "Бар і кафе",
+    about_feat_hookah: "Кальян-зона",
+    about_feat_veg: "Вегетаріанські опції",
+    about_feat_wc: "Туалет для гостей",
+    about_feat_takeaway: "Takeaway / з собою",
+    about_feat_reserve: "Бронювання столика",
     menu_categories: [
       { id: "dumplings", label: "Вареники" },
       { id: "mains", label: "Основні" },
@@ -194,7 +200,7 @@ window.I18N = {
     about_sub: "Traditional recipes, respectfully adapted in Japan.",
     about_card1_title: "Home tradition",
     about_card1_desc:
-      "Ukrainian classics made with care and quality ingredients.",
+      "Colibri House is a small family-run spot for Ukrainian food in Yokohama — a place to drop in for something warm and familiar. We cook with care, the way we would for our own: hearty, comforting, and truly homemade. Here you can try Ukrainian classics like borscht and vareniki, along with other traditional dishes that warm you up and lift your mood. We’re always happy to welcome guests and make everyone feel comfortable — you can grab your meal to go (takeaway) or enjoy a relaxed time in our cozy atmosphere. For your convenience, the menu is available in English and Japanese.",
     about_card2_title: "Comfort for everyone",
     about_card2_desc: "Vegetarian options, takeaway, and catering available.",
 
@@ -230,6 +236,12 @@ window.I18N = {
 
     footer_note: "Ukrainian cuisine in Japan",
     back_to_top: "Back to top ↑",
+    about_feat_bar_cafe: "Bar & café",
+    about_feat_hookah: "Hookah area",
+    about_feat_veg: "Vegetarian options",
+    about_feat_wc: "Restroom",
+    about_feat_takeaway: "Takeaway / to-go",
+    about_feat_reserve: "Table reservation",
 
     menu_categories: [
       { id: "drinks", label: "Drinks" },
@@ -293,7 +305,8 @@ window.I18N = {
     about_card1_title: "家庭の伝統",
     about_card1_desc: "素材にこだわったウクライナ定番料理。",
     about_card2_title: "みんなにやさしく",
-    about_card2_desc: "ベジ対応・テイクアウト・ケータリングも可能。",
+    about_card1_desc:
+      "Colibri Houseは横浜にある小さな家族経営のウクライナ料理店です。「温かくてどこか懐かしいもの」を食べたくなったときに、ふらっと立ち寄れる場所を目指しています。私たちは自分たちの家族に作るように心を込めて料理し、しっかり満足できる家庭の味を大切にしています。ボルシチやヴァレーニキなどの定番料理をはじめ、体も心も温まる伝統的なウクライナ料理をお楽しみいただけます。テイクアウトも可能で、店内では落ち着いた雰囲気の中でゆっくりお過ごしいただけます。メニューは英語と日本語に対応しています。",
 
     reserve_title: "予約",
     reserve_sub: "「予約する」— いまはデモフォームです。",
@@ -327,7 +340,12 @@ window.I18N = {
 
     footer_note: "日本のウクライナ料理店",
     back_to_top: "トップへ ↑",
-
+    about_feat_bar_cafe: "バー＆カフェ",
+    about_feat_hookah: "シーシャスペース",
+    about_feat_veg: "ベジタリアン対応",
+    about_feat_wc: "お手洗い",
+    about_feat_takeaway: "テイクアウト",
+    about_feat_reserve: "席のご予約",
     menu_categories: [
       { id: "drinks", label: "ドリンク" },
       { id: "sauces", label: "ソース" },

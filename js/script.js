@@ -31,3 +31,8 @@ setInterval(() => {
   i = (i + 1) % photos.length;
   img.src = photos[i];
 }, 5500);
+
+// review button
+document.getElementById("openReview")?.addEventListener("click", () => {
+  window.open("ВАШ_GOOGLE_REVIEW_LINK", "_blank", "noopener,noreferrer");
+});

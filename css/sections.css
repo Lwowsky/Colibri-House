@@ -26,6 +26,7 @@ section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
+  
 }
 .col-4 {
   grid-column: span 4;
@@ -147,4 +148,55 @@ section {
   margin-top: 10px;
   display: flex;
   justify-content: flex-end;
+}
+
+/* Modern feature list with checkmarks */
+.featureList{
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.featureList li{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+/* check icon */
+.featureList li::before{
+  content: "✓";
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 12px;
+  margin-top: 2px;
+
+  /* subtle badge look */
+  background: rgba(31, 122, 120, 0.12);
+  color: #1f7a78;
+}
+
+/* optional: make the text slightly tighter inside tiles */
+.tile .featureList{
+  font-size: 14px;
+}
+
+.subtleFeatureList{
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+#about .tile p.sub {
+  font-size: 14px;
 }
