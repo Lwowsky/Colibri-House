@@ -119,11 +119,11 @@
   .dishModalHead {
     padding: 12px 14px;
   }
-    .reserveTop{
+  .reserveTop {
     align-items: center;
     flex-direction: column;
   }
-  .reserveBtns .btn{
+  .reserveBtns .btn {
     width: 100%;
   }
 }

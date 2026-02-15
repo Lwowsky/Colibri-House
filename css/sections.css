@@ -26,7 +26,6 @@ section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
-  
 }
 .col-4 {
   grid-column: span 4;
@@ -85,7 +84,7 @@ section {
 }
 .reserveTop {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
@@ -105,13 +104,35 @@ section {
   flex-wrap: wrap;
   align-items: center;
 }
-.reserveBtns .btn{
-  min-height: 46px;             /* однакова висота */
-  width: 230px;                 /* однакова ширина (під себе підкоригуй) */
+.reserveBtns .btn {
+  min-height: 46px;
+  width: 230px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;          /* не переносити текст */
+  white-space: nowrap;
+}
+.phoneBtn {
+  gap: 10px;
+}
+
+.phoneIcon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.phoneIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.phoneText {
+  white-space: nowrap;
 }
 
 /* Access */
@@ -159,7 +180,7 @@ section {
 }
 
 /* Modern feature list with checkmarks */
-.featureList{
+.featureList {
   list-style: none;
   margin: 10px 0 0;
   padding: 0;
@@ -167,7 +188,7 @@ section {
   gap: 8px;
 }
 
-.featureList li{
+.featureList li {
   display: flex;
   align-items: flex-start;
   gap: 10px;
@@ -175,7 +196,7 @@ section {
 }
 
 /* check icon */
-.featureList li::before{
+.featureList li::before {
   content: "✓";
   flex: 0 0 auto;
   width: 18px;
@@ -194,11 +215,11 @@ section {
 }
 
 /* optional: make the text slightly tighter inside tiles */
-.tile .featureList{
+.tile .featureList {
   font-size: 14px;
 }
 
-.subtleFeatureList{
+.subtleFeatureList {
   list-style: none;
   margin: 6px 0 0;
   padding: 0;
