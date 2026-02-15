@@ -275,7 +275,7 @@
 }
 .carSlide {
   min-width: 100%;
-  height: min(72vh, 560px);
+  height: min(72vh, 460px);
   background: rgba(0, 0, 0, 0.03);
 }
 .carSlide img {
