@@ -600,8 +600,30 @@
         </div>
 
         <div class="dishModalBody">
-          <div class="dishModalImg">
-            <img id="dishImg" alt="" />
+          <div class="dishCarousel" aria-label="Dish photos">
+            <button
+              class="carBtn prev"
+              id="carPrev"
+              type="button"
+              aria-label="Previous"
+            >
+              ‹
+            </button>
+
+            <div class="carViewport">
+              <div class="carTrack" id="carTrack"></div>
+            </div>
+
+            <button
+              class="carBtn next"
+              id="carNext"
+              type="button"
+              aria-label="Next"
+            >
+              ›
+            </button>
+
+            <div class="carDots" id="carDots" aria-label="Carousel dots"></div>
           </div>
 
           <p id="dishDesc"></p>

@@ -77,6 +77,11 @@ window.I18N = {
         tag: "Вареники",
         cat: "dumplings",
         img: "img/menu/dumplings01.png",
+        imgs: [
+          "img/menu/dumplings01.png",
+          "img/menu/dumplings02.png",
+          "img/menu/dumplings03.png",
+        ],
       },
       {
         title: "Вареники з капустою",
