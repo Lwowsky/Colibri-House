@@ -269,31 +269,48 @@
                 >
                   <span class="phoneIcon" aria-hidden="true">
                     <svg
+                      class="phoneSvg"
                       xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
                       viewBox="0 0 24 24"
-                      focusable="false"
                     >
                       <defs>
                         <linearGradient
-                          id="phoneGradReserve"
-                          x1="3"
-                          y1="3"
-                          x2="21"
-                          y2="21"
-                          gradientUnits="userSpaceOnUse"
+                          id="phoneGradTel_1"
+                          x1="0"
+                          y1="0"
+                          x2="1"
+                          y2="1"
                         >
-                          <stop offset="0" stop-color="#1f7a78" />
-                          <stop offset="1" stop-color="#caa34a" />
+                          <stop offset="0%" stop-color="#1f7a78" />
+                          <stop offset="100%" stop-color="#caa34a" />
                         </linearGradient>
                       </defs>
 
-                      <!-- classic handset (filled), looks like your screenshot -->
+                      <!-- handset -->
                       <path
                         d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24
            1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1
            C10.85 21 3 13.15 3 3c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1
            0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"
-                        fill="url(#phoneGradReserve)"
+                        fill="url(#phoneGradTel_1)"
+                      />
+
+                      <!-- ring lines (to look like ☎) -->
+                      <path
+                        d="M14.6 3.6c2.9 1 5 3.6 5.4 6.6"
+                        fill="none"
+                        stroke="url(#phoneGradTel_1)"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                      />
+                      <path
+                        d="M14.4 6.3c1.6.6 2.8 2 3.1 3.7"
+                        fill="none"
+                        stroke="url(#phoneGradTel_1)"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
                       />
                     </svg>
                   </span>
