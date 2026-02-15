@@ -17,14 +17,18 @@
   color: #fff;
   box-shadow: 0 14px 34px rgba(31, 122, 120, 0.25);
 }
-.btn.primary:hover { transform: translateY(-1px); }
+.btn.primary:hover {
+  transform: translateY(-1px);
+}
 .btn.ghost {
   background: rgba(255, 255, 255, 0.75);
   border: 1px solid rgba(223, 230, 227, 0.95);
   color: var(--ink);
   box-shadow: 0 10px 24px rgba(10, 20, 20, 0.06);
 }
-.btn.ghost:hover { transform: translateY(-1px); }
+.btn.ghost:hover {
+  transform: translateY(-1px);
+}
 .btn.small {
   padding: 9px 12px;
   border-radius: 14px;
@@ -55,14 +59,30 @@
   border: 1px solid rgba(223, 230, 227, 0.95);
   overflow: hidden;
   background:
-    radial-gradient(180px 120px at 25% 20%, rgba(31, 122, 120, 0.22), transparent 55%),
-    radial-gradient(180px 120px at 70% 30%, rgba(202, 163, 74, 0.22), transparent 55%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
+    radial-gradient(
+      180px 120px at 25% 20%,
+      rgba(31, 122, 120, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      180px 120px at 70% 30%,
+      rgba(202, 163, 74, 0.22),
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.45)
+    );
 }
-.col-3 { grid-column: span 3; }
+.col-3 {
+  grid-column: span 3;
+}
 
 /* ===== TABS (без дублікатів) ===== */
-.menuTabsWrap { margin: 10px 0 14px; }
+.menuTabsWrap {
+  margin: 10px 0 14px;
+}
 
 .menuTabs {
   display: flex;
@@ -72,7 +92,9 @@
   -webkit-overflow-scrolling: touch;
   padding: 6px 2px;
 }
-.menuTabs::-webkit-scrollbar { height: 6px; }
+.menuTabs::-webkit-scrollbar {
+  height: 6px;
+}
 .menuTabs::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.08);
   border-radius: 999px;
@@ -92,7 +114,9 @@
   transition: 0.15s ease;
 }
 
-.tabBtn:hover { transform: translateY(-1px); }
+.tabBtn:hover {
+  transform: translateY(-1px);
+}
 .tabBtn:focus-visible {
   outline: 3px solid rgba(31, 122, 120, 0.28);
   outline-offset: 2px;
@@ -120,7 +144,7 @@
 }
 .menuCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 38px rgba(10, 20, 20, 0.10);
+  box-shadow: 0 18px 38px rgba(10, 20, 20, 0.1);
 }
 .menuCard:focus-within {
   outline: 3px solid rgba(31, 122, 120, 0.22);
@@ -146,7 +170,10 @@
   gap: 8px;
   flex: 1;
 }
-.menuTitle { margin: 0; font-size: 16px; }
+.menuTitle {
+  margin: 0;
+  font-size: 16px;
+}
 .menuDesc {
   margin: 0;
   color: var(--muted);
@@ -170,26 +197,31 @@
   color: var(--ink);
   font-weight: 800;
 }
-.menuPrice { font-weight: 900; color: var(--ink); }
+.menuPrice {
+  font-weight: 900;
+  color: var(--ink);
+}
 
 /* ===== DISH MODAL ===== */
 .dishModalBackdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.50);
+  background: rgba(0, 0, 0, 0.5);
   display: none;
   align-items: center;
   justify-content: center;
   padding: 18px;
   z-index: 1000;
 }
-.dishModalBackdrop.open { display: flex; }
+.dishModalBackdrop.open {
+  display: flex;
+}
 
 .dishModal {
   width: min(920px, 100%);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(223, 230, 227, 0.90);
+  border: 1px solid rgba(223, 230, 227, 0.9);
   box-shadow: 0 24px 80px rgba(10, 20, 20, 0.32);
   overflow: hidden;
   backdrop-filter: saturate(1.2) blur(10px);
@@ -217,12 +249,25 @@
   cursor: pointer;
 }
 
-.dishModalBody { padding: 14px 18px 18px; }
-#dishDesc { margin: 10px 0 8px; color: var(--muted); line-height: 1.6; }
+.dishModalBody {
+  padding: 14px 18px 18px;
+    display: grid;
+  gap: 12px;
+}
+#dishDesc {
+  margin: 10px 0 8px;
+  color: var(--muted);
+  line-height: 1.6;
+}
 
 /* Carousel */
-.dishCarousel { position: relative; }
-.carViewport { overflow: hidden; border-radius: 16px; }
+.dishCarousel {
+  position: relative;
+}
+.carViewport {
+  overflow: hidden;
+  border-radius: 16px;
+}
 .carTrack {
   display: flex;
   transition: transform 0.25s ease;
@@ -230,14 +275,15 @@
 }
 .carSlide {
   min-width: 100%;
-  height: 420px;
-  background: rgba(0,0,0,0.03);
+  height: min(72vh, 560px);
+  background: rgba(0, 0, 0, 0.03);
 }
 .carSlide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  object-position: center
 }
 .carSlide.placeholder {
   height: 320px;
@@ -248,9 +294,9 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
   border: 1px solid rgba(223, 230, 227, 0.95);
   background: rgba(255, 255, 255, 0.92);
   display: grid;
@@ -258,9 +304,15 @@
   cursor: pointer;
   z-index: 10;
 }
-.carBtn.prev { left: 10px; }
-.carBtn.next { right: 10px; }
-.carBtn:hover { transform: translateY(-50%) scale(1.03); }
+.carBtn.prev {
+  left: 10px;
+}
+.carBtn.next {
+  right: 10px;
+}
+.carBtn:hover {
+  transform: translateY(-50%) scale(1.03);
+}
 
 .carDots {
   display: flex;
@@ -276,7 +328,9 @@
   background: rgba(31, 122, 120, 0.25);
   cursor: pointer;
 }
-.carDot.isActive { background: rgba(31, 122, 120, 0.90); }
+.carDot.isActive {
+  background: rgba(31, 122, 120, 0.9);
+}
 
 .dishModalBottom {
   display: flex;
@@ -295,5 +349,7 @@
   color: var(--ink);
   font-weight: 800;
 }
-#dishPrice { font-weight: 900; color: var(--ink); }
-
+#dishPrice {
+  font-weight: 900;
+  color: var(--ink);
+}
