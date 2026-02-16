@@ -592,20 +592,20 @@
             action="https://formspree.io/f/xaqdopvg"
             method="POST"
           >
-            <div class="field">
+            <div class="field half">
               <label data-i18n="f_name">Ім’я</label>
               <input name="name" autocomplete="name" required />
             </div>
-            <div class="field">
+            <div class="field half">
               <label data-i18n="f_phone">Телефон</label>
               <input name="phone" type="tel" autocomplete="tel" required />
             </div>
-            <div class="field">
+            <div class="field third">
               <label data-i18n="f_date">Дата</label>
               <input name="date" type="date" required />
             </div>
 
-            <div class="field">
+            <div class="field third">
               <label data-i18n="f_time">Час</label>
 
               <div class="timeSelect" id="timeSelect">
@@ -613,16 +613,14 @@
                   class="timeInput"
                   id="timeInput"
                   type="text"
+                  data-i18n-placeholder="time_placeholder"
                   placeholder="Оберіть час"
                   readonly
                   aria-haspopup="listbox"
                   aria-expanded="false"
                   aria-controls="timeDropdown"
                 />
-
-                <!-- СЮДИ реально записується значення для форми -->
                 <input type="hidden" name="time" id="timeHidden" required />
-
                 <button
                   class="timeChevron"
                   id="timeToggle"
@@ -638,11 +636,12 @@
                   role="listbox"
                 ></div>
               </div>
-
-              <small class="timeHint">Доступно: 17:00–22:00</small>
+              <small class="timeHint" data-i18n="time_hint"
+                >Доступно: 17:00–22:00</small
+              >
             </div>
 
-            <div class="field">
+            <div class="field third">
               <label data-i18n="f_people">Кількість</label>
               <select name="people" required>
                 <option>1</option>

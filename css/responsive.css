@@ -80,6 +80,11 @@
   .form {
     grid-template-columns: 1fr;
   }
+  .field.half,
+  .field.third,
+  .form .full {
+    grid-column: 1 / -1;
+  }
   .menuCard {
     grid-column: span 12;
   }

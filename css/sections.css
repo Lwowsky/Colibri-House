@@ -205,10 +205,14 @@ section {
 
 .timeHint{
   display: block;
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.2;
   color: var(--muted);
+  text-align: center;
+  opacity: .9;
 }
+
 
 /* Access */
 .accessList {

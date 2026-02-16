@@ -42,7 +42,9 @@ window.I18N = {
     station_text:
       "Найближча станція: 吉野町駅 (Yoshinochō), вихід 3, ~2 хв пішки.",
     copy_btn: "Копіювати",
-
+    time_placeholder: "Оберіть час",
+    time_hint: "Доступно: 17:00–22:00",
+    f_time: "Час",
     modal_title: "Бронювання столика",
     modal_sub:
       "Дзвінки приймаємо з 17:15 до 22:45. Запити через форму розглядаємо протягом 48 годин, тож якщо потрібно швидше — краще зателефонувати.",
@@ -223,7 +225,9 @@ window.I18N = {
     station_text:
       "Nearest station: Yoshinochō Station (Yokohama Subway Blue Line), Exit 3, ~2 min walk.",
     copy_btn: "Copy",
-
+    time_placeholder: "Select a time",
+    time_hint: "Available: 17:00–22:00",
+    f_time: "Time",
     modal_title: "Table reservation",
     modal_sub:
       "We accept calls from 17:15 to 22:45. Requests submitted via the form are processed within 48 hours, so if you need a faster response, it’s best to call us.",
@@ -332,7 +336,9 @@ window.I18N = {
     station_text:
       "最寄り駅：吉野町駅（横浜市営地下鉄ブルーライン）3番出口から徒歩約2分。",
     copy_btn: "コピー",
-
+    time_placeholder: "時間を選択",
+    time_hint: "利用可能: 17:00–22:00",
+    f_time: "時間",
     modal_title: "席の予約",
     modal_sub:
       "お電話の受付時間は 17:15〜22:45 です。フォームからのご予約リクエストは 48時間以内 に対応いたしますので、お急ぎの場合は お電話 ください。",
