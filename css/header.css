@@ -44,7 +44,7 @@ header {
   color: var(--brand3);
   font-family: var(--font-main);
   text-align: center;
-  white-space: nowrap;
+  /*white-space: nowrap;*/
 }
 .brand .wordmark span {
   font-size: 1rem;
