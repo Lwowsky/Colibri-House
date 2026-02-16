@@ -38,11 +38,13 @@ header {
   line-height: 1.1;
 }
 .brand .wordmark b {
-  font-size: 1.5rem;
+  font-size: clamp(18px, 4.8vw, 28px);
+  line-height: 1.1;
   letter-spacing: 0.2px;
   color: var(--brand3);
   font-family: var(--font-main);
   text-align: center;
+  white-space: nowrap;
 }
 .brand .wordmark span {
   font-size: 1rem;
