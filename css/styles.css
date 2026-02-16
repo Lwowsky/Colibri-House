@@ -21,6 +21,10 @@
   --radius: 18px;
   --radius2: 26px;
   --max: 1120px;
+  --font-main:
+    "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  --font-ja: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
 }
 
 * {
@@ -32,17 +36,7 @@ html {
 
 body {
   margin: 0;
-  font-family:
-    ui-sans-serif,
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Noto Sans JP",
-    "Hiragino Sans",
-    "Yu Gothic",
-    Arial,
-    sans-serif;
+  font-family: var(--font-main);
   color: var(--ink);
   background:
     radial-gradient(
@@ -56,6 +50,17 @@ body {
       transparent 50%
     ),
     var(--bg);
+
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+:lang(ja) {
+  font-family: var(--font-ja);
+}
+button, input, select, textarea {
+  font-family: inherit;
 }
 
 /* lock scroll when modal open */

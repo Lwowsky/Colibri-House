@@ -3,243 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Colibri House</title>
+  <title>Font preview</title>
 
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f7f6; --card:#ffffff; --ink:#0f1a1a; --muted:#556566;
+      --radius:18px;
+    }
+    body{
+      margin:0; padding:24px;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .wrap{max-width: 980px; margin:0 auto;}
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 12px 30px rgba(10,20,20,.08);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+    .row{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:14px;}
+    select{padding:10px 12px; border-radius:12px; border:1px solid rgba(0,0,0,.12); background:#fff;}
+    .sample{display:grid; gap:12px;}
+    .h1{font-size:36px; line-height:1.1; font-weight:700; letter-spacing:-.4px;}
+    .lead{font-size:16px; line-height:1.65; color:var(--muted);}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; color:var(--muted); font-size:12px;}
+    .lang{padding:10px 12px; border-radius:14px; background:rgba(0,0,0,.03); border:1px solid rgba(0,0,0,.06);}
+    .inter{font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;}
+    .manrope{font-family:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;}
+    .jakarta{font-family:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;}
+    .notojp{font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;}
+    .zen{font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;}
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container topbar">
-      <a class="brand" href="#top" id="top">
-        <div class="mark" aria-hidden="true">
-          <img src="img/logo.png" alt="Colibri logo" width="150">
-          
-        </div>
-        <div class="wordmark">
-          <b>Colibri House</b>
-          <span data-i18n="brand_sub">Українська кухня в Японії</span>
-        </div>
-      </a>
-
-      <nav>
-        <div class="navlinks" id="navLinks">
-          <a href="#menu" data-i18n="nav_menu">Меню</a>
-          <a href="#about" data-i18n="nav_about">Про нас</a>
-          <a href="#reserve" data-i18n="nav_reserve">Бронювання</a>
-          <a href="#access" data-i18n="nav_access">Як дістатися</a>
-        </div>
-
-        <div class="actions">
-          <div class="chip" role="group" aria-label="Language switcher">
-            <button class="langbtn" data-lang="uk" aria-pressed="true">UA</button>
-            <button class="langbtn" data-lang="en" aria-pressed="false">EN</button>
-            <button class="langbtn" data-lang="ja" aria-pressed="false">日本語</button>
-          </div>
-
-          <button class="btn primary small" id="openReserve" type="button" data-i18n="cta_reserve">
-            Забронювати
-          </button>
-
-          <button class="burger" id="burger" type="button" aria-label="Menu">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Mobile menu -->
-  <div class="sheet" id="sheet" aria-hidden="true">
-    <div class="sheetPanel">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
-        <b>Colibri House</b>
-        <button class="x" id="closeSheet" type="button" aria-label="Close">✕</button>
+  <div class="wrap">
+    <div class="card">
+      <div class="row">
+        <strong>Preview:</strong>
+        <select id="fontPick">
+          <option value="inter">Inter</option>
+          <option value="manrope">Manrope</option>
+          <option value="jakarta">Plus Jakarta Sans</option>
+          <option value="notojp">Noto Sans JP</option>
+          <option value="zen">Zen Kaku Gothic New</option>
+        </select>
+        <span class="mono">Вибери шрифт — текст нижче оновиться</span>
       </div>
-      <div class="navlinks">
-        <a href="#menu" data-i18n="nav_menu">Меню</a>
-        <a href="#about" data-i18n="nav_about">Про нас</a>
-        <a href="#reserve" data-i18n="nav_reserve">Бронювання</a>
-        <a href="#access" data-i18n="nav_access">Як дістатися</a>
+
+      <div id="box" class="sample inter">
+        <div class="lang">
+          <div class="h1">Теплі смаки • Затишна атмосфера</div>
+          <div class="lead">Порадимо, з чого почати, і допоможемо обрати страву під ваш настрій. Меню доступне англійською та японською.</div>
+        </div>
+
+        <div class="lang" lang="en">
+          <div class="h1">Warm flavors • Cozy space</div>
+          <div class="lead">We’ll help you choose the right dish for your mood. The menu is available in English and Japanese.</div>
+        </div>
+
+        <div class="lang" lang="ja">
+          <div class="h1">温かい味わい・心地よい空間</div>
+          <div class="lead">おすすめをご案内し、お好みに合わせてお選びいただけます。メニューは英語と日本語に対応しています。</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <main>
-    <section class="hero">
-      <div class="container heroGrid">
-        <div class="card heroCard">
-          <div class="kicker"><i></i><span data-i18n="kicker">Домашні смаки • Тепла атмосфера</span></div>
-          <h1 data-i18n="hero_title">Українська кухня в Японії</h1>
-          <p class="lead" data-i18n="hero_desc">
-            Борщ, вареники, деруни та десерти — готуємо з любов’ю та пояснюємо страви трьома мовами.
-          </p>
-
-          <div class="heroBtns">
-            <button class="btn primary" id="openReserve2" type="button" data-i18n="cta_reserve">Забронювати</button>
-            <a class="btn ghost" href="#menu" data-i18n="cta_menu">Дивитись меню</a>
-          </div>
-
-          <div class="metaRow">
-            <span class="metaPill"><b data-i18n="hours_label">Години:</b> <span data-i18n="hours">11:30–22:00</span></span>
-            <span class="metaPill"><b data-i18n="city_label">Місто:</b> <span>Tokyo</span></span>
-          </div>
-        </div>
-
-        <div class="card photoCard">
-          <div class="photoInner">
-            <div class="mockPhoto" aria-hidden="true"></div>
-            <div class="photoCaption">
-              <span data-i18n="photo_caption">Затишна атмосфера, українські смаки та гостинність.</span>
-              <span class="badge">★ 4.9</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="menu">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 data-i18n="menu_title">Меню</h2>
-          <p data-i18n="menu_sub">Кілька хітів. Повне меню можна додати окремою сторінкою.</p>
-        </div>
-
-        <div class="grid" id="menuGrid"></div>
-
-        <div class="ctaRow">
-          <a class="btn ghost" href="#reserve" data-i18n="cta_reserve">Забронювати</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 data-i18n="about_title">Про нас</h2>
-          <p data-i18n="about_sub">Традиційні рецепти, адаптовані з повагою до Японії.</p>
-        </div>
-
-        <div class="grid">
-          <div class="tile col-6">
-            <h3 data-i18n="about_card1_title">Домашня традиція</h3>
-            <p class="sub" data-i18n="about_card1_desc">Класика української кухні з любов’ю та якісних інгредієнтів.</p>
-          </div>
-          <div class="tile col-6">
-            <h3 data-i18n="about_card2_title">Комфорт для всіх</h3>
-            <p class="sub" data-i18n="about_card2_desc">Є вегетаріанські опції, takeaway та кейтеринг.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reserve">
-      <div class="container">
-        <div class="reserveBox">
-          <div class="reserveTop">
-            <div>
-              <h2 data-i18n="reserve_title">Бронювання</h2>
-              <p data-i18n="reserve_sub">Натисни “Забронювати” і ми отримаємо запит (поки що показує демо).</p>
-            </div>
-            <div class="reserveBtns">
-              <button class="btn primary" id="openReserve3" type="button" data-i18n="cta_reserve">Забронювати</button>
-              <a class="btn ghost" href="tel:+810000000000">☎ +81 00-0000-0000</a>
-            </div>
-          </div>
-          <p class="hint" data-i18n="reserve_hint">
-            Потім підключимо: LINE / Google Form / TableCheck.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="access">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 data-i18n="access_title">Як дістатися</h2>
-          <p data-i18n="access_sub">Заміни адресу та станцію на реальні.</p>
-        </div>
-
-        <div class="tile">
-          <div class="accessList">
-            <div class="accessItem">
-              <b data-i18n="addr_label">Адреса</b>
-              <span id="addrText">〒000-0000 東京都〇〇区〇〇 1-2-3</span>
-              <button class="copyBtn" data-copy="#addrText" data-i18n="copy_btn">Копіювати</button>
-            </div>
-            <div class="accessItem">
-              <b data-i18n="station_label">Станція</b>
-              <span data-i18n="station_text">Найближча станція: ○○駅, вихід 3, 5 хв пішки.</span>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container foot">
-      <div>
-        <b>Colibri House</b><br/>
-        <span data-i18n="footer_note">Українська кухня в Японії</span>
-      </div>
-      <div>
-        <a href="#top" data-i18n="back_to_top">Наверх ↑</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Reservation modal -->
-  <div class="modalBackdrop" id="modal">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modalHead">
-        <div>
-          <h3 id="modalTitle" data-i18n="modal_title">Бронювання столика</h3>
-          <p data-i18n="modal_sub">Це демо-форма. Потім підключимо відправку.</p>
-        </div>
-        <button class="x" id="closeModal" type="button" aria-label="Close">✕</button>
-      </div>
-
-      <div class="modalBody">
-        <form class="form" id="reserveForm">
-          <div class="field">
-            <label data-i18n="f_name">Ім’я</label>
-            <input name="name" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label data-i18n="f_phone">Телефон</label>
-            <input name="phone" autocomplete="tel" required />
-          </div>
-          <div class="field">
-            <label data-i18n="f_date">Дата</label>
-            <input name="date" type="date" required />
-          </div>
-          <div class="field">
-            <label data-i18n="f_people">Кількість</label>
-            <select name="people" required>
-              <option>1</option><option>2</option><option>3</option><option>4</option>
-              <option>5</option><option>6</option><option>7</option><option>8+</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label data-i18n="f_note">Коментар</label>
-            <textarea name="note" placeholder="Allergies, time, etc."></textarea>
-          </div>
-
-          <div class="modalFoot full">
-            <button class="btn ghost" type="button" id="cancelBtn" data-i18n="cancel">Скасувати</button>
-            <button class="btn primary" type="submit" data-i18n="send">Надіслати</button>
-          </div>
-        </form>
-        <div class="hint" data-i18n="privacy_hint">Ми не зберігаємо дані в демо-версії.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast">OK</div>
-  <button class="toTop" id="toTop" title="Top">↑</button>
-<script src="js/scripts.js"></script>
-  <script src="js/content.js"></script>
-  
+  <script>
+    const pick = document.getElementById("fontPick");
+    const box  = document.getElementById("box");
+    pick.addEventListener("change", () => {
+      box.className = "sample " + pick.value;
+    });
+  </script>
 </body>
 </html>
