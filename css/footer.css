@@ -43,7 +43,7 @@
   margin-bottom: 10px;
   font-size: 14px;
   color: rgba(31, 122, 120, 0.75);
- 
+  font-family: var(--font-main);
 }
 
 footer {
