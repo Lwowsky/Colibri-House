@@ -34,6 +34,7 @@ window.I18N = {
     reserve_hint: "Потім підключимо: LINE / Google Form / TableCheck.",
     cta_reserve: "Забронювати",
     cta_menu: "Дивитись меню",
+    cta_review: "Написати відгук",
 
     access_title: "Як дістатися",
     access_sub: "Заміни адресу та станцію на реальні.",
@@ -217,6 +218,7 @@ window.I18N = {
     reserve_hint: "Later: LINE / Google Form / TableCheck.",
     cta_reserve: "Reserve",
     cta_menu: "View menu",
+    cta_review: "Write a review",
 
     access_title: "Access",
     access_sub: "Replace the address/station with real ones.",
@@ -328,6 +330,7 @@ window.I18N = {
     reserve_hint: "後で：LINE / Googleフォーム / TableCheck。",
     cta_reserve: "予約する",
     cta_menu: "メニューを見る",
+    cta_review: "口コミを書く",
 
     access_title: "アクセス",
     access_sub: "住所・駅情報を実際のものに変更してください。",
