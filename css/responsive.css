@@ -135,7 +135,7 @@
 
 @media (min-width: 390px) and (max-width: 430px) {
   .brand .mark {
-  width: 200px;
+  width: 220px;
   border-radius: 14px;
   display: grid;
   place-items: center;
