@@ -133,7 +133,7 @@
   }
 }
 
-@media (min-width: 390px) and (max-width: 430px) {
+@media (max-width: 390px) {
   .brand .mark {
   width: 220px;
   border-radius: 14px;
