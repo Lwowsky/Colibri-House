@@ -132,3 +132,21 @@
     width: 100%;
   }
 }
+
+@media (min-width: 390px) and (max-width: 430px) {
+  .brand .mark {
+  width: 200px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+.brand .wordmark b {
+  font-size: clamp(16px, 4.8vw, 22px);
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  color: var(--brand3);
+  font-family: var(--font-main);
+  text-align: center;
+  
+}
+}
