@@ -113,10 +113,13 @@
     grid-template-columns: 1fr;
   }
   .carSlide {
-    height: 50dvh;
+    height: auto;
   }
   .dishModal {
     border-radius: 18px;
+    height: auto;
+    max-height: calc(100vh - 24px);
+    overflow: auto;
   }
   .dishModalBody {
     padding: 12px 14px 14px;
@@ -135,18 +138,17 @@
 
 @media (max-width: 390px) {
   .brand .mark {
-  width: 220px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-}
-.brand .wordmark b {
-  font-size: clamp(16px, 4.8vw, 22px);
-  line-height: 1.1;
-  letter-spacing: 0.2px;
-  color: var(--brand3);
-  font-family: var(--font-main);
-  text-align: center;
-  
-}
+    width: 220px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+  }
+  .brand .wordmark b {
+    font-size: clamp(16px, 4.8vw, 22px);
+    line-height: 1.1;
+    letter-spacing: 0.2px;
+    color: var(--brand3);
+    font-family: var(--font-main);
+    text-align: center;
+  }
 }

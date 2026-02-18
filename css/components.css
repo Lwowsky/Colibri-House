@@ -220,7 +220,8 @@
 }
 
 .dishModal {
-  width: min(920px, 100%);
+  height: auto;
+  max-height: calc(100vh - 24px);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(223, 230, 227, 0.9);
