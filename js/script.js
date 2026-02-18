@@ -113,12 +113,13 @@ document.getElementById("openReview")?.addEventListener("click", () => {
 })();
 // header offset for anchor links
 (function () {
-  function setHeaderOffset() {
+  const setOffset = () => {
     const header = document.querySelector("header");
-    const h = header ? header.offsetHeight : 80;
-    document.documentElement.style.setProperty("--headerOffset", (h + 12) + "px");
-  }
+    const h = header ? header.getBoundingClientRect().height : 80;
+    // +8px легкий запас, щоб заголовок не липнув до краю
+    document.documentElement.style.setProperty("--headerOffset", (h + 8) + "px");
+  };
 
-  window.addEventListener("load", setHeaderOffset);
-  window.addEventListener("resize", setHeaderOffset);
+  window.addEventListener("load", setOffset);
+  window.addEventListener("resize", setOffset);
 })();
