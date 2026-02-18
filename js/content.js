@@ -63,12 +63,19 @@ window.I18N = {
     toast_copy_failed: "❌ Не вдалося скопіювати",
     footer_note: "Українська кухня в Японії",
     back_to_top: "Наверх ↑",
+    features_on: "Доступно",
+    features_off: "Недоступно",
+
     about_feat_bar_cafe: "Бар і кафе",
-    about_feat_hookah: "Кальян-зона",
     about_feat_veg: "Вегетаріанські опції",
     about_feat_wc: "Туалет для гостей",
     about_feat_takeaway: "Takeaway / з собою",
     about_feat_reserve: "Бронювання столика",
+    about_feat_cash: "Оплата готівкою",
+    about_feat_parking_off: "Парковка",
+    about_feat_access_off: "Доступність для візків",
+    about_feat_card_off: "Оплата картою",
+
     menu_categories: [
       { id: "dumplings", label: "Вареники" },
       { id: "bliny", label: "Млинці" },
@@ -287,12 +294,18 @@ window.I18N = {
 
     footer_note: "Ukrainian cuisine in Japan",
     back_to_top: "Back to top ↑",
+    features_on: "Available",
+    features_off: "Not available",
+
     about_feat_bar_cafe: "Bar & café",
-    about_feat_hookah: "Hookah area",
     about_feat_veg: "Vegetarian options",
     about_feat_wc: "Restroom",
     about_feat_takeaway: "Takeaway / to-go",
     about_feat_reserve: "Table reservation",
+    about_feat_cash: "Cash payment",
+    about_feat_parking_off: "Parking",
+    about_feat_access_off: "Wheelchair accessibility",
+    about_feat_card_off: "Card payment",
 
     menu_categories: [
       { id: "dumplings", label: "Dumplings" },
@@ -513,12 +526,18 @@ window.I18N = {
 
     footer_note: "日本のウクライナ料理店",
     back_to_top: "トップへ ↑",
-    about_feat_bar_cafe: "バー＆カフェ",
-    about_feat_hookah: "シーシャスペース",
-    about_feat_veg: "ベジタリアン対応",
-    about_feat_wc: "お手洗い",
-    about_feat_takeaway: "テイクアウト",
-    about_feat_reserve: "席のご予約",
+    features_on: "ごりよういただけます",
+    features_off: "りようふか",
+    about_feat_bar_cafe: "ばー あんど かふぇ",
+    about_feat_veg: "べじたりあん たいおう",
+    about_feat_wc: "おてあらい",
+    about_feat_takeaway: "ていくあうと",
+    about_feat_reserve: "せきのごよやく",
+    about_feat_cash: "げんきんばらい",
+    about_feat_parking_off: "ちゅうしゃじょう",
+    about_feat_access_off: "くるまいす たいおう",
+    about_feat_card_off: "かーどばらい",
+
     menu_categories: [
       { id: "dumplings", label: "ぎょうざ" },
       { id: "bliny", label: "ブリニ" },
