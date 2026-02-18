@@ -308,3 +308,30 @@ section {
 #about .tile p.sub {
   font-size: 14px;
 }
+
+.featuresSplit{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px; /* як у featureList */
+}
+
+.featuresTitle{
+  font-size: 12px;
+  font-weight: 800;
+  
+  letter-spacing: .2px;
+  margin: 0 0 8px;
+}
+
+.featuresCol.off .featureList{
+  margin-top: 0; /* щоб заголовок + список були щільніше */
+}
+
+.featuresCol.off .featureList li::before{
+  content: "✕";
+  background: rgba(220, 38, 38, 0.12);
+  color: rgba(220, 38, 38, 0.95);
+}
+
+
