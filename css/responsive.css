@@ -46,7 +46,7 @@
     text-align: center;
   }
   .carSlide {
-    height: 50dvh;
+    height: clamp(300px, 50dvh, 460px);
   }
 }
 @media (max-width: 768px) {
@@ -112,14 +112,23 @@
   .heroGrid {
     grid-template-columns: 1fr;
   }
-  .carSlide {
-    height: auto;
+  .dishModalBackdrop {
+    align-items: flex-start;
+    padding: 12px;
   }
+
   .dishModal {
+    margin-top: 12px;
     border-radius: 18px;
     height: auto;
     max-height: calc(100dvh - 24px);
     overflow: auto;
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .carSlide {
+    height: clamp(260px, 52dvh, 420px);
   }
   .dishModalBody {
     padding: 12px 14px 14px;
