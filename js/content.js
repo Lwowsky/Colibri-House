@@ -296,7 +296,7 @@ window.I18N = {
 
     menu_categories: [
       { id: "dumplings", label: "Dumplings" },
-      { id: "bliny", label: "Bliny" },
+      { id: "bliny", label: "Crepes" },
       { id: "mains", label: "Mains" },
       { id: "salads", label: "Salads" },
       { id: "pirozhki", label: "Pirozhki" },
@@ -361,7 +361,7 @@ window.I18N = {
         img: "img/menu/bliny01.jpg",
       },
       {
-        title: "Blini with Cottage Cheese",
+        title: "Crepes with Cottage Cheese",
         sub: "Crepes filled with cottage cheese, served with sour cream",
         price: "¥800",
         tag: "Crepes",
