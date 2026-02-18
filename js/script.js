@@ -111,4 +111,14 @@ document.getElementById("openReview")?.addEventListener("click", () => {
     if (e.key === "Escape") close();
   });
 })();
+// header offset for anchor links
+(function () {
+  function setHeaderOffset() {
+    const header = document.querySelector("header");
+    const h = header ? header.offsetHeight : 80;
+    document.documentElement.style.setProperty("--headerOffset", (h + 12) + "px");
+  }
 
+  window.addEventListener("load", setHeaderOffset);
+  window.addEventListener("resize", setHeaderOffset);
+})();
