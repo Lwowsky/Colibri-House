@@ -96,9 +96,6 @@
   }
 
   dishClose?.addEventListener("click", closeDishModal);
-  dishModal?.addEventListener("click", (e) => {
-    if (e.target === dishModal) closeDishModal();
-  });
 
   // ✅ кліки по картках
   menuGrid?.addEventListener("click", (e) => {
