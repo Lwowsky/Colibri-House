@@ -274,16 +274,21 @@
 }
 .carTrack {
   display: flex;
-  transition: transform 0.25s ease;
+  transform: translate3d(0, 0, 0);
   will-change: transform;
+  transition: transform 320ms ease;
 }
+
 .carSlide {
+  flex: 0 0 100%;
   min-width: 100%;
   height: min(72vh, 460px);
   background: rgba(0, 0, 0, 0.03);
 }
-@supports (height: 1dvh){
-  .carSlide{ height: min(72dvh, 460px); }
+@supports (height: 1dvh) {
+  .carSlide {
+    height: min(72dvh, 460px);
+  }
 }
 .carSlide img {
   width: 100%;
