@@ -113,25 +113,33 @@
     grid-template-columns: 1fr;
   }
   .dishModalBackdrop {
-    align-items: flex-start;
+    align-items: center;
     padding: 12px;
+    justify-content: center;
+    min-height: 100vh;
+    height: 100dvh;
   }
 
   .dishModal {
-    margin-top: 12px;
+    margin-top: 0;
     border-radius: 18px;
-    height: auto;
     max-height: calc(100dvh - 24px);
-    overflow: auto;
+    overflow: hidden;
     width: 100%;
     max-width: 560px;
+    overscroll-behavior: contain;
+    display: flex;
+    flex-direction: column;
   }
 
   .carSlide {
-    height: clamp(260px, 52dvh, 420px);
+    height: auto;
   }
   .dishModalBody {
     padding: 12px 14px 14px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   .dishModalHead {
     padding: 12px 14px;
