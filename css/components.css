@@ -270,6 +270,7 @@
 .carViewport {
   overflow: hidden;
   border-radius: 16px;
+  transform: translateZ(0);
 }
 .carTrack {
   display: flex;
