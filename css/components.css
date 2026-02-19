@@ -369,3 +369,21 @@
   font-weight: 900;
   color: var(--ink);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .dishCarousel .carBtn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  .dishCarousel:hover .carBtn,
+  .dishCarousel:focus-within .carBtn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .dishCarousel .carBtn {
+    display: none !important;
+  }
+}
