@@ -134,7 +134,14 @@
 
   .carSlide {
     height: auto;
+    flex: 0 0 100%;
   }
+  .carTrack{
+  display:flex;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  transition: transform 280ms ease;
+}
   .dishModalBody {
     padding: 12px 14px 14px;
     overflow: auto;

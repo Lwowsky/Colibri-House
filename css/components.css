@@ -221,6 +221,7 @@
 
 .dishModal {
   height: auto;
+  width: min(920px, calc(100vw - 36px));
   max-height: calc(100vh - 24px);
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.92);
@@ -283,7 +284,7 @@
   flex: 0 0 100%;
   min-width: 100%;
   height: min(72vh, 460px);
-  background: rgba(0, 0, 0, 0.03);
+  background: transparent;
 }
 @supports (height: 1dvh) {
   .carSlide {
