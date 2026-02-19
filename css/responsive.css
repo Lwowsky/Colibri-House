@@ -158,6 +158,11 @@
   .reserveBtns .btn {
     width: 100%;
   }
+    .dishCarousel .carBtn{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 390px) {

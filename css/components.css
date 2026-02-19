@@ -382,8 +382,4 @@
     pointer-events: auto;
   }
 }
-@media (hover: none) and (pointer: coarse) {
-  .dishCarousel .carBtn {
-    display: none !important;
-  }
-}
+
