@@ -80,7 +80,7 @@
       const slide = document.createElement("div");
       slide.className = "carSlide";
       slide.innerHTML = it.cover
-        ? `<img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="eager" decoding="async">`
+        ? `<img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="eager" decoding="async" draggable="false">`
         : `<div class="carSlide placeholder"></div>`;
       carTrack.appendChild(slide);
     });
