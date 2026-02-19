@@ -162,7 +162,7 @@
   }
   .dishModalBody {
     padding: 12px 14px 14px;
-    overflow: auto;
+    overflow: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
@@ -182,7 +182,8 @@
     pointer-events: none;
   }
 }
-@media (max-width: 480px) {  }
+@media (max-width: 480px) {
+}
 
 @media (max-width: 390px) {
   .brand .mark {

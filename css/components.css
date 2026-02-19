@@ -216,7 +216,8 @@
   -webkit-overflow-scrolling: touch;
 }
 .dishModalBackdrop.open {
-  display: flex;
+  display: grid;
+  place-items: center; 
 }
 
 .dishModal {
