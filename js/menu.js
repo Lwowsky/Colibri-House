@@ -14,9 +14,15 @@
   const carPrev = document.getElementById("carPrev");
   const carNext = document.getElementById("carNext");
 
+  const carViewport = document.querySelector("#dishModal .carViewport");
+
   let modalItems = [];
   let modalIndex = 0;
-  let built = false; // ✅ щоб будувати слайди лише 1 раз на відкриття
+  let built = false;
+  let isAnimating = false;
+
+  const ANIM_MS = 280;
+  const THRESHOLD = 70; // px для свайпу
 
   const esc = (s) =>
     String(s ?? "").replace(/[&<>"']/g, (c) => ({
@@ -28,6 +34,7 @@
     }[c]));
 
   function collectVisibleItems() {
+    if (!menuGrid) return;
     const cards = [...menuGrid.querySelectorAll(".menuCard")];
 
     modalItems = cards.map((card) => {
@@ -52,12 +59,14 @@
       };
     });
 
-    built = false; // ✅ при зміні категорії/списку — перебудуємо
+    built = false;
   }
 
   function buildSlidesOnce() {
     if (built) return;
     built = true;
+
+    if (!carTrack || !carDots) return;
 
     carTrack.innerHTML = "";
     carDots.innerHTML = "";
@@ -76,11 +85,10 @@
       carTrack.appendChild(slide);
     });
 
-    // dots
     const many = modalItems.length > 1;
-    carPrev.style.display = many ? "grid" : "none";
-    carNext.style.display = many ? "grid" : "none";
-    carDots.style.display = many ? "flex" : "none";
+    if (carPrev) carPrev.style.display = many ? "grid" : "none";
+    if (carNext) carNext.style.display = many ? "grid" : "none";
+    if (carDots) carDots.style.display = many ? "flex" : "none";
 
     if (many) {
       modalItems.forEach((_, i) => {
@@ -95,35 +103,46 @@
 
   function updateText(i) {
     const item = modalItems[i];
-    dishTitle.textContent = item?.title || "";
-    dishDesc.textContent = item?.desc || "";
-    dishTag.textContent = item?.tag || "";
-    dishPrice.textContent = item?.price || "";
+    if (!item) return;
+    if (dishTitle) dishTitle.textContent = item.title || "";
+    if (dishDesc) dishDesc.textContent = item.desc || "";
+    if (dishTag) dishTag.textContent = item.tag || "";
+    if (dishPrice) dishPrice.textContent = item.price || "";
   }
 
   function updateDots() {
+    if (!carDots) return;
     const dots = [...carDots.querySelectorAll(".carDot")];
     dots.forEach((d, i) => d.classList.toggle("isActive", i === modalIndex));
   }
 
-  function setTransform(i, animate) {
+  function setTransformIndex(i, animate) {
     if (!carTrack) return;
-
-    carTrack.style.transition = animate ? "transform 280ms ease" : "none";
+    carTrack.style.transition = animate ? `transform ${ANIM_MS}ms ease` : "none";
     carTrack.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
-
-    // ✅ повертаємо transition назад (щоб не зламати наступні)
-    if (!animate) requestAnimationFrame(() => (carTrack.style.transition = "transform 280ms ease"));
   }
 
   function goToDish(i, animate = true) {
-    if (!modalItems.length) return;
+    if (!modalItems.length || !carTrack) return;
+    if (isAnimating) return;
 
     modalIndex = (i + modalItems.length) % modalItems.length;
 
     updateText(modalIndex);
     updateDots();
-    setTransform(modalIndex, animate);
+
+    if (!animate) {
+      setTransformIndex(modalIndex, false);
+      // повертаємо transition після “тихого” стрибка
+      requestAnimationFrame(() => {
+        if (carTrack) carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+      });
+      return;
+    }
+
+    isAnimating = true;
+    setTransformIndex(modalIndex, true);
+    window.setTimeout(() => (isAnimating = false), ANIM_MS + 30);
   }
 
   function openDishByIndex(i) {
@@ -138,7 +157,7 @@
     dishModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
 
-    // ✅ перший показ — без анімації, щоб не “підстрибувало”
+    // перший показ — без анімації
     goToDish(i, false);
   }
 
@@ -149,6 +168,11 @@
   }
 
   dishClose?.addEventListener("click", closeDishModal);
+
+  // ❗️Щоб не закривалось при кліку в середині модалки — закриваємо тільки по backdrop:
+  dishModal?.addEventListener("click", (e) => {
+    if (e.target === dishModal) closeDishModal();
+  });
 
   // кліки по картках
   menuGrid?.addEventListener("click", (e) => {
@@ -189,4 +213,126 @@
     if (e.key === "ArrowLeft") prevDish();
     if (e.key === "ArrowRight") nextDish();
   });
+
+  // ==========================
+  // ✅ SWIPE (як в інсті)
+  // ==========================
+  (function initSwipe() {
+    if (!carViewport || !carTrack) return;
+
+    let startX = 0,
+      startY = 0,
+      dx = 0,
+      dy = 0,
+      active = false,
+      lock = null; // "x" або "y"
+
+    function point(e) {
+      return e.touches ? e.touches[0] : e;
+    }
+
+    function onStart(e) {
+      if (!dishModal?.classList.contains("open")) return;
+      if (isAnimating) return;
+      if (e.target.closest(".carBtn")) return;
+
+      const p = point(e);
+      active = true;
+      lock = null;
+      dx = dy = 0;
+      startX = p.clientX;
+      startY = p.clientY;
+
+      carTrack.style.transition = "none";
+    }
+
+    function onMove(e) {
+      if (!active) return;
+
+      const p = point(e);
+      dx = p.clientX - startX;
+      dy = p.clientY - startY;
+
+      if (lock === null) {
+        const ax = Math.abs(dx);
+        const ay = Math.abs(dy);
+        if (ax > 8 || ay > 8) lock = ax > ay ? "x" : "y";
+      }
+
+      // горизонтальний жест — тягнемо трек, і блокуємо скрол
+      if (lock === "x") {
+        if (e.cancelable) e.preventDefault();
+        carTrack.style.transform = `translate3d(${dx}px, 0, 0)`;
+      }
+    }
+
+    function snapBack() {
+      carTrack.style.transition = `transform 180ms ease`;
+      carTrack.style.transform = "translate3d(0,0,0)";
+    }
+
+    function swipeAndSwitch(dir) {
+      // dir: +1 next, -1 prev
+      isAnimating = true;
+
+      carTrack.style.transition = `transform 180ms ease`;
+      carTrack.style.transform =
+        dir === 1 ? "translate3d(-100%,0,0)" : "translate3d(100%,0,0)";
+
+      carTrack.addEventListener(
+        "transitionend",
+        () => {
+          // перемикаємо індекс (анімаційно вже норм, без “сірого ривка”)
+          modalIndex = (modalIndex + dir + modalItems.length) % modalItems.length;
+          updateText(modalIndex);
+          updateDots();
+
+          // одразу ставимо правильну позицію треку по %
+          requestAnimationFrame(() => {
+            setTransformIndex(modalIndex, false);
+            requestAnimationFrame(() => {
+              carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+              isAnimating = false;
+            });
+          });
+        },
+        { once: true }
+      );
+    }
+
+    function onEnd() {
+      if (!active) return;
+      active = false;
+
+      if (lock !== "x") {
+        carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+        carTrack.style.transform = `translate3d(${-modalIndex * 100}%,0,0)`;
+        return;
+      }
+
+      if (Math.abs(dx) >= THRESHOLD && modalItems.length > 1) {
+        swipeAndSwitch(dx < 0 ? 1 : -1);
+      } else {
+        snapBack();
+      }
+    }
+
+    carViewport.addEventListener("touchstart", onStart, { passive: true });
+    carViewport.addEventListener("touchmove", onMove, { passive: false });
+    carViewport.addEventListener("touchend", onEnd, { passive: true });
+    carViewport.addEventListener("touchcancel", onEnd, { passive: true });
+
+    // mouse drag (desktop)
+    carViewport.addEventListener("mousedown", (e) => {
+      onStart(e);
+      const mm = (ev) => onMove(ev);
+      const mu = () => {
+        document.removeEventListener("mousemove", mm);
+        document.removeEventListener("mouseup", mu);
+        onEnd();
+      };
+      document.addEventListener("mousemove", mm);
+      document.addEventListener("mouseup", mu);
+    });
+  })();
 })();
