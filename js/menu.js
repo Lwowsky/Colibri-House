@@ -169,11 +169,6 @@
 
   dishClose?.addEventListener("click", closeDishModal);
 
-  // ❗️Щоб не закривалось при кліку в середині модалки — закриваємо тільки по backdrop:
-  dishModal?.addEventListener("click", (e) => {
-    if (e.target === dishModal) closeDishModal();
-  });
-
   // кліки по картках
   menuGrid?.addEventListener("click", (e) => {
     const card = e.target.closest(".menuCard");
