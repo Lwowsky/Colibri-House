@@ -19,6 +19,9 @@
   border: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100svh - 24px);
 }
 .modalHead {
   padding: 16px 16px 12px;
@@ -62,6 +65,8 @@
 }
 .modalBody {
   padding: 14px 16px 16px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .form {
