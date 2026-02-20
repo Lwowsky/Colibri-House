@@ -1,21 +1,5 @@
-(function () {
-  const menuGrid = document.getElementById("menuGrid");
-
-  const dishModal = document.getElementById("dishModal");
-  const dishClose = document.getElementById("dishClose");
-
-  const dishTitle = document.getElementById("dishTitle");
-  const dishDesc = document.getElementById("dishDesc");
-  const dishTag = document.getElementById("dishTag");
-  const dishPrice = document.getElementById("dishPrice");
-
-  const carTrack = document.getElementById("carTrack");
-  const carDots = document.getElementById("carDots");
-  const carPrev = document.getElementById("carPrev");
-  const carNext = document.getElementById("carNext");
-
-  const carViewport = document.querySelector("#dishModal .carViewport");
-
+(() => {
+  // ====== state ======
   let modalItems = [];
   let modalIndex = 0;
   let built = false;
@@ -33,8 +17,35 @@
       "'": "&#39;",
     }[c]));
 
+  function getMenuGrid() {
+    return document.getElementById("menuGrid");
+  }
+
+  function getModalEls() {
+    const dishModal = document.getElementById("dishModal");
+    if (!dishModal) return null;
+
+    return {
+      dishModal,
+      dishClose: document.getElementById("dishClose"),
+      dishTitle: document.getElementById("dishTitle"),
+      dishDesc: document.getElementById("dishDesc"),
+      dishTag: document.getElementById("dishTag"),
+      dishPrice: document.getElementById("dishPrice"),
+
+      carTrack: document.getElementById("carTrack"),
+      carDots: document.getElementById("carDots"),
+      carPrev: document.getElementById("carPrev"),
+      carNext: document.getElementById("carNext"),
+
+      carViewport: dishModal.querySelector(".carViewport"),
+    };
+  }
+
   function collectVisibleItems() {
+    const menuGrid = getMenuGrid();
     if (!menuGrid) return;
+
     const cards = [...menuGrid.querySelectorAll(".menuCard")];
 
     modalItems = cards.map((card) => {
@@ -62,17 +73,17 @@
     built = false;
   }
 
-  function buildSlidesOnce() {
+  function buildSlidesOnce(els) {
     if (built) return;
     built = true;
 
-    if (!carTrack || !carDots) return;
+    if (!els?.carTrack || !els?.carDots) return;
 
-    carTrack.innerHTML = "";
-    carDots.innerHTML = "";
+    els.carTrack.innerHTML = "";
+    els.carDots.innerHTML = "";
 
     if (!modalItems.length) {
-      carTrack.innerHTML = `<div class="carSlide placeholder"></div>`;
+      els.carTrack.innerHTML = `<div class="carSlide placeholder"></div>`;
       return;
     }
 
@@ -82,13 +93,13 @@
       slide.innerHTML = it.cover
         ? `<img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="eager" decoding="async" draggable="false">`
         : `<div class="carSlide placeholder"></div>`;
-      carTrack.appendChild(slide);
+      els.carTrack.appendChild(slide);
     });
 
     const many = modalItems.length > 1;
-    if (carPrev) carPrev.style.display = many ? "grid" : "none";
-    if (carNext) carNext.style.display = many ? "grid" : "none";
-    if (carDots) carDots.style.display = many ? "flex" : "none";
+    if (els.carPrev) els.carPrev.style.display = many ? "grid" : "none";
+    if (els.carNext) els.carNext.style.display = many ? "grid" : "none";
+    if (els.carDots) els.carDots.style.display = many ? "flex" : "none";
 
     if (many) {
       modalItems.forEach((_, i) => {
@@ -96,138 +107,106 @@
         dot.type = "button";
         dot.className = "carDot";
         dot.addEventListener("click", () => goToDish(i, true));
-        carDots.appendChild(dot);
+        els.carDots.appendChild(dot);
       });
     }
   }
 
-  function updateText(i) {
+  function updateText(i, els) {
     const item = modalItems[i];
-    if (!item) return;
-    if (dishTitle) dishTitle.textContent = item.title || "";
-    if (dishDesc) dishDesc.textContent = item.desc || "";
-    if (dishTag) dishTag.textContent = item.tag || "";
-    if (dishPrice) dishPrice.textContent = item.price || "";
+    if (!item || !els) return;
+
+    if (els.dishTitle) els.dishTitle.textContent = item.title || "";
+    if (els.dishDesc) els.dishDesc.textContent = item.desc || "";
+    if (els.dishTag) els.dishTag.textContent = item.tag || "";
+    if (els.dishPrice) els.dishPrice.textContent = item.price || "";
   }
 
-  function updateDots() {
-    if (!carDots) return;
-    const dots = [...carDots.querySelectorAll(".carDot")];
+  function updateDots(els) {
+    if (!els?.carDots) return;
+    const dots = [...els.carDots.querySelectorAll(".carDot")];
     dots.forEach((d, i) => d.classList.toggle("isActive", i === modalIndex));
   }
 
-  function setTransformIndex(i, animate) {
-    if (!carTrack) return;
-    carTrack.style.transition = animate ? `transform ${ANIM_MS}ms ease` : "none";
-    carTrack.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
+  function setTransformIndex(i, animate, els) {
+    if (!els?.carTrack) return;
+    els.carTrack.style.transition = animate ? `transform ${ANIM_MS}ms ease` : "none";
+    els.carTrack.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
   }
 
   function goToDish(i, animate = true) {
-    if (!modalItems.length || !carTrack) return;
+    const els = getModalEls();
+    if (!modalItems.length || !els?.carTrack) return;
     if (isAnimating) return;
 
     modalIndex = (i + modalItems.length) % modalItems.length;
 
-    updateText(modalIndex);
-    updateDots();
+    updateText(modalIndex, els);
+    updateDots(els);
 
     if (!animate) {
-      setTransformIndex(modalIndex, false);
-      // повертаємо transition після “тихого” стрибка
+      setTransformIndex(modalIndex, false, els);
       requestAnimationFrame(() => {
-        if (carTrack) carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+        if (els.carTrack) els.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
       });
       return;
     }
 
     isAnimating = true;
-    setTransformIndex(modalIndex, true);
+    setTransformIndex(modalIndex, true, els);
     window.setTimeout(() => (isAnimating = false), ANIM_MS + 30);
   }
 
   function openDishByIndex(i) {
-    if (!dishModal) return;
+    const els = getModalEls();
+    if (!els?.dishModal) return;
 
     if (!modalItems.length) collectVisibleItems();
     if (!modalItems.length) return;
 
-    buildSlidesOnce();
+    buildSlidesOnce(els);
 
-    dishModal.classList.add("open");
-    dishModal.setAttribute("aria-hidden", "false");
+    els.dishModal.classList.add("open");
+    els.dishModal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
 
-    // перший показ — без анімації
     goToDish(i, false);
   }
 
   function closeDishModal() {
-    dishModal?.classList.remove("open");
-    dishModal?.setAttribute("aria-hidden", "true");
+    const els = getModalEls();
+    if (!els?.dishModal) return;
+
+    els.dishModal.classList.remove("open");
+    els.dishModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
   }
-
-  dishClose?.addEventListener("click", closeDishModal);
-
-  // кліки по картках
-  menuGrid?.addEventListener("click", (e) => {
-    const card = e.target.closest(".menuCard");
-    if (!card) return;
-
-    collectVisibleItems();
-
-    const t = card.dataset.title || "";
-    const p = card.dataset.price || "";
-    const idx = modalItems.findIndex((x) => x.title === t && x.price === p);
-
-    openDishByIndex(idx >= 0 ? idx : 0);
-  });
 
   function prevDish() {
     goToDish(modalIndex - 1, true);
   }
+
   function nextDish() {
     goToDish(modalIndex + 1, true);
   }
 
-  carPrev?.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    prevDish();
-  });
+  // ====== SWIPE (init once per modal render) ======
+  function initSwipeOnce(els) {
+    if (!els?.carViewport || !els?.carTrack) return;
 
-  carNext?.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    nextDish();
-  });
+    // щоб не навісити вдруге, якщо htmx:load спрацює ще раз
+    if (els.carViewport.dataset.swipeInited === "1") return;
+    els.carViewport.dataset.swipeInited = "1";
 
-  window.addEventListener("keydown", (e) => {
-    if (!dishModal?.classList.contains("open")) return;
-    if (e.key === "Escape") closeDishModal();
-    if (e.key === "ArrowLeft") prevDish();
-    if (e.key === "ArrowRight") nextDish();
-  });
-
-  // ==========================
-  // ✅ SWIPE (як в інсті)
-  // ==========================
-  (function initSwipe() {
-    if (!carViewport || !carTrack) return;
-
-    let startX = 0,
-      startY = 0,
-      dx = 0,
-      dy = 0,
-      active = false,
-      lock = null; // "x" або "y"
+    let startX = 0, startY = 0, dx = 0, dy = 0, active = false, lock = null;
 
     function point(e) {
       return e.touches ? e.touches[0] : e;
     }
 
     function onStart(e) {
-      if (!dishModal?.classList.contains("open")) return;
+      const cur = getModalEls();
+      if (!cur?.dishModal?.classList.contains("open")) return;
       if (isAnimating) return;
       if (e.target.closest(".carBtn")) return;
 
@@ -238,11 +217,14 @@
       startX = p.clientX;
       startY = p.clientY;
 
-      carTrack.style.transition = "none";
+      cur.carTrack.style.transition = "none";
     }
 
     function onMove(e) {
       if (!active) return;
+
+      const cur = getModalEls();
+      if (!cur?.carTrack) return;
 
       const p = point(e);
       dx = p.clientX - startX;
@@ -254,39 +236,41 @@
         if (ax > 8 || ay > 8) lock = ax > ay ? "x" : "y";
       }
 
-      // горизонтальний жест — тягнемо трек, і блокуємо скрол
       if (lock === "x") {
         if (e.cancelable) e.preventDefault();
-        carTrack.style.transform = `translate3d(${dx}px, 0, 0)`;
+        cur.carTrack.style.transform = `translate3d(${dx}px, 0, 0)`;
       }
     }
 
     function snapBack() {
-      carTrack.style.transition = `transform 180ms ease`;
-      carTrack.style.transform = "translate3d(0,0,0)";
+      const cur = getModalEls();
+      if (!cur?.carTrack) return;
+
+      cur.carTrack.style.transition = `transform 180ms ease`;
+      cur.carTrack.style.transform = "translate3d(0,0,0)";
     }
 
     function swipeAndSwitch(dir) {
-      // dir: +1 next, -1 prev
+      const cur = getModalEls();
+      if (!cur?.carTrack) return;
+
       isAnimating = true;
 
-      carTrack.style.transition = `transform 180ms ease`;
-      carTrack.style.transform =
+      cur.carTrack.style.transition = `transform 180ms ease`;
+      cur.carTrack.style.transform =
         dir === 1 ? "translate3d(-100%,0,0)" : "translate3d(100%,0,0)";
 
-      carTrack.addEventListener(
+      cur.carTrack.addEventListener(
         "transitionend",
         () => {
-          // перемикаємо індекс (анімаційно вже норм, без “сірого ривка”)
           modalIndex = (modalIndex + dir + modalItems.length) % modalItems.length;
-          updateText(modalIndex);
-          updateDots();
+          updateText(modalIndex, cur);
+          updateDots(cur);
 
-          // одразу ставимо правильну позицію треку по %
           requestAnimationFrame(() => {
-            setTransformIndex(modalIndex, false);
+            setTransformIndex(modalIndex, false, cur);
             requestAnimationFrame(() => {
-              carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+              if (cur.carTrack) cur.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
               isAnimating = false;
             });
           });
@@ -299,9 +283,12 @@
       if (!active) return;
       active = false;
 
+      const cur = getModalEls();
+      if (!cur?.carTrack) return;
+
       if (lock !== "x") {
-        carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
-        carTrack.style.transform = `translate3d(${-modalIndex * 100}%,0,0)`;
+        cur.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+        cur.carTrack.style.transform = `translate3d(${-modalIndex * 100}%,0,0)`;
         return;
       }
 
@@ -312,13 +299,13 @@
       }
     }
 
-    carViewport.addEventListener("touchstart", onStart, { passive: true });
-    carViewport.addEventListener("touchmove", onMove, { passive: false });
-    carViewport.addEventListener("touchend", onEnd, { passive: true });
-    carViewport.addEventListener("touchcancel", onEnd, { passive: true });
+    els.carViewport.addEventListener("touchstart", onStart, { passive: true });
+    els.carViewport.addEventListener("touchmove", onMove, { passive: false });
+    els.carViewport.addEventListener("touchend", onEnd, { passive: true });
+    els.carViewport.addEventListener("touchcancel", onEnd, { passive: true });
 
     // mouse drag (desktop)
-    carViewport.addEventListener("mousedown", (e) => {
+    els.carViewport.addEventListener("mousedown", (e) => {
       onStart(e);
       const mm = (ev) => onMove(ev);
       const mu = () => {
@@ -329,5 +316,63 @@
       document.addEventListener("mousemove", mm);
       document.addEventListener("mouseup", mu);
     });
-  })();
+  }
+
+  // ====== INIT ONCE AFTER PARTIALS ======
+  function initMenuOnce() {
+    const menuGrid = getMenuGrid();
+    if (menuGrid && menuGrid.dataset.menuInited !== "1") {
+      menuGrid.dataset.menuInited = "1";
+
+      menuGrid.addEventListener("click", (e) => {
+        const card = e.target.closest(".menuCard");
+        if (!card) return;
+
+        collectVisibleItems();
+
+        const t = card.dataset.title || "";
+        const p = card.dataset.price || "";
+        const idx = modalItems.findIndex((x) => x.title === t && x.price === p);
+
+        openDishByIndex(idx >= 0 ? idx : 0);
+      });
+    }
+
+    const els = getModalEls();
+    if (els?.dishModal && els.dishModal.dataset.menuInited !== "1") {
+      els.dishModal.dataset.menuInited = "1";
+
+      els.dishClose?.addEventListener("click", closeDishModal);
+
+      els.carPrev?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        prevDish();
+      });
+
+      els.carNext?.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        nextDish();
+      });
+
+      // keydown only once per modal render
+      window.addEventListener("keydown", (e) => {
+        const cur = getModalEls();
+        if (!cur?.dishModal?.classList.contains("open")) return;
+
+        if (e.key === "Escape") closeDishModal();
+        if (e.key === "ArrowLeft") prevDish();
+        if (e.key === "ArrowRight") nextDish();
+      });
+
+      initSwipeOnce(els);
+    } else if (els) {
+      // якщо модалка вже інічена, але viewport з'явився після — добудуємо свайп
+      initSwipeOnce(els);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", initMenuOnce);
+  document.body.addEventListener("htmx:load", initMenuOnce);
 })();

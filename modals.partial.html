@@ -1,0 +1,267 @@
+<!-- Reservation modal -->
+<div id="uiPartials">
+    <div class="modalBackdrop" id="modal" aria-hidden="true">
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modalHead">
+        <div>
+          <h3 id="modalTitle" data-i18n="modal_title">Бронювання столика</h3>
+          <p data-i18n="modal_sub"></p>
+        </div>
+        <button class="x" id="closeModal" type="button" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div class="modalBody">
+        <form
+          class="form"
+          id="reserveForm"
+          action="https://formspree.io/f/xaqdopvg"
+          method="POST"
+        >
+          <div class="field half">
+            <label data-i18n="f_name">Ім’я</label>
+            <input name="name" autocomplete="name" required />
+          </div>
+          <div class="field half">
+            <label data-i18n="f_phone">Телефон</label>
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </div>
+          <div class="field third">
+            <label data-i18n="f_date">Дата</label>
+            <input name="date" type="date" required />
+          </div>
+
+          <div class="field third">
+            <label data-i18n="f_time">Час</label>
+
+            <div class="timeSelect" id="timeSelect">
+              <input
+                class="timeInput"
+                id="timeInput"
+                type="text"
+                data-i18n-placeholder="time_placeholder"
+                placeholder="Оберіть час"
+                readonly
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="timeDropdown"
+              />
+              <input type="hidden" name="time" id="timeHidden" required />
+              <button
+                class="timeChevron"
+                id="timeToggle"
+                type="button"
+                aria-label="Open time"
+              >
+                ▾
+              </button>
+
+              <div class="timeDropdown" id="timeDropdown" role="listbox"></div>
+            </div>
+            <small class="timeHint" data-i18n="time_hint"
+              >Доступно: 17:00–22:00</small
+            >
+          </div>
+
+          <div class="field third">
+            <label data-i18n="f_people">Кількість</label>
+            <select name="people" required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8+</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label data-i18n="f_note">Коментар</label>
+            <textarea
+              name="note"
+              data-i18n-placeholder="f_note_ph"
+              placeholder="Allergies, time, etc."
+            ></textarea>
+          </div>
+
+          <div class="modalFoot full">
+            <button
+              class="btn ghost"
+              type="button"
+              id="cancelBtn"
+              data-i18n="cancel"
+            >
+              Скасувати
+            </button>
+            <button class="btn primary" type="submit" data-i18n="send">
+              Надіслати
+            </button>
+          </div>
+        </form>
+        <div class="hint" data-i18n="privacy_hint"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Success modal -->
+  <div class="modalBackdrop" id="successModal" aria-hidden="true">
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="successTitle"
+    >
+      <div class="modalHead">
+        <div>
+          <h3 id="successTitle" data-i18n="success_title">Готово!</h3>
+          <p data-i18n="success_sub">
+            Повідомлення доставлено. Ми зв’яжемося з вами найближчим часом.
+          </p>
+        </div>
+        <button class="x" id="closeSuccess" type="button" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div class="modalBody">
+        <div class="modalFoot full">
+          <button
+            class="btn primary"
+            id="okSuccess"
+            type="button"
+            data-i18n="success_ok"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dish modal -->
+  <div class="dishModalBackdrop" id="dishModal" aria-hidden="true">
+    <div
+      class="dishModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="dishTitle"
+    >
+      <div class="dishModalHead">
+        <h3 id="dishTitle"></h3>
+        <button class="x" id="dishClose" type="button" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div class="dishModalBody modalBody">
+        <div class="dishCarousel" aria-label="Dish photos">
+          <button
+            class="carBtn prev"
+            id="carPrev"
+            type="button"
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+
+          <div class="carViewport">
+            <div class="carTrack" id="carTrack"></div>
+          </div>
+
+          <button
+            class="carBtn next"
+            id="carNext"
+            type="button"
+            aria-label="Next"
+          >
+            ›
+          </button>
+
+          <div class="carDots" id="carDots" aria-label="Carousel dots"></div>
+        </div>
+
+        <p id="dishDesc"></p>
+
+        <div class="dishModalBottom">
+          <span class="dishTag" id="dishTag"></span>
+          <span class="dishPrice" id="dishPrice"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mail modal -->
+  <div class="modalBackdrop" id="mailModal" aria-hidden="true">
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mailTitle"
+    >
+      <div class="modalHead">
+        <div>
+          <h3 id="mailTitle">Написати нам</h3>
+          <p>Ми відповімо якнайшвидше.</p>
+        </div>
+        <button class="x" id="closeMail" type="button" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div class="modalBody">
+        <form
+          class="form"
+          id="mailForm"
+          action="https://formspree.io/f/xaqdopvg"
+          method="POST"
+        >
+          <div class="field half">
+            <label>Імʼя</label>
+            <input name="name" autocomplete="name" required />
+          </div>
+
+          <div class="field half">
+            <label>Телефон</label>
+            <input name="phone" type="tel" autocomplete="tel" required />
+          </div>
+
+          <div class="field full">
+            <label>Тема</label>
+            <input
+              name="subject"
+              placeholder="Наприклад: Запит про меню"
+              required
+            />
+          </div>
+
+          <div class="field full">
+            <label>Повідомлення</label>
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Ваше повідомлення..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="modalFoot full">
+            <button class="btn ghost" type="button" id="cancelMail">
+              Скасувати
+            </button>
+            <button class="btn primary" type="submit">Надіслати</button>
+          </div>
+        </form>
+
+        <div class="hint" id="mailHint" style="display: none"></div>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast">OK</div>
+  <button class="toTop" id="toTop" type="button" title="Top">↑</button>
+</div>
