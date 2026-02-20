@@ -30,6 +30,7 @@
   display: grid;
   place-items: center;
   transition: 0.15s ease;
+  cursor: pointer;
 }
 .iconBtn:hover {
   transform: translateY(-1px);
