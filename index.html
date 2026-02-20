@@ -4,13 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Colibri House</title>
-
     <link rel="icon" href="img/colibri.png" type="image/png" />
     <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- htmx -->
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +14,6 @@
       rel="stylesheet"
     />
   </head>
-
   <body>
     <!-- Anchor for "back to top" (існує одразу, щоб #top працював) -->
     <div
@@ -104,19 +99,11 @@
       hx-trigger="load"
       hx-swap="outerHTML"
     ></div>
-
-    <!-- IMPORTANT: scripts at the end -->
     <script defer src="js/core.js"></script>
     <script defer src="js/content.js"></script>
     <script defer src="js/i18n-menu.js"></script>
     <script defer src="js/ui.js"></script>
     <script defer src="js/menu.js"></script>
     <script defer src="js/script.js"></script>
-
-    <!-- Рекомендація: якщо твій JS ініціалізується до підвантаження partials -->
-    <script>
-      // Якщо десь є init-функції — можеш слухати htmx:load у своїх js.
-      // document.body.addEventListener("htmx:load", () => window.initUI?.());
-    </script>
   </body>
 </html>
