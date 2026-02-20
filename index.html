@@ -478,11 +478,10 @@
         </a>
         <a
           class="iconBtn"
-          href="YOUR_UBEREATS_LINK"
-          target="_blank"
-          rel="noopener"
-          aria-label="Uber Eats"
-          title="Uber Eats"
+          id="openMail"
+          type="button"
+          aria-label="Email"
+          title="Email"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -492,7 +491,7 @@
           >
             <defs>
               <linearGradient
-                id="ueGrad"
+                id="mailGrad"
                 x1="3"
                 y1="3"
                 x2="21"
@@ -504,44 +503,34 @@
               </linearGradient>
             </defs>
 
-            <!-- кругла кнопка (в стиль інших) -->
+            <!-- така ж рамка/розмір як інші іконки -->
             <rect
               x="3"
               y="3"
               width="18"
               height="18"
-              rx="6"
+              rx="5"
               fill="none"
-              stroke="url(#ueGrad)"
+              stroke="url(#mailGrad)"
               stroke-width="2"
             />
 
-            <!-- Uber Eats: UBER + EATS (мінімалістично, читабельно) -->
-            <g fill="url(#ueGrad)">
-              <text
-                x="12"
-                y="11"
-                text-anchor="middle"
-                font-size="5.2"
-                font-weight="800"
-                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
-                letter-spacing=".6"
-              >
-                UBER
-              </text>
-
-              <text
-                x="12"
-                y="17.2"
-                text-anchor="middle"
-                font-size="5.2"
-                font-weight="800"
-                font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial"
-                letter-spacing=".6"
-              >
-                EATS
-              </text>
-            </g>
+            <!-- конверт по центру, з “правильними” відступами -->
+            <path
+              d="M7.2 9.0h9.6c.6 0 1.0.4 1.0 1.0v5.1c0 .6-.4 1.0-1.0 1.0H7.2c-.6 0-1.0-.4-1.0-1.0V10c0-.6.4-1.0 1.0-1.0z"
+              fill="none"
+              stroke="url(#mailGrad)"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M7.4 9.6 12 13.0l4.6-3.4"
+              fill="none"
+              stroke="url(#mailGrad)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
         </a>
 
@@ -809,6 +798,72 @@
             <span class="dishTag" id="dishTag"></span>
             <span class="dishPrice" id="dishPrice"></span>
           </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mail modal -->
+    <div class="modalBackdrop" id="mailModal" aria-hidden="true">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="mailTitle"
+      >
+        <div class="modalHead">
+          <div>
+            <h3 id="mailTitle">Написати нам</h3>
+            <p>Ми відповімо якнайшвидше.</p>
+          </div>
+          <button class="x" id="closeMail" type="button" aria-label="Close">
+            ✕
+          </button>
+        </div>
+
+        <div class="modalBody">
+          <form
+            class="form"
+            id="mailForm"
+            action="https://formspree.io/f/xaqdopvg"
+            method="POST"
+          >
+            <div class="field half">
+              <label>Імʼя</label>
+              <input name="name" autocomplete="name" required />
+            </div>
+
+            <div class="field half">
+              <label>Телефон</label>
+              <input name="phone" type="tel" autocomplete="tel" required />
+            </div>
+
+            <div class="field full">
+              <label>Тема</label>
+              <input
+                name="subject"
+                placeholder="Наприклад: Запит про меню"
+                required
+              />
+            </div>
+
+            <div class="field full">
+              <label>Повідомлення</label>
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Ваше повідомлення..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="modalFoot full">
+              <button class="btn ghost" type="button" id="cancelMail">
+                Скасувати
+              </button>
+              <button class="btn primary" type="submit">Надіслати</button>
+            </div>
+          </form>
+
+          <div class="hint" id="mailHint" style="display: none"></div>
         </div>
       </div>
     </div>

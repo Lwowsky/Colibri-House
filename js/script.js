@@ -123,3 +123,100 @@ document.getElementById("openReview")?.addEventListener("click", () => {
   window.addEventListener("load", setOffset);
   window.addEventListener("resize", setOffset);
 })();
+
+// mail
+(() => {
+  const openBtn = document.getElementById("openMail");
+  const mailModal = document.getElementById("mailModal");
+  const closeBtn = document.getElementById("closeMail");
+  const cancelBtn = document.getElementById("cancelMail");
+  const mailForm = document.getElementById("mailForm");
+  const mailHint = document.getElementById("mailHint");
+  const mailToFallback = document.getElementById("mailToFallback");
+
+  function openMailModal() {
+    if (!mailModal) return;
+    mailModal.classList.add("open");
+    mailModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  }
+
+  function closeMailModal() {
+    if (!mailModal) return;
+    mailModal.classList.remove("open");
+    mailModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+    mailHint && (mailHint.style.display = "none");
+  }
+
+  openBtn?.addEventListener("click", openMailModal);
+  closeBtn?.addEventListener("click", closeMailModal);
+  cancelBtn?.addEventListener("click", closeMailModal);
+
+  // ✅ Не закривати при кліку поза модалкою (як ти хотів раніше)
+  // Якщо раптом у тебе є код, який закриває по кліку на backdrop — НЕ ставимо його тут.
+
+  // Escape
+  window.addEventListener("keydown", (e) => {
+    if (!mailModal?.classList.contains("open")) return;
+    if (e.key === "Escape") closeMailModal();
+  });
+
+  // Form submit (Formspree) — без перезавантаження
+  mailForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const action = form.getAttribute("action");
+    if (!action) return;
+
+    try {
+      const res = await fetch(action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        form.reset();
+        closeMailModal();
+
+        // Якщо хочеш — показуй твій successModal
+        const successModal = document.getElementById("successModal");
+        if (successModal) {
+          successModal.classList.add("open");
+          successModal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("modal-open");
+        }
+        return;
+      }
+
+      mailHint.style.display = "block";
+      mailHint.textContent = "Не вдалося надіслати. Спробуйте ще раз або використайте mailto.";
+    } catch (err) {
+      mailHint.style.display = "block";
+      mailHint.textContent = "Помилка мережі. Спробуйте ще раз або використайте mailto.";
+    }
+  });
+
+  // Fallback mailto (заповнимо тему+тіло з полів)
+  mailToFallback?.addEventListener("click", () => {
+    const data = new FormData(mailForm);
+    const name = (data.get("name") || "").toString();
+    const email = (data.get("email") || "").toString();
+    const subject = (data.get("subject") || "").toString();
+    const message = (data.get("message") || "").toString();
+
+    const to = "colibrihouse.yokohama@gmail.com"; // <-- заміни на свій
+    const body =
+      `Name: ${name}\nEmail: ${email}\n\n` +
+      `${message}`;
+
+    const url =
+      `mailto:${encodeURIComponent(to)}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = url;
+  });
+})();
