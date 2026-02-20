@@ -19,6 +19,7 @@ header {
   justify-content: space-between;
   padding: 12px 0;
   gap: 12px;
+  position: relative;
 }
 .brand {
   display: flex;

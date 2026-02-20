@@ -74,8 +74,33 @@
   .burger {
     display: inline-block;
   }
+  .topbar {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
   .brand {
     min-width: auto;
+  }
+  .brand .wordmark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    width: min(52vw, 340px);
+    pointer-events: none;
+  }
+
+  .brand .wordmark b,
+  .brand .wordmark span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .actions {
     gap: 8px;
@@ -153,6 +178,8 @@
   .carSlide {
     height: auto;
     flex: 0 0 100%;
+    align-items: center;
+    justify-content: center;
   }
   .carTrack {
     display: flex;
@@ -160,6 +187,19 @@
     transform: translate3d(0, 0, 0);
     transition: transform 280ms ease;
   }
+  .carSlide img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0 auto; 
+  }
+  .carViewport {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+  }
+
   .dishModalBody {
     padding: 12px 14px 14px;
     overflow: hidden;
