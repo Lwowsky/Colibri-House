@@ -81,6 +81,19 @@ window.I18N.en = {
   about_feat_access_off: "Wheelchair accessibility",
   about_feat_card_off: "Card payment",
 
+  mail_title: "Write to us",
+  mail_sub: "We’ll reply as soon as possible.",
+  mail_close_aria: "Close",
+  mail_name_label: "Name",
+  mail_phone_label: "Phone",
+  mail_subject_label: "Subject",
+  mail_subject_ph: "For example: Menu inquiry",
+  mail_message_label: "Message",
+  mail_message_ph: "Your message...",
+  mail_cancel: "Cancel",
+  mail_send: "Send",
+  mail_hint_default: "",
+
   menu_categories: [
     { id: "dumplings", label: "Dumplings" },
     { id: "bliny", label: "Crepes" },

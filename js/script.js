@@ -277,7 +277,6 @@
     initPrettyTimeSelect();
     initReviewBtn();
 
-    // mail stable init
     bindMailOpenOnce();
     bindMailPendingOnHtmxOnce();
     initMailOnce();

@@ -197,69 +197,77 @@
     </div>
   </div>
   <!-- Mail modal -->
-  <div class="modalBackdrop" id="mailModal" aria-hidden="true">
-    <div
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="mailTitle"
-    >
-      <div class="modalHead">
-        <div>
-          <h3 id="mailTitle">Написати нам</h3>
-          <p>Ми відповімо якнайшвидше.</p>
+ <div class="modalBackdrop" id="mailModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mailTitle">
+    <div class="modalHead">
+      <div>
+        <h3 id="mailTitle" data-i18n="mail_title">Написати нам</h3>
+        <p data-i18n="mail_sub">Ми відповімо якнайшвидше.</p>
+      </div>
+
+      <button
+        class="x"
+        id="closeMail"
+        type="button"
+        aria-label="Close"
+        data-i18n-aria-label="mail_close_aria"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="modalBody">
+      <form
+        class="form"
+        id="mailForm"
+        action="https://formspree.io/f/xaqdopvg"
+        method="POST"
+      >
+        <div class="field half">
+          <label data-i18n="mail_name_label">Імʼя</label>
+          <input name="name" autocomplete="name" required />
         </div>
-        <button class="x" id="closeMail" type="button" aria-label="Close">
-          ✕
-        </button>
-      </div>
 
-      <div class="modalBody">
-        <form
-          class="form"
-          id="mailForm"
-          action="https://formspree.io/f/xaqdopvg"
-          method="POST"
-        >
-          <div class="field half">
-            <label>Імʼя</label>
-            <input name="name" autocomplete="name" required />
-          </div>
+        <div class="field half">
+          <label data-i18n="mail_phone_label">Телефон</label>
+          <input name="phone" type="tel" autocomplete="tel" required />
+        </div>
 
-          <div class="field half">
-            <label>Телефон</label>
-            <input name="phone" type="tel" autocomplete="tel" required />
-          </div>
+        <div class="field full">
+          <label data-i18n="mail_subject_label">Тема</label>
+          <input
+            name="subject"
+            placeholder="Наприклад: Запит про меню"
+            data-i18n-placeholder="mail_subject_ph"
+            required
+          />
+        </div>
 
-          <div class="field full">
-            <label>Тема</label>
-            <input
-              name="subject"
-              placeholder="Наприклад: Запит про меню"
-              required
-            />
-          </div>
+        <div class="field full">
+          <label data-i18n="mail_message_label">Повідомлення</label>
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Ваше повідомлення..."
+            data-i18n-placeholder="mail_message_ph"
+            required
+          ></textarea>
+        </div>
 
-          <div class="field full">
-            <label>Повідомлення</label>
-            <textarea
-              name="message"
-              rows="5"
-              placeholder="Ваше повідомлення..."
-              required
-            ></textarea>
-          </div>
+        <div class="modalFoot full">
+          <button class="btn ghost" type="button" id="cancelMail" data-i18n="mail_cancel">
+            Скасувати
+          </button>
+          <button class="btn primary" type="submit" data-i18n="mail_send">
+            Надіслати
+          </button>
+        </div>
+      </form>
 
-          <div class="modalFoot full">
-            <button class="btn ghost" type="button" id="cancelMail">
-              Скасувати
-            </button>
-            <button class="btn primary" type="submit">Надіслати</button>
-          </div>
-        </form>
-
-        <div class="hint" id="mailHint" style="display: none"></div>
-      </div>
+      <div class="hint" id="mailHint" style="display:none" data-i18n="mail_hint_default"></div>
+    </div>
+  </div>
+</div>
     </div>
   </div>
   <div class="toast" id="toast">OK</div>

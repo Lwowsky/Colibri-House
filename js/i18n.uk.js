@@ -76,6 +76,19 @@ window.I18N.uk = {
   about_feat_access_off: "Доступність для візків",
   about_feat_card_off: "Оплата картою",
 
+  mail_title: "Написати нам",
+  mail_sub: "Ми відповімо якнайшвидше.",
+  mail_close_aria: "Закрити",
+  mail_name_label: "Імʼя",
+  mail_phone_label: "Телефон",
+  mail_subject_label: "Тема",
+  mail_subject_ph: "Наприклад: Запит про меню",
+  mail_message_label: "Повідомлення",
+  mail_message_ph: "Ваше повідомлення...",
+  mail_cancel: "Скасувати",
+  mail_send: "Надіслати",
+  mail_hint_default: "",
+
   menu_categories: [
     { id: "dumplings", label: "Вареники" },
     { id: "bliny", label: "Млинці" },

@@ -82,6 +82,19 @@ window.I18N.ja = {
   about_feat_access_off: "車椅子対応",
   about_feat_card_off: "カード払い",
 
+  mail_title: "お問い合わせ",
+  mail_sub: "できるだけ早く返信します。",
+  mail_close_aria: "閉じる",
+  mail_name_label: "お名前",
+  mail_phone_label: "電話番号",
+  mail_subject_label: "件名",
+  mail_subject_ph: "例：メニューについて",
+  mail_message_label: "メッセージ",
+  mail_message_ph: "内容を入力してください…",
+  mail_cancel: "キャンセル",
+  mail_send: "送信",
+  mail_hint_default: "",
+
   menu_categories: [
     { id: "dumplings", label: "ぎょうざ" },
     { id: "bliny", label: "ブリニ" },
