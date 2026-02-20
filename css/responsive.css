@@ -74,21 +74,11 @@
   .burger {
     display: inline-block;
   }
-  .topbar {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 12px;
-  }
-  .brand {
-    min-width: auto;
-  }
+
+
   .brand .wordmark {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    
+  
     align-items: center;
     text-align: center;
     width: min(52vw, 340px);
