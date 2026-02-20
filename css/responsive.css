@@ -66,7 +66,7 @@
     visibility: hidden;
     pointer-events: none;
   }
-    .brand .wordmark {
+  .brand .wordmark {
     align-items: center;
     text-align: center;
     width: min(52vw, 340px);
@@ -209,6 +209,49 @@
   }
 }
 @media (max-width: 480px) {
+  /* ✅ smaller default modal (reserve/mail) */
+  .modalBackdrop {
+    padding: 12px; /* було 18px */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 360px; /* було min(560px, 100%) */
+    border-radius: 20px; /* було 26 */
+  }
+
+  .modalHead {
+    padding: 12px 12px 10px;
+    gap: 10px;
+  }
+  .modalHead h3 {
+    font-size: 15px;
+  }
+  .modalHead p {
+    font-size: 12px;
+  }
+
+  .modalBody {
+    padding: 12px;
+  }
+
+  .form {
+    gap: 8px;
+  }
+
+  .x {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .modalFoot {
+    padding: 10px 12px 12px;
+    gap: 8px;
+  }
 }
 
 @media (max-width: 390px) {
@@ -225,5 +268,8 @@
     color: var(--brand3);
     font-family: var(--font-main);
     text-align: center;
+  }
+  .modal {
+    max-width: 330px;
   }
 }

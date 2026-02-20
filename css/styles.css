@@ -33,8 +33,6 @@
 }
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
 section[id] {
   scroll-margin-top: var(--headerOffset, 84px);
@@ -94,10 +92,7 @@ main {
   padding-bottom: 56px;
 }
 
-@supports (-webkit-touch-callout: none) {
-  .field input,
-  .field select,
-  .field textarea {
-    font-size: 16px;
-  }
+h1 {
+  font-size: 28px;
+  font-weight: 800;
 }
