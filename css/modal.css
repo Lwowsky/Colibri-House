@@ -165,32 +165,3 @@
 }
 
 
-/* ===== iOS fix: scroll only reserve + mail modals (НЕ dish) ===== */
-#modal .modal,
-#mailModal .modal {
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100svh - 24px);
-}
-
-/* скрол тільки всередині body */
-#modal .modalBody,
-#mailModal .modalBody {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* ===== iOS fix: scroll only reserve + mail modals (НЕ dish) ===== */
-#modal .modal,
-#mailModal .modal {
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100svh - 24px);
-}
-
-/* скрол тільки всередині body */
-#modal .modalBody,
-#mailModal .modalBody {
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}

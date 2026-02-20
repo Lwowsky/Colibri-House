@@ -208,18 +208,6 @@
     pointer-events: none;
   }
 }
-/* Телефон в landscape: ширина велика, але висота мала */
-@media (max-height: 520px) {
-  #modal .form {
-    grid-template-columns: 1fr;
-  }
-  #modal .field.half,
-  #modal .field.third,
-  #modal .form .full {
-    grid-column: 1 / -1;
-  }
-}
-
 @media (max-width: 480px) {
   /* ✅ smaller default modal (reserve/mail) */
   .modalBackdrop {
