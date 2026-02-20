@@ -69,6 +69,9 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
 }
+.form > .field {
+  min-width: 0; /* ключове для grid на iOS */
+}
 .field.half {
   grid-column: span 3;
 }
@@ -98,6 +101,15 @@
   font: inherit;
   min-width: 0;
 }
+.field input,
+.field select,
+.field textarea,
+#timeSelect,
+#timeInput {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .field textarea {
   min-height: 90px;
   resize: vertical;
