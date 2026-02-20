@@ -15,14 +15,8 @@
     />
   </head>
   <body>
-    <!-- Anchor for "back to top" (існує одразу, щоб #top працював) -->
-    <div
-      id="top"
-      aria-hidden="true"
-      hx-get="top.partial.html"
-      hx-trigger="load"
-      hx-swap="outerHTML"
-    ></div>
+    <!-- Anchor for "back to top" -->
+    <div id="top" aria-hidden="true"></div>
 
     <!-- Header -->
     <header
@@ -100,7 +94,9 @@
       hx-swap="outerHTML"
     ></div>
     <script defer src="js/core.js"></script>
-    <script defer src="js/content.js"></script>
+    <script defer src="js/i18n.uk.js"></script>
+    <script defer src="js/i18n.en.js"></script>
+    <script defer src="js/i18n.ja.js"></script>
     <script defer src="js/i18n-menu.js"></script>
     <script defer src="js/ui.js"></script>
     <script defer src="js/menu.js"></script>
