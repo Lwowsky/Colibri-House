@@ -208,25 +208,14 @@
     pointer-events: none;
   }
 }
+/* Телефон в landscape: ширина велика, але висота мала */
 @media (max-height: 520px) {
-  .modalBackdrop {
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal {
-    width: min(92vw, 820px);
-    max-height: calc(100svh - 20px);
-  }
-
-  /* 1 колонка, щоб grid не ламався в landscape */
-  .modal .form {
+  #modal .form {
     grid-template-columns: 1fr;
   }
-  .modal .field.half,
-  .modal .field.third,
-  .modal .form .full {
+  #modal .field.half,
+  #modal .field.third,
+  #modal .form .full {
     grid-column: 1 / -1;
   }
 }
