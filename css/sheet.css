@@ -1,5 +1,3 @@
-/* Sheet (burger menu) */
-
 .sheet {
   position: fixed;
   inset: 0;
@@ -23,7 +21,6 @@
   border-left: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: -18px 0 50px rgba(0, 0, 0, 0.18);
   padding: 14px;
-
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -31,16 +28,14 @@
   color: whitesmoke;
 }
 
-/* Links list */
 .sheetPanel .navlinks {
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  /* ⬇️ важливо для "іконки знизу" */
   flex: 1;
-  min-height: 0;      /* важливо для iOS/flex */
-  overflow: auto;     /* якщо багато пунктів — скролиться тільки список */
+  min-height: 0;
+  overflow: auto;
 }
 
 .sheetPanel .navlinks a {
@@ -54,7 +49,6 @@
   filter: brightness(0.98);
 }
 
-/* Language switcher */
 .sheetPanel .sheetLang {
   margin-top: 10px;
   padding: 10px 12px;
@@ -69,9 +63,8 @@
   justify-content: center;
 }
 
-/* ✅ Bottom icons bar */
 .sheetBottom {
-  margin-top: auto; /* притискає блок до низу */
+  margin-top: auto;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -82,8 +75,6 @@
   border-radius: 16px;
 }
 
-/* Якщо .iconBtn вже стилізований глобально — можна прибрати ці 2 блоки,
-   але краще залишити, щоб у sheet вигляд був стабільний */
 .sheetBottom .iconBtn {
   width: 44px;
   height: 44px;
