@@ -2,39 +2,19 @@
   <div class="sheetPanel">
     <div class="sheetPanel-menu">
       <b>Colibri House</b>
-      <button class="x" id="closeSheet" type="button" aria-label="Close">
-        ✕
-      </button>
+      <button class="x" id="closeSheet" type="button" aria-label="Close">✕</button>
     </div>
 
     <div class="chip sheetLang" role="group" aria-label="Language switcher">
-      <button
-        class="langbtn flag"
-        data-lang="uk"
-        aria-pressed="false"
-        type="button"
-        aria-label="Українська"
-      >
+      <button class="langbtn flag" data-lang="uk" aria-pressed="false" type="button" aria-label="Українська">
         <img src="img/lang/ua.svg" alt="UA" width="18" height="18" />
       </button>
 
-      <button
-        class="langbtn flag"
-        data-lang="en"
-        aria-pressed="false"
-        type="button"
-        aria-label="English"
-      >
+      <button class="langbtn flag" data-lang="en" aria-pressed="false" type="button" aria-label="English">
         <img src="img/lang/gb.svg" alt="EN" width="18" height="18" />
       </button>
 
-      <button
-        class="langbtn flag"
-        data-lang="ja"
-        aria-pressed="false"
-        type="button"
-        aria-label="日本語"
-      >
+      <button class="langbtn flag" data-lang="ja" aria-pressed="false" type="button" aria-label="日本語">
         <img src="img/lang/ja.svg" alt="ja" width="18" height="18" />
       </button>
     </div>
@@ -44,6 +24,108 @@
       <a href="#about" data-i18n="nav_about">Про нас</a>
       <a href="#reserve" data-i18n="nav_reserve">Бронювання</a>
       <a href="#access" data-i18n="nav_access">Як дістатися</a>
+    </div>
+
+    <!-- Bottom icons -->
+    <div class="sheetBottom" aria-label="Social links">
+      <!-- Instagram -->
+      <a
+        class="iconBtn"
+        href="https://www.instagram.com/colibri_house_yoshinocho/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="igGradSheet" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1f7a78" />
+              <stop offset="1" stop-color="#caa34a" />
+            </linearGradient>
+          </defs>
+
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="url(#igGradSheet)" stroke-width="2" />
+          <circle cx="12" cy="12" r="4" fill="none" stroke="url(#igGradSheet)" stroke-width="2" />
+          <circle cx="17" cy="7" r="1.2" fill="url(#igGradSheet)" />
+        </svg>
+      </a>
+
+      <!-- Email -->
+      <button class="iconBtn" id="openMailSheet" type="button" aria-label="Email" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="mailGradSheet" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1f7a78" />
+              <stop offset="1" stop-color="#caa34a" />
+            </linearGradient>
+          </defs>
+
+          <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="url(#mailGradSheet)" stroke-width="2" />
+          <path
+            d="M7.2 9.0h9.6c.6 0 1.0.4 1.0 1.0v5.1c0 .6-.4 1.0-1.0 1.0H7.2c-.6 0-1.0-.4-1.0-1.0V10c0-.6.4-1.0 1.0-1.0z"
+            fill="none"
+            stroke="url(#mailGradSheet)"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M7.4 9.6 12 13.0l4.6-3.4"
+            fill="none"
+            stroke="url(#mailGradSheet)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <!-- Google Reviews -->
+      <a
+        class="iconBtn"
+        href="https://search.google.com/local/reviews?placeid=ChIJU5W8kBJdGGAR3NAK_AAfh2o"
+        target="_blank"
+        rel="noopener"
+        aria-label="Google Reviews"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="grGradSheet" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1f7a78" />
+              <stop offset="1" stop-color="#caa34a" />
+            </linearGradient>
+          </defs>
+
+          <path
+            d="M20 12a8 8 0 1 1-2.34-5.66"
+            fill="none"
+            stroke="url(#grGradSheet)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M20 12h-7"
+            fill="none"
+            stroke="url(#grGradSheet)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M13 12v4"
+            fill="none"
+            stroke="url(#grGradSheet)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19 17.6l.6 1.2 1.3.2-.95.9.22 1.28-1.17-.62-1.17.62.22-1.28-.95-.9 1.3-.2.6-1.2z"
+            fill="url(#grGradSheet)"
+            stroke="none"
+          />
+        </svg>
+      </a>
     </div>
   </div>
 </div>
