@@ -64,14 +64,37 @@
   padding: 14px 16px 16px;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-input[type="date"]{
+input[type="date"] {
   max-width: 100%;
   min-width: 0;
   -webkit-appearance: none;
   appearance: none;
 }
+
+/* iOS Safari: date + select часто менші по висоті, бо не поважають padding */
+@supports (-webkit-touch-callout: none) {
+  .field input[type="date"],
+  .field select {
+    height: 44px;        /* під твій стиль з padding 11px виходить ~44px */
+    min-height: 44px;
+    padding-top: 0;      /* iOS все одно “чудить” з вертикальним padding */
+    padding-bottom: 0;
+    font-size: 16px;     /* щоб не було zoom і щоб метрики були стабільні */
+    box-sizing: border-box;
+  }
+
+  /* інколи допомагає, щоб дата не з’їжджала по вертикалі */
+  .field input[type="date"] {
+    display: block;
+  }
+}
+
 .form {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
