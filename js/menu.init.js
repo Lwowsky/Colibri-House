@@ -14,28 +14,12 @@
       active = false,
       lock = null;
 
-    let widthPx = 1;
-    let basePx = 0;
+    // ✅ базова позиція треку (в %) для поточного S.index
+    let basePct = 0;
 
-    function point(e) {
-      return e.touches ? e.touches[0] : e;
-    }
+    const point = (e) => (e.touches ? e.touches[0] : e);
 
-    function setPxTransform(cur, xPx, ms = 0) {
-      if (!cur?.carTrack) return;
-      cur.carTrack.style.transition = ms ? `transform ${ms}ms ease` : "none";
-      cur.carTrack.style.transform = `translate3d(${xPx}px,0,0)`;
-    }
-
-    function requireGoToDish() {
-      return typeof S.goToDish === "function";
-    }
-
-    function backToPercent(animate) {
-      // Повертаємо керування твоєму slider-методу
-      if (!requireGoToDish()) return;
-      S.goToDish(S.index, animate);
-    }
+    const getWidth = () => els.carViewport.getBoundingClientRect().width || 1;
 
     function onStart(e) {
       const cur = S.getModalEls?.();
@@ -47,14 +31,15 @@
       active = true;
       lock = null;
       dx = dy = 0;
+
       startX = p.clientX;
       startY = p.clientY;
 
-      widthPx = cur.carViewport?.clientWidth || 1;
-      basePx = -S.index * widthPx;
+      // ✅ ВАЖЛИВО: у тебе немає trackIndex — беремо S.index
+      const idx = Number.isFinite(S.index) ? S.index : 0;
+      basePct = -idx * 100;
 
-      // починаємо drag у px
-      setPxTransform(cur, basePx, 0);
+      cur.carTrack.style.transition = "none";
     }
 
     function onMove(e) {
@@ -75,7 +60,12 @@
 
       if (lock === "x") {
         if (e.cancelable) e.preventDefault();
-        setPxTransform(cur, basePx + dx, 0);
+
+        const w = getWidth();
+        const deltaPct = (dx / w) * 100;
+
+        // ✅ рухаємо від базового зсуву, а не від 0
+        cur.carTrack.style.transform = `translate3d(${basePct + deltaPct}%, 0, 0)`;
       }
     }
 
@@ -83,65 +73,42 @@
       const cur = S.getModalEls?.();
       if (!cur?.carTrack) return;
 
-      setPxTransform(cur, basePx, 180);
-      cur.carTrack.addEventListener(
-        "transitionend",
-        () => backToPercent(false),
-        { once: true },
-      );
-    }
-
-    function swipeAndSwitch(dir) {
-      const cur = S.getModalEls?.();
-      if (!cur?.carTrack) return;
-
-      if (!requireGoToDish()) return;
-
-      S.isAnimating = true;
-
-      const toPx = basePx - dir * widthPx;
-      setPxTransform(cur, toPx, 180);
-
-      cur.carTrack.addEventListener(
-        "transitionend",
-        () => {
-          S.index = (S.index + dir + S.items.length) % S.items.length;
-
-          // зафіксувати у “нормальному” режимі (твоє %)
-          S.goToDish(S.index, false);
-
-          requestAnimationFrame(() => {
-            S.isAnimating = false;
-          });
-        },
-        { once: true },
-      );
+      cur.carTrack.style.transition = "transform 180ms ease";
+      cur.carTrack.style.transform = `translate3d(${basePct}%, 0, 0)`;
     }
 
     function onEnd() {
       if (!active) return;
       active = false;
 
-      // якщо вертикальний скрол — повертаємось назад
+      const cur = S.getModalEls?.();
+      if (!cur?.carTrack) return;
+
       if (lock !== "x") {
-        backToPercent(true);
+        // повертаємо трек в правильну позицію
+        cur.carTrack.style.transition = `transform ${S.ANIM_MS}ms ease`;
+        cur.carTrack.style.transform = `translate3d(${basePct}%, 0, 0)`;
         return;
       }
 
-      if (Math.abs(dx) >= S.THRESHOLD && S.items.length > 1) {
-        swipeAndSwitch(dx < 0 ? 1 : -1);
+      const thresholdPx = Number.isFinite(S.THRESHOLD) ? S.THRESHOLD : 70;
+
+      if (Math.abs(dx) >= thresholdPx && S.items.length > 1) {
+        const dir = dx < 0 ? 1 : -1;
+        // ✅ у тебе логіка на S.index
+        S.goToDish?.(S.index + dir, true);
       } else {
         snapBack();
       }
     }
 
-    // важливо для iOS: passive:false на start/move
-    els.carViewport.addEventListener("touchstart", onStart, { passive: false });
+    // touch
+    els.carViewport.addEventListener("touchstart", onStart, { passive: true });
     els.carViewport.addEventListener("touchmove", onMove, { passive: false });
     els.carViewport.addEventListener("touchend", onEnd, { passive: true });
     els.carViewport.addEventListener("touchcancel", onEnd, { passive: true });
 
-    // desktop drag
+    // mouse
     els.carViewport.addEventListener("mousedown", (e) => {
       onStart(e);
       const mm = (ev) => onMove(ev);
@@ -159,7 +126,6 @@
     const menuGrid = S.getMenuGrid?.();
     if (menuGrid && menuGrid.dataset.menuInited !== "1") {
       menuGrid.dataset.menuInited = "1";
-
       menuGrid.addEventListener("click", (e) => {
         const card = e.target.closest(".menuCard");
         if (!card) return;
@@ -170,9 +136,7 @@
         const p = card.dataset.price || "";
         const idx = S.items.findIndex((x) => x.title === t && x.price === p);
 
-        if (typeof S.openDishByIndex === "function") {
-          S.openDishByIndex(idx >= 0 ? idx : 0);
-        }
+        S.openDishByIndex?.(idx >= 0 ? idx : 0);
       });
     }
 
@@ -180,7 +144,7 @@
     if (els?.dishModal && els.dishModal.dataset.menuInited !== "1") {
       els.dishModal.dataset.menuInited = "1";
 
-      els.dishClose?.addEventListener("click", () => S.closeDishModal?.());
+      els.dishClose?.addEventListener("click", S.closeDishModal);
 
       els.carPrev?.addEventListener("click", (e) => {
         e.preventDefault();
@@ -194,14 +158,18 @@
         S.nextDish?.();
       });
 
-      window.addEventListener("keydown", (e) => {
-        const cur = S.getModalEls?.();
-        if (!cur?.dishModal?.classList.contains("open")) return;
+      // ✅ щоб не додавати keydown багато разів після htmx swap
+      if (document.body.dataset.menuKeyBound !== "1") {
+        document.body.dataset.menuKeyBound = "1";
+        window.addEventListener("keydown", (e) => {
+          const cur = S.getModalEls?.();
+          if (!cur?.dishModal?.classList.contains("open")) return;
 
-        if (e.key === "Escape") S.closeDishModal?.();
-        if (e.key === "ArrowLeft") S.prevDish?.();
-        if (e.key === "ArrowRight") S.nextDish?.();
-      });
+          if (e.key === "Escape") S.closeDishModal?.();
+          if (e.key === "ArrowLeft") S.prevDish?.();
+          if (e.key === "ArrowRight") S.nextDish?.();
+        });
+      }
 
       initSwipeOnce(els);
     } else if (els) {
@@ -209,6 +177,9 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", initMenuOnce);
+  // ✅ важливо: запускаємо одразу (на випадок, якщо htmx:load вже був)
+  if (document.readyState !== "loading") initMenuOnce();
+  else document.addEventListener("DOMContentLoaded", initMenuOnce);
+
   document.body.addEventListener("htmx:load", initMenuOnce);
 })();
