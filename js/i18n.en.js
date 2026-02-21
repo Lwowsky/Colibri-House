@@ -17,6 +17,7 @@ window.I18N.en = {
   photo_caption: "Cozy vibe, Ukrainian flavors, and hospitality.",
   days_label: "Days:",
   days: "Tue–Sun / Mon closed",
+  city_value: "Yokohama",
 
   menu_title: "Menu",
   menu_sub: "A few highlights. Full menu can be added as a separate page.",
@@ -25,7 +26,7 @@ window.I18N.en = {
   about_card1_title: "Home tradition",
   about_card1_desc:
     "Colibri House is a small family-run spot for Ukrainian food in Yokohama — a place to drop in for something warm and familiar. We cook with care, the way we would for our own: hearty, comforting, and truly homemade. Here you can try Ukrainian classics like borscht and vareniki, along with other traditional dishes that warm you up and lift your mood. We’re always happy to welcome guests and make everyone feel comfortable — you can grab your meal to go (takeaway) or enjoy a relaxed time in our cozy atmosphere. For your convenience, the menu is available in English and Japanese.",
-  about_card2_title: "Comfort for everyone",
+  about_card2_title: "Services for Guests",
   about_card2_desc: "Vegetarian options, takeaway, and catering available.",
 
   reserve_title: "Reservations",
