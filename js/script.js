@@ -53,7 +53,6 @@
     const dropdown = document.getElementById("timeDropdown");
 
     if (!wrap || !input || !hidden || !toggle || !dropdown) return;
-
     if (wrap.dataset.inited === "1") return;
     wrap.dataset.inited = "1";
 
@@ -88,7 +87,8 @@
       input.setAttribute("aria-expanded", "false");
     };
 
-    const toggleOpen = () => (wrap.classList.contains("open") ? close() : open());
+    const toggleOpen = () =>
+      wrap.classList.contains("open") ? close() : open();
 
     input.addEventListener("click", toggleOpen);
     toggle.addEventListener("click", toggleOpen);
@@ -101,7 +101,9 @@
       input.value = value;
       hidden.value = value;
 
-      dropdown.querySelectorAll(".timeOption").forEach((b) => b.classList.remove("isSelected"));
+      dropdown
+        .querySelectorAll(".timeOption")
+        .forEach((b) => b.classList.remove("isSelected"));
       opt.classList.add("isSelected");
 
       close();
@@ -125,202 +127,10 @@
     document.documentElement.style.setProperty("--headerOffset", h + 8 + "px");
   }
 
-  // ======================
-  // HONEYPOT HELPERS
-  // ======================
-  function isHoneypotTripped(form) {
-    const gotcha = form?.querySelector('input[name="_gotcha"]');
-    return !!(gotcha && gotcha.value && gotcha.value.trim() !== "");
-  }
-
-  // ======================
-  // SUCCESS MODAL (shared)
-  // ======================
-  function openSuccessModal() {
-    const successModal = document.getElementById("successModal");
-    if (!successModal) return;
-
-    successModal.classList.add("open");
-    successModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-  }
-
-  // ======================
-  // RESERVE MODAL (optional submit via fetch)
-  // ======================
-  function closeReserveModal() {
-    const modal = document.getElementById("modal");
-    if (!modal) return;
-
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-  }
-
-  function initReserveOnce() {
-    const reserveForm = document.getElementById("reserveForm");
-    if (!reserveForm) return;
-
-    if (reserveForm.dataset.inited === "1") return;
-    reserveForm.dataset.inited = "1";
-
-    reserveForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const form = e.currentTarget;
-      const action = form.getAttribute("action");
-      if (!action) return;
-
-      // Honeypot (anti-spam)
-      if (isHoneypotTripped(form)) return;
-
-      try {
-        const res = await fetch(action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
-        });
-
-        if (res.ok) {
-          form.reset();
-          closeReserveModal();
-          openSuccessModal();
-          return;
-        }
-
-        // якщо хочеш — можу додати reserveHint як у mail
-        alert("Не вдалося надіслати бронювання. Спробуйте ще раз.");
-      } catch {
-        alert("Помилка мережі. Спробуйте ще раз.");
-      }
-    });
-  }
-
-  // ======================
-  // MAIL (HTMX-SAFE)
-  // ======================
-  let mailOpenPending = false;
-
-  function openMailModal() {
-    const mailModal = document.getElementById("mailModal");
-    if (!mailModal) return false;
-
-    mailModal.classList.add("open");
-    mailModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("modal-open");
-    return true;
-  }
-
-  function closeMailModal() {
-    const mailModal = document.getElementById("mailModal");
-    if (!mailModal) return;
-
-    mailModal.classList.remove("open");
-    mailModal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("modal-open");
-
-    const mailHint = document.getElementById("mailHint");
-    if (mailHint) mailHint.style.display = "none";
-  }
-
-  function bindMailOpenOnce() {
-    if (document.body.dataset.mailOpenBound === "1") return;
-    document.body.dataset.mailOpenBound = "1";
-
-    document.addEventListener("click", (e) => {
-      const trigger = e.target.closest("#openMail, #openMailSheet");
-      if (!trigger) return;
-
-      if (openMailModal()) return;
-      mailOpenPending = true;
-    });
-  }
-
-  function bindMailPendingOnHtmxOnce() {
-    if (document.body.dataset.mailPendingBound === "1") return;
-    document.body.dataset.mailPendingBound = "1";
-
-    document.body.addEventListener("htmx:load", () => {
-      if (!mailOpenPending) return;
-      if (openMailModal()) mailOpenPending = false;
-    });
-  }
-
-  function initMailOnce() {
-    const mailModal = document.getElementById("mailModal");
-    if (!mailModal) return;
-
-    if (mailModal.dataset.inited === "1") return;
-    mailModal.dataset.inited = "1";
-
-    const closeBtn = document.getElementById("closeMail");
-    const cancelBtn = document.getElementById("cancelMail");
-    const mailForm = document.getElementById("mailForm");
-    const mailHint = document.getElementById("mailHint");
-
-    closeBtn?.addEventListener("click", closeMailModal);
-    cancelBtn?.addEventListener("click", closeMailModal);
-
-    window.addEventListener("keydown", (e) => {
-      const mm = document.getElementById("mailModal");
-      if (!mm?.classList.contains("open")) return;
-      if (e.key === "Escape") closeMailModal();
-    });
-
-    // Form submit (Formspree) — без перезавантаження
-    mailForm?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const form = e.currentTarget;
-      const action = form.getAttribute("action");
-      if (!action) return;
-
-      // Honeypot (anti-spam)
-      if (isHoneypotTripped(form)) return;
-
-      try {
-        const res = await fetch(action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
-        });
-
-        if (res.ok) {
-          form.reset();
-          closeMailModal();
-          openSuccessModal();
-          return;
-        }
-
-        if (mailHint) {
-          mailHint.style.display = "block";
-          mailHint.textContent =
-            "Не вдалося надіслати. Спробуйте ще раз або використайте mailto.";
-        }
-      } catch {
-        if (mailHint) {
-          mailHint.style.display = "block";
-          mailHint.textContent =
-            "Помилка мережі. Спробуйте ще раз або використайте mailto.";
-        }
-      }
-    });
-  }
-
-  // ======================
-  // INIT (DOM + HTMX)
-  // ======================
   function initAll() {
     updateYearRange();
     setHeaderOffset();
-
     initPrettyTimeSelect();
-    initReserveOnce();
-
-    bindMailOpenOnce();
-    bindMailPendingOnHtmxOnce();
-    initMailOnce();
-
     startHeroSliderOnce();
   }
 

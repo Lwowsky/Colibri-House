@@ -11,29 +11,11 @@
   let activeCat = null;
   let lastItems = [];
 
-  function detectLang() {
-    const saved = localStorage.getItem("lang");
-    if (saved && supported.includes(saved)) return saved;
-
-    const langs = (
-      navigator.languages && navigator.languages.length
-        ? navigator.languages
-        : [navigator.language || ""]
-    )
-      .map((l) => String(l || "").toLowerCase())
-      .filter(Boolean);
-
-    if (langs.some((l) => l.startsWith("uk"))) return "uk";
-    if (langs.some((l) => l.startsWith("en"))) return "en";
-    if (langs.some((l) => l.startsWith("ja"))) return "ja";
-    return DEFAULT_LANG;
-  }
-
   function getMenuGrid() {
-    return document.querySelector("#menuGrid");
+    return $("#menuGrid");
   }
   function getMenuTabs() {
-    return document.querySelector("#menuTabs");
+    return $("#menuTabs");
   }
 
   function filteredItems() {
@@ -100,7 +82,9 @@
       div.dataset.imgs = JSON.stringify(it.imgs || []);
 
       const imgHtml = it.img
-        ? `<img src="${escapeHtml(it.img)}" alt="${escapeHtml(it.title)}" loading="lazy" decoding="async">`
+        ? `<img src="${escapeHtml(it.img)}" alt="${escapeHtml(
+            it.title,
+          )}" loading="lazy" decoding="async">`
         : `<div style="height:100%;width:100%;background:rgba(0,0,0,.04)"></div>`;
 
       div.innerHTML = `
@@ -109,7 +93,11 @@
           <h3 class="menuTitle">${escapeHtml(it.title)}</h3>
           <p class="menuDesc">${escapeHtml(it.sub || "")}</p>
           <div class="menuBottom">
-            ${it.tag ? `<span class="menuTag">${escapeHtml(it.tag)}</span>` : `<span></span>`}
+            ${
+              it.tag
+                ? `<span class="menuTag">${escapeHtml(it.tag)}</span>`
+                : `<span></span>`
+            }
             <span class="menuPrice">${escapeHtml(it.price || "")}</span>
           </div>
         </div>
@@ -138,10 +126,7 @@
     document.documentElement.lang = lang;
 
     $$(".langbtn").forEach((b) =>
-      b.setAttribute(
-        "aria-pressed",
-        b.dataset.lang === lang ? "true" : "false",
-      ),
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"),
     );
 
     const dict = window.I18N?.[lang] || window.I18N?.[DEFAULT_LANG];
@@ -159,12 +144,9 @@
     return currentDict;
   }
 
-  window.AppI18n = { detectLang, setLang, getDict };
+  window.AppI18n = { setLang, getDict };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setLang(detectLang());
-  });
-
+  // HTMX: translate newly loaded partials
   document.body.addEventListener("htmx:load", (e) => {
     const t = e.target;
 
@@ -175,7 +157,7 @@
       t?.querySelector?.("[data-i18n]") ||
       t?.querySelector?.("[data-i18n-placeholder]")
     ) {
-      setLang(localStorage.getItem("lang") || detectLang());
+      setLang(localStorage.getItem("lang") || DEFAULT_LANG);
     }
   });
 })();
