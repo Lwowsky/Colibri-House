@@ -126,7 +126,10 @@
     document.documentElement.lang = lang;
 
     $$(".langbtn").forEach((b) =>
-      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"),
+      b.setAttribute(
+        "aria-pressed",
+        b.dataset.lang === lang ? "true" : "false",
+      ),
     );
 
     const dict = window.I18N?.[lang] || window.I18N?.[DEFAULT_LANG];
@@ -146,7 +149,6 @@
 
   window.AppI18n = { setLang, getDict };
 
-  // HTMX: translate newly loaded partials
   document.body.addEventListener("htmx:load", (e) => {
     const t = e.target;
 

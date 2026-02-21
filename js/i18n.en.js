@@ -20,7 +20,6 @@ window.I18N.en = {
   city_value: "Yokohama",
 
   menu_title: "Menu",
-  menu_sub: "A few highlights. Full menu can be added as a separate page.",
   about_title: "About",
   about_sub: "Traditional recipes, respectfully adapted in Japan.",
   about_card1_title: "Home tradition",
@@ -32,13 +31,13 @@ window.I18N.en = {
   reserve_title: "Reservations",
   reserve_sub:
     "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:15 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
-  reserve_hint: "Later: LINE / Google Form / TableCheck.",
   cta_reserve: "Reserve",
   cta_menu: "View menu",
   cta_review: "Write a review",
 
   access_title: "Access",
-  access_sub: "Replace the address/station with real ones.",
+  addr_line1:
+    "Colibri House, 〒232-0014 Kanagawa, Yokohama, Minami Ward, Yoshinocho 5-chome ヨシダビル テラスC",
   addr_label: "Address",
   station_label: "Station",
   station_text:

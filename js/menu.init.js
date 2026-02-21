@@ -14,7 +14,6 @@
       active = false,
       lock = null;
 
-    // ✅ базова позиція треку (в %) для поточного S.index
     let basePct = 0;
 
     const point = (e) => (e.touches ? e.touches[0] : e);
@@ -35,7 +34,6 @@
       startX = p.clientX;
       startY = p.clientY;
 
-      // ✅ ВАЖЛИВО: у тебе немає trackIndex — беремо S.index
       const idx = Number.isFinite(S.index) ? S.index : 0;
       basePct = -idx * 100;
 
@@ -63,8 +61,6 @@
 
         const w = getWidth();
         const deltaPct = (dx / w) * 100;
-
-        // ✅ рухаємо від базового зсуву, а не від 0
         cur.carTrack.style.transform = `translate3d(${basePct + deltaPct}%, 0, 0)`;
       }
     }
@@ -85,7 +81,6 @@
       if (!cur?.carTrack) return;
 
       if (lock !== "x") {
-        // повертаємо трек в правильну позицію
         cur.carTrack.style.transition = `transform ${S.ANIM_MS}ms ease`;
         cur.carTrack.style.transform = `translate3d(${basePct}%, 0, 0)`;
         return;
@@ -95,7 +90,6 @@
 
       if (Math.abs(dx) >= thresholdPx && S.items.length > 1) {
         const dir = dx < 0 ? 1 : -1;
-        // ✅ у тебе логіка на S.index
         S.goToDish?.(S.index + dir, true);
       } else {
         snapBack();
@@ -158,7 +152,6 @@
         S.nextDish?.();
       });
 
-      // ✅ щоб не додавати keydown багато разів після htmx swap
       if (document.body.dataset.menuKeyBound !== "1") {
         document.body.dataset.menuKeyBound = "1";
         window.addEventListener("keydown", (e) => {
@@ -177,7 +170,6 @@
     }
   }
 
-  // ✅ важливо: запускаємо одразу (на випадок, якщо htmx:load вже був)
   if (document.readyState !== "loading") initMenuOnce();
   else document.addEventListener("DOMContentLoaded", initMenuOnce);
 

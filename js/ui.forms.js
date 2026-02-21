@@ -23,7 +23,11 @@
 
   function isHoneypotTripped(form) {
     const gotcha = form?.querySelector('input[name="_gotcha"]');
-    return !!(gotcha && typeof gotcha.value === "string" && gotcha.value.trim() !== "");
+    return !!(
+      gotcha &&
+      typeof gotcha.value === "string" &&
+      gotcha.value.trim() !== ""
+    );
   }
 
   function syncFormLang() {
@@ -31,13 +35,13 @@
     $("#formLang")?.setAttribute("value", lang);
   }
 
-  // ✅ універсальний helper
-  async function sendFormspree(form, { onSuccess, onError, beforeSend, afterSend } = {}) {
+  async function sendFormspree(
+    form,
+    { onSuccess, onError, beforeSend, afterSend } = {},
+  ) {
     const url = form?.action;
-    if (!url || url.includes("PASTE_YOUR_ID")) {
-      showToast(getDict()?.toast_form_link_missing || "Add Formspree URL to form action");
-      return;
-    }
+    if (!url) return;
+
     if (isHoneypotTripped(form)) return;
 
     try {
@@ -83,7 +87,9 @@
           document.dispatchEvent(new CustomEvent("app:reserve-sent"));
         },
         onError: () => {
-          showToast(getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.");
+          showToast(
+            getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.",
+          );
         },
       });
     });

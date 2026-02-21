@@ -20,7 +20,6 @@ window.I18N.ja = {
   city_value: "横浜",
 
   menu_title: "メニュー",
-  menu_sub: "おすすめの一部。フルメニューは別ページに追加できます。",
   about_title: "私たちについて",
   about_sub: "伝統レシピを大切にしつつ、日本で心地よく。",
 
@@ -33,13 +32,13 @@ window.I18N.ja = {
   reserve_title: "予約",
   reserve_sub:
     "ご予約は事前のご連絡がおすすめです。遅れそうな場合は、メッセージまたはお電話でお知らせください。ご予約のご連絡は48時間以内に返信いたしますが、お急ぎの場合はお電話が最も早いです（受付時間：17:15〜22:45）。月曜日は定休日で、火曜日〜日曜日は営業しています。",
-  reserve_hint: "後で：LINE / Googleフォーム / TableCheck。",
   cta_reserve: "予約する",
   cta_menu: "メニューを見る",
   cta_review: "口コミを書く",
 
   access_title: "アクセス",
-  access_sub: "住所・駅情報を実際のものに変更してください。",
+  addr_line1:
+    "Colibri House 〒232-0014 神奈川県横浜市南区吉野町5丁目 ヨシダビル テラスC",
   addr_label: "住所",
   station_label: "最寄り駅",
   station_text:
