@@ -63,7 +63,9 @@
 .modalBody {
   padding: 14px 16px 16px;
 }
-
+.modalBody .reserve {
+  padding-top: 12px;
+}
 .form {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -88,7 +90,6 @@
   font-size: 12px;
   color: var(--muted);
   font-weight: 700;
-  margin: 0 auto;
 }
 .field input,
 .field select,
