@@ -249,3 +249,198 @@ input[type="date"] {
   transform: scale(0.98);
 }
 
+/* ===== Sheet: make language bar like bottom icons + gradient title/x ===== */
+
+/* 1) Title "Colibri House" gradient like icons */
+#sheet .sheetPanel-menu b{
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 2) Close X button like bottom icons (border gradient + dark inside) */
+#sheet #closeSheet{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)) padding-box,
+    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+  border-radius: 16px;
+}
+
+/* make the X itself gradient */
+#sheet #closeSheet{
+  position: relative;
+  color: transparent;
+  font-weight: 900;
+}
+
+#sheet #closeSheet::before{
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* hide the original glyph so we don't see two X */
+#sheet #closeSheet{
+  font-size: 0;
+}
+
+/* 3) Language bar: remove gray, make it like the bottom icons container */
+#sheet .sheetLang{
+  /* як нижня панель */
+  background: rgba(25, 25, 25, 0.45);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  padding: 10px 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* 4) Each flag button: make it a small "icon card" like bottom icons */
+#sheet .sheetLang .langbtn.flag{
+  width: 46px;
+  height: 46px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.25);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+/* active (selected language) – gradient border like icons */
+#sheet .sheetLang .langbtn.flag[aria-pressed="true"]{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)) padding-box,
+    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+}
+
+/* flags image nicer */
+#sheet .sheetLang .langbtn.flag img{
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: block;
+}
+
+/* 5) Menu links (optional): make them gradient like icons (stronger) */
+#sheet .navlinks a{
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-weight: 800;
+}
+
+/* ===== Sheet v2: clean glass + active gradient ring ===== */
+
+/* Title gradient (OK) */
+#sheet .sheetPanel-menu b{
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Close button: clean, square-ish like your UI buttons */
+#sheet #closeSheet{
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;           /* якщо хочеш більш квадратне — постав 12px */
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.35);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* X in gradient (but stable) */
+#sheet #closeSheet{
+  color: #111; /* fallback */
+}
+#sheet #closeSheet span{
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 900;
+}
+
+/* ---- Language bar: glass like bottom (NO big gradient inside) ---- */
+#sheet .sheetLang{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  padding: 12px 14px;
+  border-radius: 999px;
+
+  background: rgba(25, 25, 25, 0.55);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Each flag button */
+#sheet .sheetLang .langbtn.flag{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.25);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+/* Active: only ring is gradient */
+#sheet .sheetLang .langbtn.flag[aria-pressed="true"]{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)) padding-box,
+    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+}
+
+/* Flag icon */
+#sheet .sheetLang .langbtn.flag img{
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: block;
+}
+
+/* Nav links – make them readable (optional) */
+#sheet .navlinks a{
+  color: rgba(255,255,255,0.85);
+  font-weight: 800;
+}
+#sheet .navlinks a:hover{
+  color: rgba(255,255,255,0.95);
+}
