@@ -18,7 +18,7 @@
   border-radius: 26px;
   border: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
-  overflow: visible;
+  overflow: hidden;
 }
 .modalHead {
   padding: 16px 16px 12px;
@@ -63,7 +63,17 @@
 .modalBody {
   padding: 14px 16px 16px;
 }
+.modalBody.reserve {
+  overflow: hidden;
+}
+*, *::before, *::after { box-sizing: border-box; }
 
+input[type="date"]{
+  max-width: 100%;
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
 .form {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
