@@ -218,3 +218,34 @@ input[type="date"] {
   line-height: 1;
   font-size: 18px;
 }
+
+#sheet .sheetPanel-menu > b {
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-weight: 700;
+
+  filter: drop-shadow(0 6px 18px rgba(31, 122, 120, 0.25));
+}
+
+/* ===== Variant 2: gradient menu + gradient X (sheet only) ===== */
+
+/* 1) Градієнт для пунктів меню */
+#sheet .navlinks a{
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* optional: щоб на тап було “живіше” */
+#sheet .navlinks a:active{
+  transform: scale(0.98);
+}
+
