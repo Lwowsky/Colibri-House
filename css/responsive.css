@@ -97,9 +97,7 @@
   .heroCard {
     padding: 18px;
   }
-  h1 {
-    font-size: 32px;
-  }
+ 
   .col-6 {
     grid-column: span 12;
   }
@@ -113,6 +111,7 @@
   .field.third,
   .form .full {
     grid-column: 1 / -1;
+    
   }
   .menuCard {
     grid-column: span 12;

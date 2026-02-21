@@ -85,7 +85,7 @@
   min-width: 0;
 }
 .field label {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   font-weight: 700;
 }
