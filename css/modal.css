@@ -206,3 +206,15 @@ input[type="date"] {
 .toTop.show {
   display: block;
 }
+
+#closeModal.x {
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  line-height: 1;
+  font-size: 18px;
+}
