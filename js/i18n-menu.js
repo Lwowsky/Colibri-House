@@ -29,7 +29,6 @@
     return DEFAULT_LANG;
   }
 
-  // ✅ не кешуємо елементи — беремо кожного разу
   function getMenuGrid() {
     return document.querySelector("#menuGrid");
   }
@@ -47,7 +46,10 @@
     if (!menuTabs) return;
 
     $$(".tabBtn", menuTabs).forEach((b) => {
-      b.setAttribute("aria-selected", b.dataset.cat === activeCat ? "true" : "false");
+      b.setAttribute(
+        "aria-selected",
+        b.dataset.cat === activeCat ? "true" : "false",
+      );
     });
   }
 
@@ -136,7 +138,10 @@
     document.documentElement.lang = lang;
 
     $$(".langbtn").forEach((b) =>
-      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false"),
+      b.setAttribute(
+        "aria-pressed",
+        b.dataset.lang === lang ? "true" : "false",
+      ),
     );
 
     const dict = window.I18N?.[lang] || window.I18N?.[DEFAULT_LANG];
@@ -156,15 +161,13 @@
 
   window.AppI18n = { detectLang, setLang, getDict };
 
-  // ✅ старт
   document.addEventListener("DOMContentLoaded", () => {
     setLang(detectLang());
   });
 
-  // ✅ після підвантаження partials — домалювати меню + перекласти
   document.body.addEventListener("htmx:load", (e) => {
     const t = e.target;
-    // якщо прийшло меню або будь-який елемент з i18n
+
     if (
       t?.id === "menu" ||
       t?.querySelector?.("#menuGrid") ||

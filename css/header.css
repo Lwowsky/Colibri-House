@@ -1,9 +1,8 @@
-/* Header (with fallback) */
 header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(246, 243, 238, 0.92); /* fallback */
+  background: rgba(246, 243, 238, 0.92);
   border-bottom: 1px solid rgba(223, 230, 227, 0.7);
 }
 @supports (backdrop-filter: blur(10px)) {
@@ -45,7 +44,6 @@ header {
   color: var(--brand3);
   font-family: var(--font-main);
   text-align: center;
-  
 }
 .brand .wordmark span {
   font-size: 1rem;
@@ -92,21 +90,23 @@ nav {
   gap: 6px;
   align-items: center;
 }
+
 .langbtn {
   border: none;
   background: transparent;
   padding: 6px 8px;
-
   cursor: pointer;
   font-size: 12px;
   color: var(--muted);
   transition: 0.15s ease;
 }
+
 .langbtn[aria-pressed="true"] {
   background: rgba(244, 245, 245, 0.62);
   color: var(--ink);
   border-radius: 99px;
 }
+
 .langbtn.flag {
   width: 28px;
   height: 28px;

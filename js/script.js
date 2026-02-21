@@ -1,7 +1,4 @@
 (() => {
-  // ======================
-  // YEAR RANGE
-  // ======================
   function updateYearRange() {
     const el = document.getElementById("yearRange");
     if (!el) return;
@@ -34,11 +31,11 @@
   let heroTimer = null;
 
   function startHeroSliderOnce() {
-    if (heroTimer) return; // не стартуємо 2 рази
+    if (heroTimer) return;
 
     heroTimer = setInterval(() => {
       const img = document.getElementById("heroPhoto");
-      if (!img) return; // hero ще не підвантажився — пропускаємо
+      if (!img) return;
 
       i = (i + 1) % photos.length;
       img.src = photos[i];
@@ -71,7 +68,6 @@
 
     if (!wrap || !input || !hidden || !toggle || !dropdown) return;
 
-    // щоб не ініціалізувати двічі
     if (wrap.dataset.inited === "1") return;
     wrap.dataset.inited = "1";
 
@@ -128,12 +124,10 @@
       close();
     });
 
-    // close on outside click
     document.addEventListener("click", (e) => {
       if (!wrap.contains(e.target)) close();
     });
 
-    // close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") close();
     });
@@ -179,14 +173,10 @@
     if (document.body.dataset.mailOpenBound === "1") return;
     document.body.dataset.mailOpenBound = "1";
 
-    // Делегування: кнопка може зʼявитись/зникнути через htmx outerHTML
     document.addEventListener("click", (e) => {
       if (!e.target.closest("#openMail")) return;
-
-      // якщо модалка вже є — відкриваємо
       if (openMailModal()) return;
 
-      // якщо модалки ще нема — чекаємо наступний htmx:load
       mailOpenPending = true;
     });
   }
@@ -216,7 +206,6 @@
     closeBtn?.addEventListener("click", closeMailModal);
     cancelBtn?.addEventListener("click", closeMailModal);
 
-    // Escape (працює тільки якщо mailModal open)
     window.addEventListener("keydown", (e) => {
       const mm = document.getElementById("mailModal");
       if (!mm?.classList.contains("open")) return;
@@ -242,7 +231,6 @@
           form.reset();
           closeMailModal();
 
-          // optional: successModal
           const successModal = document.getElementById("successModal");
           if (successModal) {
             successModal.classList.add("open");

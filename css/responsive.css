@@ -3,33 +3,38 @@
   .heroGrid {
     grid-template-columns: 1fr 1fr;
   }
-  h1 {
-    font-size: 34px;
-  }
+
   .igGrid {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .col-4 {
     grid-column: span 6;
   }
+
   .menuCard {
     grid-column: span 6;
   }
+
   .actions .chip,
   .actions #openReserve {
     display: none;
   }
+
   .burger {
     display: inline-block;
   }
+
   .topbar,
   nav,
   .actions {
     align-items: center;
   }
+
   .navlinks {
     display: none;
   }
+
   .chip {
     display: flex;
     align-items: center;
@@ -38,6 +43,7 @@
     height: 44px;
     padding: 0 10px;
   }
+
   .sheetPanel-menu {
     display: flex;
     justify-content: space-between;
@@ -45,27 +51,33 @@
     gap: 10px;
     text-align: center;
   }
+
   .dishModalBackdrop {
     align-items: center;
     padding: 12px;
   }
+
   .dishModal {
     width: fit-content;
     max-width: 92vw;
     max-height: 92dvh;
     overflow: auto;
   }
+
   .carViewport {
     width: min(74vw, 760px);
   }
+
   .carSlide {
     height: clamp(280px, 52dvh, 520px);
   }
+
   .dishCarousel .carBtn {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
   }
+
   .brand .wordmark {
     align-items: center;
     text-align: center;
@@ -73,10 +85,12 @@
     pointer-events: none;
   }
 }
+
 @media (max-width: 768px) {
   .navlinks {
     display: none;
   }
+
   .burger {
     display: inline-block;
   }
@@ -91,45 +105,55 @@
   .actions {
     gap: 8px;
   }
+
   .chip {
     padding: 6px 8px;
   }
+
   .heroCard {
     padding: 18px;
   }
- 
+
   .col-6 {
     grid-column: span 12;
   }
+
   .col-4 {
     grid-column: span 12;
   }
+
   .form {
     grid-template-columns: 1fr;
   }
+
   .field.half,
   .field.third,
   .form .full {
     grid-column: 1 / -1;
-    
   }
+
   .menuCard {
     grid-column: span 12;
   }
+
   .gmap {
     height: 260px;
   }
+
   .mapActions {
     justify-content: stretch;
   }
+
   .mapActions .btn {
     width: 100%;
     justify-content: center;
   }
+
   .actions .chip,
   .actions #openReserve {
     display: none;
   }
+
   .sheetPanel-menu {
     display: flex;
     justify-content: space-between;
@@ -137,9 +161,11 @@
     gap: 10px;
     text-align: center;
   }
+
   .heroGrid {
     grid-template-columns: 1fr;
   }
+
   .dishModalBackdrop {
     align-items: center;
     padding: 12px;
@@ -166,12 +192,14 @@
     align-items: center;
     justify-content: center;
   }
+
   .carTrack {
     display: flex;
     will-change: transform;
     transform: translate3d(0, 0, 0);
     transition: transform 280ms ease;
   }
+
   .carSlide img {
     display: block;
     max-width: 100%;
@@ -179,6 +207,7 @@
     object-fit: contain;
     margin: 0 auto;
   }
+
   .carViewport {
     margin: 0 auto;
     display: block;
@@ -191,43 +220,49 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
   }
+
   .dishModalHead {
     padding: 12px 14px;
   }
+
   .reserveTop {
     align-items: center;
     flex-direction: column;
   }
+
   .reserveBtns .btn {
     width: 100%;
   }
+
   .dishCarousel .carBtn {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
   }
 }
+
 @media (max-width: 480px) {
-  /* ✅ smaller default modal (reserve/mail) */
   .modalBackdrop {
-    padding: 12px; /* було 18px */
+    padding: 12px;
     align-items: center;
     justify-content: center;
   }
 
   .modal {
     width: 100%;
-    max-width: 360px; /* було min(560px, 100%) */
-    border-radius: 20px; /* було 26 */
+    max-width: 360px;
+    border-radius: 20px;
   }
 
   .modalHead {
     padding: 12px 12px 10px;
     gap: 10px;
   }
+
   .modalHead h3 {
     font-size: 15px;
   }
+
   .modalHead p {
     font-size: 12px;
   }
@@ -260,6 +295,7 @@
     display: grid;
     place-items: center;
   }
+
   .brand .wordmark b {
     font-size: clamp(16px, 4.8vw, 22px);
     line-height: 1.1;
@@ -268,6 +304,7 @@
     font-family: var(--font-main);
     text-align: center;
   }
+
   .modal {
     max-width: 330px;
   }

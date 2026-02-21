@@ -1,7 +1,7 @@
-/* Sections */
 section {
   padding: 20px 0;
 }
+
 .sectionHead {
   display: flex;
   align-items: flex-end;
@@ -9,11 +9,13 @@ section {
   gap: 16px;
   margin-bottom: 10px;
 }
+
 .sectionHead h2 {
   margin: 0;
   font-size: 22px;
   letter-spacing: -0.2px;
 }
+
 .sectionHead p {
   margin: 0;
   color: var(--muted);
@@ -27,12 +29,15 @@ section {
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
 }
+
 .col-4 {
   grid-column: span 4;
 }
+
 .col-6 {
   grid-column: span 6;
 }
+
 .col-12 {
   grid-column: span 12;
 }
@@ -44,10 +49,12 @@ section {
   border: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: 0 12px 30px rgba(10, 20, 20, 0.06);
 }
+
 .tile h3 {
   margin: 0 0 6px;
   font-size: 16px;
 }
+
 .tile .sub {
   margin: 0;
   color: var(--muted);
@@ -63,7 +70,6 @@ section {
   margin-top: 12px;
 }
 
-/* Reservation */
 .reserveBox {
   padding: 18px;
   border-radius: var(--radius2);
@@ -82,28 +88,33 @@ section {
   border: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: var(--shadow);
 }
+
 .reserveTop {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
+
 .reserveTop h2 {
   margin: 0;
   font-size: 22px;
 }
+
 .reserveTop p {
   margin: 6px 0 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.6;
 }
+
 .reserveBtns {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .reserveBtns .btn {
   min-height: 46px;
   width: 230px;
@@ -112,6 +123,7 @@ section {
   justify-content: center;
   white-space: nowrap;
 }
+
 .phoneBtn {
   gap: 10px;
 }
@@ -134,19 +146,18 @@ section {
 .phoneText {
   white-space: nowrap;
 }
-/* reserve time selector */
-.timeSelect{
+
+.timeSelect {
   position: relative;
 }
 
-.timeInput{
+.timeInput {
   width: 100%;
-  padding-right: 44px; /* місце під стрілку */
+  padding-right: 44px;
   cursor: pointer;
 }
 
-/* кнопка-стрілочка справа */
-.timeChevron{
+.timeChevron {
   position: absolute;
   top: 50%;
   right: 10px;
@@ -155,24 +166,21 @@ section {
   height: 34px;
   border-radius: 12px;
   border: 1px solid rgba(223, 230, 227, 0.95);
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   cursor: pointer;
   display: grid;
   place-items: center;
 }
 
-/* dropdown всередині модалки */
-.timeDropdown{
+.timeDropdown {
   position: absolute;
   left: 0;
   right: 0;
   top: calc(100% + 8px);
   z-index: 60;
-
   display: none;
   max-height: 220px;
   overflow: auto;
-
   background: #fff;
   border: 1px solid rgba(223, 230, 227, 0.95);
   border-radius: 16px;
@@ -180,11 +188,11 @@ section {
   padding: 6px;
 }
 
-.timeSelect.open .timeDropdown{
+.timeSelect.open .timeDropdown {
   display: block;
 }
 
-.timeOption{
+.timeOption {
   width: 100%;
   border: 0;
   background: transparent;
@@ -195,31 +203,30 @@ section {
   font: inherit;
 }
 
-.timeOption:hover{
+.timeOption:hover {
   background: rgba(31, 122, 120, 0.08);
 }
 
-.timeOption.isSelected{
+.timeOption.isSelected {
   background: rgba(31, 122, 120, 0.12);
 }
 
-.timeHint{
+.timeHint {
   display: block;
   margin-top: 4px;
   font-size: 11px;
   line-height: 1.2;
   color: var(--muted);
   text-align: center;
-  opacity: .9;
+  opacity: 0.9;
 }
 
-
-/* Access */
 .accessList {
   display: grid;
   gap: 10px;
   margin-top: 10px;
 }
+
 .accessItem {
   display: flex;
   align-items: flex-start;
@@ -230,13 +237,16 @@ section {
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(223, 230, 227, 0.95);
 }
+
 .accessItem b {
   min-width: 86px;
 }
+
 .accessItem span {
   color: var(--muted);
   line-height: 1.55;
 }
+
 .mapWrap {
   margin-top: 12px;
   border-radius: 18px;
@@ -258,7 +268,6 @@ section {
   justify-content: flex-end;
 }
 
-/* Modern feature list with checkmarks */
 .featureList {
   list-style: none;
   margin: 10px 0 0;
@@ -274,7 +283,6 @@ section {
   line-height: 1.4;
 }
 
-/* check icon */
 .featureList li::before {
   content: "✓";
   flex: 0 0 auto;
@@ -287,13 +295,10 @@ section {
   font-weight: 800;
   font-size: 12px;
   margin-top: 2px;
-
-  /* subtle badge look */
   background: rgba(31, 122, 120, 0.12);
   color: #1f7a78;
 }
 
-/* optional: make the text slightly tighter inside tiles */
 .tile .featureList {
   font-size: 14px;
 }
@@ -305,33 +310,32 @@ section {
   display: grid;
   gap: 6px;
 }
+
 #about .tile p.sub {
   font-size: 14px;
 }
 
-.featuresSplit{
+.featuresSplit {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-top: 10px; /* як у featureList */
+  margin-top: 10px;
 }
 
-.featuresTitle{
+.featuresTitle {
   font-size: 12px;
   font-weight: 800;
-  
-  letter-spacing: .2px;
+
+  letter-spacing: 0.2px;
   margin: 0 0 8px;
 }
 
-.featuresCol.off .featureList{
-  margin-top: 0; /* щоб заголовок + список були щільніше */
+.featuresCol.off .featureList {
+  margin-top: 0;
 }
 
-.featuresCol.off .featureList li::before{
+.featuresCol.off .featureList li::before {
   content: "✕";
   background: rgba(220, 38, 38, 0.12);
   color: rgba(220, 38, 38, 0.95);
 }
-
-

@@ -1,21 +1,24 @@
 (() => {
-  // ====== state ======
   let modalItems = [];
   let modalIndex = 0;
   let built = false;
   let isAnimating = false;
 
   const ANIM_MS = 280;
-  const THRESHOLD = 70; // px для свайпу
+  const THRESHOLD = 70;
 
   const esc = (s) =>
-    String(s ?? "").replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;",
-    }[c]));
+    String(s ?? "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c],
+    );
 
   function getMenuGrid() {
     return document.getElementById("menuGrid");
@@ -130,7 +133,9 @@
 
   function setTransformIndex(i, animate, els) {
     if (!els?.carTrack) return;
-    els.carTrack.style.transition = animate ? `transform ${ANIM_MS}ms ease` : "none";
+    els.carTrack.style.transition = animate
+      ? `transform ${ANIM_MS}ms ease`
+      : "none";
     els.carTrack.style.transform = `translate3d(${-i * 100}%, 0, 0)`;
   }
 
@@ -147,7 +152,8 @@
     if (!animate) {
       setTransformIndex(modalIndex, false, els);
       requestAnimationFrame(() => {
-        if (els.carTrack) els.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+        if (els.carTrack)
+          els.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
       });
       return;
     }
@@ -190,15 +196,18 @@
     goToDish(modalIndex + 1, true);
   }
 
-  // ====== SWIPE (init once per modal render) ======
   function initSwipeOnce(els) {
     if (!els?.carViewport || !els?.carTrack) return;
 
-    // щоб не навісити вдруге, якщо htmx:load спрацює ще раз
     if (els.carViewport.dataset.swipeInited === "1") return;
     els.carViewport.dataset.swipeInited = "1";
 
-    let startX = 0, startY = 0, dx = 0, dy = 0, active = false, lock = null;
+    let startX = 0,
+      startY = 0,
+      dx = 0,
+      dy = 0,
+      active = false,
+      lock = null;
 
     function point(e) {
       return e.touches ? e.touches[0] : e;
@@ -263,19 +272,21 @@
       cur.carTrack.addEventListener(
         "transitionend",
         () => {
-          modalIndex = (modalIndex + dir + modalItems.length) % modalItems.length;
+          modalIndex =
+            (modalIndex + dir + modalItems.length) % modalItems.length;
           updateText(modalIndex, cur);
           updateDots(cur);
 
           requestAnimationFrame(() => {
             setTransformIndex(modalIndex, false, cur);
             requestAnimationFrame(() => {
-              if (cur.carTrack) cur.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
+              if (cur.carTrack)
+                cur.carTrack.style.transition = `transform ${ANIM_MS}ms ease`;
               isAnimating = false;
             });
           });
         },
-        { once: true }
+        { once: true },
       );
     }
 
@@ -303,8 +314,6 @@
     els.carViewport.addEventListener("touchmove", onMove, { passive: false });
     els.carViewport.addEventListener("touchend", onEnd, { passive: true });
     els.carViewport.addEventListener("touchcancel", onEnd, { passive: true });
-
-    // mouse drag (desktop)
     els.carViewport.addEventListener("mousedown", (e) => {
       onStart(e);
       const mm = (ev) => onMove(ev);
@@ -318,7 +327,6 @@
     });
   }
 
-  // ====== INIT ONCE AFTER PARTIALS ======
   function initMenuOnce() {
     const menuGrid = getMenuGrid();
     if (menuGrid && menuGrid.dataset.menuInited !== "1") {
@@ -356,7 +364,6 @@
         nextDish();
       });
 
-      // keydown only once per modal render
       window.addEventListener("keydown", (e) => {
         const cur = getModalEls();
         if (!cur?.dishModal?.classList.contains("open")) return;
@@ -368,7 +375,6 @@
 
       initSwipeOnce(els);
     } else if (els) {
-      // якщо модалка вже інічена, але viewport з'явився після — добудуємо свайп
       initSwipeOnce(els);
     }
   }

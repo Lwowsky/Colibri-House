@@ -1,4 +1,3 @@
-/* Mobile menu sheet */
 .sheet {
   position: fixed;
   inset: 0;
@@ -6,9 +5,11 @@
   display: none;
   z-index: 90;
 }
+
 .sheet.open {
   display: block;
 }
+
 .sheetPanel {
   position: absolute;
   right: 0;
@@ -25,17 +26,20 @@
   gap: 12px;
   color: whitesmoke;
 }
+
 .sheetPanel .navlinks {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
+
 .sheetPanel .navlinks a {
   color: whitesmoke;
   padding: 12px;
   border-radius: 16px;
   font-weight: 700;
 }
+
 .sheetPanel .navlinks a:hover {
   filter: brightness(0.98);
 }

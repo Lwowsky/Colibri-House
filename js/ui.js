@@ -108,7 +108,10 @@
       const url = form.action;
 
       if (!url || url.includes("PASTE_YOUR_ID")) {
-        showToast(getDict()?.toast_form_link_missing || "Додай Formspree URL у form action");
+        showToast(
+          getDict()?.toast_form_link_missing ||
+            "Додай Formspree URL у form action",
+        );
         return;
       }
 
@@ -138,7 +141,9 @@
         closeReserveModal();
         openSuccessModal();
       } catch {
-        showToast(getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.");
+        showToast(
+          getDict()?.toast_failed || "Помилка відправки. Спробуйте ще раз.",
+        );
       } finally {
         submitBtn?.removeAttribute("disabled");
       }
@@ -179,7 +184,6 @@
 
     if (!sections.length || !navLinks.length) return;
 
-    // rebuild observer (бо секції/хедер можуть прийти з partials)
     navObs?.disconnect();
     navObs = new IntersectionObserver(
       (entries) => {
@@ -238,14 +242,12 @@
       });
     });
 
-    // важливо: щоб нові partial-елементи теж отримали переклад
     setLang(detectLang());
     setTimeout(syncFormLang, 0);
   }
 
   // ---------- Modals + sheet listeners ----------
   function initUiListenersOnce() {
-    // reserve open buttons
     ["openReserve", "openReserve2", "openReserve3"].forEach((id) => {
       const btn = $("#" + id);
       if (!btn) return;
@@ -254,7 +256,6 @@
       btn.addEventListener("click", openReserveModal);
     });
 
-    // reserve close buttons
     ["closeModal", "cancelBtn"].forEach((id) => {
       const btn = $("#" + id);
       if (!btn) return;
@@ -263,7 +264,6 @@
       btn.addEventListener("click", closeReserveModal);
     });
 
-    // reserve backdrop click (once per modal)
     const modal = $("#modal");
     if (modal && modal.dataset.inited !== "1") {
       modal.dataset.inited = "1";
@@ -272,7 +272,6 @@
       });
     }
 
-    // success modal buttons
     ["closeSuccess", "okSuccess"].forEach((id) => {
       const btn = $("#" + id);
       if (!btn) return;
@@ -289,7 +288,6 @@
       });
     }
 
-    // burger + closeSheet
     const burger = $("#burger");
     if (burger && burger.dataset.inited !== "1") {
       burger.dataset.inited = "1";
@@ -311,7 +309,6 @@
       });
     }
 
-    // Escape (bind once globally)
     if (!escBound) {
       escBound = true;
       window.addEventListener("keydown", (e) => {
@@ -325,13 +322,13 @@
 
   // ---------- MAIN INIT ----------
   function initAll() {
-    ensureToast();          // якщо #toast уже є — підхопимо
-    initUiListenersOnce();  // модалки/бургер
-    initReserveFormOnce();  // form
-    initCopyButtonsOnce();  // copy
+    ensureToast();
+    initUiListenersOnce(); // модалки/бургер
+    initReserveFormOnce(); // form
+    initCopyButtonsOnce(); // copy
     initActiveNavRebuild(); // nav observer
-    initToTopOnce();        // back to top
-    initLangButtonsOnce();  // language
+    initToTopOnce(); // back to top
+    initLangButtonsOnce(); // language
   }
 
   document.addEventListener("DOMContentLoaded", initAll);
