@@ -44,37 +44,6 @@
   font-size: 12px;
 }
 
-.igGrid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-.ig {
-  aspect-ratio: 1 / 1;
-  border-radius: 18px;
-  border: 1px solid rgba(223, 230, 227, 0.95);
-  overflow: hidden;
-  background:
-    radial-gradient(
-      180px 120px at 25% 20%,
-      rgba(31, 122, 120, 0.22),
-      transparent 55%
-    ),
-    radial-gradient(
-      180px 120px at 70% 30%,
-      rgba(202, 163, 74, 0.22),
-      transparent 55%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.85),
-      rgba(255, 255, 255, 0.45)
-    );
-}
-.col-3 {
-  grid-column: span 3;
-}
 .menuTabsWrap {
   margin: 10px 0 14px;
 }

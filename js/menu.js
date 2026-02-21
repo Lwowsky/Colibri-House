@@ -1,4 +1,22 @@
 (() => {
+  // Ensure global App + escapeHtml exist (no app.js needed)
+  window.App = window.App || {};
+  window.App.escapeHtml =
+    typeof window.App.escapeHtml === "function"
+      ? window.App.escapeHtml
+      : (s) =>
+          String(s ?? "").replace(/[&<>"']/g, (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+          );
+
+  const escapeHtml = window.App.escapeHtml;
+
   let modalItems = [];
   let modalIndex = 0;
   let built = false;
@@ -6,19 +24,6 @@
 
   const ANIM_MS = 280;
   const THRESHOLD = 70;
-
-  const esc = (s) =>
-    String(s ?? "").replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;",
-        })[c],
-    );
 
   function getMenuGrid() {
     return document.getElementById("menuGrid");
@@ -94,7 +99,9 @@
       const slide = document.createElement("div");
       slide.className = "carSlide";
       slide.innerHTML = it.cover
-        ? `<img src="${esc(it.cover)}" alt="${esc(it.title)}" loading="eager" decoding="async" draggable="false">`
+        ? `<img src="${escapeHtml(it.cover)}" alt="${escapeHtml(
+            it.title,
+          )}" loading="eager" decoding="async" draggable="false">`
         : `<div class="carSlide placeholder"></div>`;
       els.carTrack.appendChild(slide);
     });

@@ -11,6 +11,47 @@
   let scrollBound = false;
   let navObs = null;
 
+  // ======================
+  // LANGUAGE (default: JA, auto EN/UK)
+  // ======================
+  const LANG_KEY = "site_lang";
+  const ALLOWED_LANGS = ["ja", "en", "uk"];
+
+  function normalizeLang(raw) {
+    const v = String(raw || "").toLowerCase();
+    const short = v.split("-")[0]; // "en-US" -> "en"
+    if (ALLOWED_LANGS.includes(short)) return short;
+    return "ja"; // default fallback
+  }
+
+  function getDeviceLang() {
+    // prefer browser language
+    const raw = navigator.language || navigator.userLanguage || "";
+    return normalizeLang(raw);
+  }
+
+  function applyLang(lang) {
+    const safe = normalizeLang(lang);
+    setLang(safe);
+    // optional: if your i18n doesn't update <html lang>, keep it consistent:
+    document.documentElement.lang = safe;
+    setTimeout(syncFormLang, 0);
+  }
+
+  function autoLangOnce() {
+    // if user already chose language before — do nothing
+    const saved = localStorage.getItem(LANG_KEY);
+    if (saved) {
+      applyLang(saved);
+      return;
+    }
+
+    // Otherwise: device lang en/uk -> switch, else default ja
+    const device = getDeviceLang(); // returns ja/en/uk (ja if other)
+    applyLang(device);
+    localStorage.setItem(LANG_KEY, device);
+  }
+
   // ---------- Toast (lazy) ----------
   function ensureToast() {
     if (toast) return toast;
@@ -23,6 +64,16 @@
   function showToast(msg) {
     const t = ensureToast();
     if (t) t.show(msg);
+  }
+
+  // ---------- Honeypot ----------
+  function isHoneypotTripped(form) {
+    const gotcha = form?.querySelector('input[name="_gotcha"]');
+    return !!(
+      gotcha &&
+      typeof gotcha.value === "string" &&
+      gotcha.value.trim() !== ""
+    );
   }
 
   // ---------- Reservation Modal ----------
@@ -91,7 +142,8 @@
 
   // ---------- Sync hidden form language ----------
   function syncFormLang() {
-    const lang = document.documentElement.lang || detectLang() || "uk";
+    // default should now be JA
+    const lang = document.documentElement.lang || detectLang() || "ja";
     $("#formLang")?.setAttribute("value", lang);
   }
 
@@ -115,8 +167,8 @@
         return;
       }
 
-      const gotcha = form.querySelector('input[name="_gotcha"]');
-      if (gotcha && gotcha.value) return;
+      // Honeypot (anti-spam)
+      if (isHoneypotTripped(form)) return;
 
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn?.setAttribute("disabled", "disabled");
@@ -237,13 +289,11 @@
       b.dataset.inited = "1";
 
       b.addEventListener("click", () => {
-        setLang(b.dataset.lang);
-        setTimeout(syncFormLang, 0);
+        const chosen = normalizeLang(b.dataset.lang);
+        localStorage.setItem(LANG_KEY, chosen);
+        applyLang(chosen);
       });
     });
-
-    setLang(detectLang());
-    setTimeout(syncFormLang, 0);
   }
 
   // ---------- Modals + sheet listeners ----------
@@ -322,6 +372,7 @@
 
   // ---------- MAIN INIT ----------
   function initAll() {
+    autoLangOnce(); // ✅ default ja, auto en/uk
     ensureToast();
     initUiListenersOnce(); // модалки/бургер
     initReserveFormOnce(); // form

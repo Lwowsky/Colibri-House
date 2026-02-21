@@ -43,20 +43,6 @@
   }
 
   // ======================
-  // REVIEW BUTTON
-  // ======================
-  function initReviewBtn() {
-    const btn = document.getElementById("openReview");
-    if (!btn) return;
-    if (btn.dataset.inited === "1") return;
-    btn.dataset.inited = "1";
-
-    btn.addEventListener("click", () => {
-      window.open("ВАШ_GOOGLE_REVIEW_LINK", "_blank", "noopener,noreferrer");
-    });
-  }
-
-  // ======================
   // RESERVE TIME SELECT
   // ======================
   function initPrettyTimeSelect() {
@@ -102,8 +88,7 @@
       input.setAttribute("aria-expanded", "false");
     };
 
-    const toggleOpen = () =>
-      wrap.classList.contains("open") ? close() : open();
+    const toggleOpen = () => (wrap.classList.contains("open") ? close() : open());
 
     input.addEventListener("click", toggleOpen);
     toggle.addEventListener("click", toggleOpen);
@@ -116,9 +101,7 @@
       input.value = value;
       hidden.value = value;
 
-      dropdown
-        .querySelectorAll(".timeOption")
-        .forEach((b) => b.classList.remove("isSelected"));
+      dropdown.querySelectorAll(".timeOption").forEach((b) => b.classList.remove("isSelected"));
       opt.classList.add("isSelected");
 
       close();
@@ -140,6 +123,77 @@
     const header = document.querySelector("header");
     const h = header ? header.getBoundingClientRect().height : 80;
     document.documentElement.style.setProperty("--headerOffset", h + 8 + "px");
+  }
+
+  // ======================
+  // HONEYPOT HELPERS
+  // ======================
+  function isHoneypotTripped(form) {
+    const gotcha = form?.querySelector('input[name="_gotcha"]');
+    return !!(gotcha && gotcha.value && gotcha.value.trim() !== "");
+  }
+
+  // ======================
+  // SUCCESS MODAL (shared)
+  // ======================
+  function openSuccessModal() {
+    const successModal = document.getElementById("successModal");
+    if (!successModal) return;
+
+    successModal.classList.add("open");
+    successModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+  }
+
+  // ======================
+  // RESERVE MODAL (optional submit via fetch)
+  // ======================
+  function closeReserveModal() {
+    const modal = document.getElementById("modal");
+    if (!modal) return;
+
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+
+  function initReserveOnce() {
+    const reserveForm = document.getElementById("reserveForm");
+    if (!reserveForm) return;
+
+    if (reserveForm.dataset.inited === "1") return;
+    reserveForm.dataset.inited = "1";
+
+    reserveForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const form = e.currentTarget;
+      const action = form.getAttribute("action");
+      if (!action) return;
+
+      // Honeypot (anti-spam)
+      if (isHoneypotTripped(form)) return;
+
+      try {
+        const res = await fetch(action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          form.reset();
+          closeReserveModal();
+          openSuccessModal();
+          return;
+        }
+
+        // якщо хочеш — можу додати reserveHint як у mail
+        alert("Не вдалося надіслати бронювання. Спробуйте ще раз.");
+      } catch {
+        alert("Помилка мережі. Спробуйте ще раз.");
+      }
+    });
   }
 
   // ======================
@@ -221,6 +275,9 @@
       const action = form.getAttribute("action");
       if (!action) return;
 
+      // Honeypot (anti-spam)
+      if (isHoneypotTripped(form)) return;
+
       try {
         const res = await fetch(action, {
           method: "POST",
@@ -231,13 +288,7 @@
         if (res.ok) {
           form.reset();
           closeMailModal();
-
-          const successModal = document.getElementById("successModal");
-          if (successModal) {
-            successModal.classList.add("open");
-            successModal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("modal-open");
-          }
+          openSuccessModal();
           return;
         }
 
@@ -264,7 +315,7 @@
     setHeaderOffset();
 
     initPrettyTimeSelect();
-    initReviewBtn();
+    initReserveOnce();
 
     bindMailOpenOnce();
     bindMailPendingOnHtmxOnce();
