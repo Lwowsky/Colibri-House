@@ -174,9 +174,10 @@
     document.body.dataset.mailOpenBound = "1";
 
     document.addEventListener("click", (e) => {
-      if (!e.target.closest("#openMail")) return;
-      if (openMailModal()) return;
+      const trigger = e.target.closest("#openMail, #openMailSheet");
+      if (!trigger) return;
 
+      if (openMailModal()) return;
       mailOpenPending = true;
     });
   }
