@@ -63,9 +63,7 @@
 .modalBody {
   padding: 14px 16px 16px;
 }
-.modalBody.reserve {
-  overflow: hidden;
-}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 input[type="date"]{
