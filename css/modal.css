@@ -63,8 +63,8 @@
 .modalBody {
   padding: 14px 16px 16px;
 }
-.modalBody .reserve {
-  padding-top: 12px;
+.modalBody.reserve {
+  margin: 0 120px;
 }
 .form {
   display: grid;
