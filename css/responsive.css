@@ -290,19 +290,15 @@
 
 @media (max-width: 390px) {
   .brand .mark {
-    width: 220px;
+    width: auto;
     border-radius: 14px;
     display: grid;
     place-items: center;
   }
 
-  .brand .wordmark b {
-    font-size: clamp(16px, 4.8vw, 22px);
-    line-height: 1.1;
-    letter-spacing: 0.2px;
-    color: var(--brand3);
-    font-family: var(--font-main);
-    text-align: center;
+  .brand .wordmark b,
+  .brand .wordmark span {
+    display: none;
   }
 
   .modal {
