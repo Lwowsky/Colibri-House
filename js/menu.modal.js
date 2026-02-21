@@ -37,7 +37,7 @@
         const dot = document.createElement("button");
         dot.type = "button";
         dot.className = "carDot";
-        dot.addEventListener("click", () => goToDish(i, true));
+        dot.addEventListener("click", () => S.goToDish(i, true));
         els.carDots.appendChild(dot);
       });
     }
@@ -70,7 +70,9 @@
   function goToDish(i, animate = true) {
     const els = S.getModalEls();
     if (!S.items.length || !els?.carTrack) return;
-    if (S.isAnimating) return;
+
+    // ✅ FIX: allow "animate=false" even while isAnimating
+    if (S.isAnimating && animate) return;
 
     S.index = (i + S.items.length) % S.items.length;
 
