@@ -351,96 +351,9 @@ input[type="date"] {
   font-weight: 800;
 }
 
-/* ===== Sheet v2: clean glass + active gradient ring ===== */
-
-/* Title gradient (OK) */
-#sheet .sheetPanel-menu b{
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Close button: clean, square-ish like your UI buttons */
-#sheet #closeSheet{
-  width: 44px;
-  height: 44px;
-  border-radius: 16px;           /* якщо хочеш більш квадратне — постав 12px */
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.92);
-  box-shadow: 0 14px 34px rgba(0,0,0,0.35);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
-}
-
-/* X in gradient (but stable) */
-#sheet #closeSheet{
-  color: #111; /* fallback */
-}
-#sheet #closeSheet span{
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 900;
-}
-
-/* ---- Language bar: glass like bottom (NO big gradient inside) ---- */
 #sheet .sheetLang{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-
-  padding: 12px 14px;
-  border-radius: 999px;
-
-  background: rgba(25, 25, 25, 0.55);
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-/* Each flag button */
-#sheet .sheetLang .langbtn.flag{
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.25);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
-
-  display: grid;
-  place-items: center;
-  padding: 0;
-}
-
-/* Active: only ring is gradient */
-#sheet .sheetLang .langbtn.flag[aria-pressed="true"]{
   border: 1px solid transparent;
   background:
-    linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)) padding-box,
+    linear-gradient(rgba(25, 25, 25, 0.45), rgba(25, 25, 25, 0.45)) padding-box,
     linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
-}
-
-/* Flag icon */
-#sheet .sheetLang .langbtn.flag img{
-  width: 20px;
-  height: 20px;
-  border-radius: 999px;
-  display: block;
-}
-
-/* Nav links – make them readable (optional) */
-#sheet .navlinks a{
-  color: rgba(255,255,255,0.85);
-  font-weight: 800;
-}
-#sheet .navlinks a:hover{
-  color: rgba(255,255,255,0.95);
 }
