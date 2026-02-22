@@ -41,14 +41,23 @@ header {
   font-size: clamp(18px, 4.8vw, 28px);
   line-height: 1.1;
   letter-spacing: 0.2px;
-  color: var(--brand3);
+  
   font-family: var(--font-main);
   text-align: center;
 }
 .brand .wordmark span {
   font-size: 1rem;
-  color: var(--brand3);
+ 
   font-family: var(--font-main);
+}
+
+.brand .wordmark b,
+.brand .wordmark span{
+  font-family: var(--font-main);
+  background: var(--brandGradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 nav {
@@ -63,15 +72,19 @@ nav {
 }
 .navlinks a {
   padding: 10px 10px;
-  color: var(--brand3);
   border-radius: 12px;
   transition: 0.15s ease;
   font-size: 0.9rem;
   font-family: var(--font-main);
+font-weight: 600;
+  background: var(--brandGradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .navlinks a:hover {
-  background: rgba(31, 122, 120, 0.08);
-  color: var(--ink);
+  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  color: rgba(255, 255, 255, 1);
 }
 .navlinks a.active {
   background: rgba(31, 122, 120, 0.12);
@@ -91,28 +104,77 @@ nav {
   align-items: center;
 }
 
-.langbtn {
-  border: none;
-  background: transparent;
-  padding: 6px 8px;
-  cursor: pointer;
-  font-size: 12px;
-  color: var(--muted);
-  transition: 0.15s ease;
-}
+/* ===== Header language switcher (pretty) ===== */
 
-.langbtn[aria-pressed="true"] {
-  background: rgba(244, 245, 245, 0.62);
+/* щоб pill-активний стиль не ламав прапори */
+.langbtn[aria-pressed="true"]:not(.flag){
+  background: rgba(244,245,245,0.62);
   color: var(--ink);
-  border-radius: 99px;
+  border-radius: 999px;
 }
 
-.langbtn.flag {
-  width: 28px;
-  height: 28px;
+/* капсула під прапорами */
+.actions .chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(31,122,120,0.22);
+  background: rgba(255,255,255,0.20);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+}
+
+/* кнопки прапорів */
+.actions .chip .langbtn.flag{
+  width: 34px;
+  height: 34px;
   padding: 0;
   display: grid;
   place-items: center;
+  border-radius: 999px;
+  cursor: pointer;
+
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(20,19,19,0.14);
+  box-shadow: none;
+  overflow: hidden;
+
+  transition: transform .15s ease, filter .15s ease, background .15s ease;
+}
+
+.actions .chip .langbtn.flag:hover{
+  background: rgba(20,19,19,0.22);
+  filter: brightness(1.05);
+}
+
+.actions .chip .langbtn.flag:active{
+  transform: scale(0.97);
+}
+
+/* активна мова — градієнтне кільце */
+.actions .chip .langbtn.flag[aria-pressed="true"]{
+  border: 1px solid transparent;
+  background:
+    linear-gradient(rgba(20,19,19,0.14), rgba(20,19,19,0.14)) padding-box,
+    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+}
+
+/* прапор */
+.actions .chip .langbtn.flag img{
+  width: 20px;   /* можна 18px, але 20 виглядає “дорожче” */
+  height: 20px;
+  border-radius: 999px;
+  display: block;
+}
+
+/* фокус клавіатурою */
+.actions .chip .langbtn.flag:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(202,163,74,0.22);
 }
 
 .burger {
