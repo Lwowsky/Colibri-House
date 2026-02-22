@@ -36,13 +36,18 @@
 .iconBtn img {
   display: block;
 }
-.copyright {
+.copyright{
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 14px;
-  color: rgba(31, 122, 120, 0.75);
   font-family: var(--font-main);
+
+  background: var(--brandGradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.9;
 }
 
 footer {
