@@ -16,7 +16,7 @@
   --brand: #1f7a78;
   --brand2: #caa34a;
   --brand3: #2a9a95;
-  --brandGradient: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+  --brandGradient: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(58, 148, 60, 1) 100%);
   --shadow: 0 14px 40px rgba(10, 20, 20, 0.1);
   --radius: 18px;
   --radius2: 26px;
