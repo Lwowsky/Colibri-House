@@ -22,10 +22,12 @@
     rgba(87, 199, 133, 1) 50%,
     rgba(58, 148, 60, 1) 100%
   );
---btnCancel: linear-gradient(135deg,
-  #ff7a7a 0%,
-  #d93a44 55%,
-  #9c1b24 100%
+  --btnCancel: linear-gradient(135deg, #ff7a7a 0%, #d93a44 55%, #9c1b24 100%);
+  --btnNew: linear-gradient(
+  135deg,
+  rgba(202, 163, 74, 0.22) 0%,
+  rgba(255, 255, 255, 0.66) 55%,
+  rgba(31, 122, 120, 0.16) 100%
 );
   --shadow: 0 14px 40px rgba(10, 20, 20, 0.1);
   --radius: 18px;

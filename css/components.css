@@ -38,6 +38,23 @@
 .btn.ghost:active{
   transform: translateY(0px) scale(0.99);
 }
+.btn.ghostNew {
+  border: 1px solid transparent;
+  background: var(--btnNew) border-box;
+  color: var(--ink);
+  box-shadow: 0 10px 24px rgba(10, 20, 20, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.btn.ghostNew:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn.ghostNew:active{
+  transform: translateY(0px) scale(0.99);
+}
+
 .btn.small {
   padding: 9px 12px;
   border-radius: 14px;
