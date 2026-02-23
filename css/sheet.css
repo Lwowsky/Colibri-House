@@ -83,7 +83,7 @@
 
   border: 1px solid transparent;
   background:
-    linear-gradient(rgba(25, 25, 25, 0.45), rgba(25, 25, 25, 0.45)) padding-box,
+    linear-gradient(rgba(25, 25, 25, 0.145), rgba(25, 25, 25, 0.145)) padding-box,
     linear-gradient(
         90deg,
         rgba(42, 123, 155, 1) 0%,

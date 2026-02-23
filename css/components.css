@@ -19,14 +19,24 @@
 .btn.primary:hover {
   transform: translateY(-1px);
 }
-.btn.ghost {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(223, 230, 227, 0.95);
-  color: var(--ink);
+.btn.ghost{
+  /* червоний стиль, але не домінує */
+  border: 1px solid transparent;
+  background:var(--btnCancel) border-box;
+
+  color: var(--bg); /* темно-червоний текст */
   box-shadow: 0 10px 24px rgba(10, 20, 20, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.btn.ghost:hover {
+
+.btn.ghost:hover{
   transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.btn.ghost:active{
+  transform: translateY(0px) scale(0.99);
 }
 .btn.small {
   padding: 9px 12px;
