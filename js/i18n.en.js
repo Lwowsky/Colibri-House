@@ -30,7 +30,7 @@ window.I18N.en = {
 
   reserve_title: "Reservations",
   reserve_sub:
-    "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:15 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
+    "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:20 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
   cta_reserve: "Reserve",
   cta_menu: "View menu",
   cta_review: "Write a review",
@@ -48,7 +48,7 @@ window.I18N.en = {
   f_time: "Time",
   modal_title: "Table reservation",
   modal_sub:
-    "We accept calls from 17:15 to 22:45. Requests submitted via the form are processed within 48 hours, so if you need a faster response, it’s best to call us.",
+    "We accept calls from 17:20 to 22:45. Requests submitted via the form are processed within 48 hours, so if you need a faster response, it’s best to call us.",
   f_name: "Name",
   f_phone: "Phone",
   f_date: "Date",
@@ -71,7 +71,7 @@ window.I18N.en = {
   features_on: "Available",
   features_off: "Not available",
 
-  about_feat_bar_cafe: "Bar & café",
+  about_feat_bar_cafe: "Bar",
   about_feat_veg: "Vegetarian options",
   about_feat_wc: "Restroom",
   about_feat_takeaway: "Takeaway / to-go",

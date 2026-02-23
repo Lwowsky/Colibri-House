@@ -12,7 +12,7 @@
   user-select: none;
 }
 .btn.primary {
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  background: var(--brandGradient);
   color: #fff;
   box-shadow: 0 14px 34px rgba(31, 122, 120, 0.25);
 }

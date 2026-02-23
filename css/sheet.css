@@ -23,7 +23,12 @@
   background: rgba(20, 19, 19, 0.92);
   backdrop-filter: blur(12px);
   border-left: 2px solid transparent;
-  border-image: linear-gradient(180deg, rgba(31,122,120,1) 0%, rgba(202,163,74,1) 100%) 1;
+  border-image: linear-gradient(
+      180deg,
+      rgba(31, 122, 120, 1) 0%,
+      rgba(202, 163, 74, 1) 100%
+    )
+    1;
   box-shadow:
     -18px 0 50px rgba(0, 0, 0, 0.18),
     -6px 0 18px rgba(31, 122, 120, 0.18);
@@ -69,7 +74,6 @@
 }
 
 .sheetBottom {
-  
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -79,7 +83,13 @@
   border: 1px solid transparent;
   background:
     linear-gradient(rgba(25, 25, 25, 0.45), rgba(25, 25, 25, 0.45)) padding-box,
-    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+        linear-gradient(
+        90deg,
+        rgba(42, 123, 155, 1) 0%,
+        rgba(87, 199, 133, 1) 50%,
+        rgba(237, 221, 83, 1) 100%
+      )
+      border-box;
 
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(14px);
@@ -110,7 +120,7 @@
 
 /* Title gradient */
 #sheet .sheetPanel-menu b {
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  background: var(--brandGradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -121,7 +131,7 @@
 
 /* Menu links gradient */
 #sheet .navlinks a {
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  background: var(--brandGradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -142,7 +152,13 @@
   background:
     linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92))
       padding-box,
-    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+    linear-gradient(
+        90deg,
+        rgba(42, 123, 155, 1) 0%,
+        rgba(87, 199, 133, 1) 50%,
+        rgba(237, 221, 83, 1) 100%
+      )
+      border-box;
 
   /* hide original glyph so we don't see two X */
   font-size: 0;
@@ -156,7 +172,7 @@
   inset: 0;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #1f7a78 0%, #caa34a 100%);
+  background: var(--brandGradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -173,7 +189,13 @@
   border: 1px solid transparent;
   background:
     linear-gradient(rgba(25, 25, 25, 0.45), rgba(25, 25, 25, 0.45)) padding-box,
-    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+    linear-gradient(
+        90deg,
+        rgba(42, 123, 155, 1) 0%,
+        rgba(87, 199, 133, 1) 50%,
+        rgba(237, 221, 83, 1) 100%
+      )
+      border-box;
 
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(14px);
@@ -201,7 +223,13 @@
   border: 1px solid transparent;
   background:
     linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)) padding-box,
-    linear-gradient(135deg, #1f7a78 0%, #caa34a 100%) border-box;
+        linear-gradient(
+        90deg,
+        rgba(42, 123, 155, 1) 0%,
+        rgba(87, 199, 133, 1) 50%,
+        rgba(237, 221, 83, 1) 100%
+      )
+      border-box;
 }
 
 #sheet .sheetLang .langbtn.flag img {
