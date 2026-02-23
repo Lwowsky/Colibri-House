@@ -194,13 +194,15 @@ input[type="date"] {
   width: 48px;
   height: 48px;
   border-radius: 18px;
-  border: 1px solid rgba(223, 230, 227, 0.95);
-  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--border);
+  background: var(--brandGradient);
   box-shadow: 0 12px 30px rgba(10, 20, 20, 0.12);
   display: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.5rem;
+  font-weight: 800;
   z-index: 60;
+  color: var(--bg);
 }
 
 .toTop.show {

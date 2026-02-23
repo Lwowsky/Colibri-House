@@ -36,13 +36,13 @@
 .iconBtn img {
   display: block;
 }
-.copyright{
+.copyright {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 14px;
   font-family: var(--font-main);
-
+  font-weight: 700;
   background: var(--brandGradient);
   -webkit-background-clip: text;
   background-clip: text;

@@ -11,9 +11,9 @@
   --bg: #f6f3ee;
   --panel: #f0f0f0;
   --ink: #1f2a2e;
-  --muted: #5a6b70;
+  --muted: rgba(20, 63, 62, 0.92);
   --border: #dfe6e3;
-  --brand: #1f7a78;
+  --brand: rgba(20, 63, 62, 0.95);
   --brand2: #caa34a;
   --brand3: #2a9a95;
   --brandGradient: linear-gradient(
@@ -106,5 +106,10 @@ main {
 
 h1 {
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+h2, h3 {
+color: var(--brand);
 }

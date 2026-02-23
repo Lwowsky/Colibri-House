@@ -58,8 +58,9 @@ section {
 .tile .sub {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.55;
+  font-weight: 700;
 }
 
 .ctaRow {
@@ -104,8 +105,9 @@ section {
 .reserveTop p {
   margin: 6px 0 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
+  font-weight: 700;
 }
 
 .reserveBtns {
@@ -240,11 +242,16 @@ section {
 
 .accessItem b {
   min-width: 86px;
+  color: var(--brand);
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .accessItem span {
   color: var(--muted);
   line-height: 1.55;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .mapWrap {
@@ -281,6 +288,7 @@ section {
   align-items: flex-start;
   gap: 10px;
   line-height: 1.4;
+  font-weight: 700;
 }
 
 .featureList li::before {
@@ -301,6 +309,8 @@ section {
 
 .tile .featureList {
   font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .subtleFeatureList {
@@ -311,10 +321,6 @@ section {
   gap: 6px;
 }
 
-#about .tile p.sub {
-  font-size: 14px;
-}
-
 .featuresSplit {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -323,9 +329,9 @@ section {
 }
 
 .featuresTitle {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
-
+  color: var(--brand);
   letter-spacing: 0.2px;
   margin: 0 0 8px;
 }

@@ -76,9 +76,10 @@
 .lead {
   margin: 0;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.65;
   max-width: 54ch;
+  font-weight: 600;
 }
 .heroBtns {
   display: flex;
@@ -105,6 +106,13 @@
 }
 .metaPill b {
   color: var(--ink);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.metaPill span {
+  color: var(--muted);
+  font-size: 13px;
   font-weight: 700;
 }
 

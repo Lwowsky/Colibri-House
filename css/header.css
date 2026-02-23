@@ -74,9 +74,9 @@ nav {
   padding: 10px 10px;
   border-radius: 12px;
   transition: 0.15s ease;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: var(--font-main);
-  font-weight: 600;
+  font-weight: 700;
   background: var(--brandGradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -87,8 +87,8 @@ nav {
   color: rgba(255, 255, 255, 1);
 }
 .navlinks a.active {
-  background: rgba(31, 122, 120, 0.12);
-  color: var(--ink);
+  background: var(--brandGradient);
+  color: var(--bg);
 }
 
 .actions {
