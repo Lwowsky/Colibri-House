@@ -160,7 +160,7 @@ input[type="date"] {
 }
 
 .field label {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
   font-weight: 700;
 }
@@ -169,19 +169,19 @@ input[type="date"] {
 .field select,
 .field textarea {
   width: 100%;
-  padding: 11px 12px;
+  padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid rgba(223, 230, 227, 0.95);
   outline: none;
   background: var(--bg);
   font: inherit;
   min-width: 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--ink);
 }
 
 .field textarea {
-  min-height: 90px;
+  min-height: 85px;
   resize: vertical;
 }
 
