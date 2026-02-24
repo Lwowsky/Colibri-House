@@ -53,18 +53,50 @@
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
+  font-weight: 700;
 }
 
-.x {
-  border: 1px solid rgba(223, 230, 227, 0.95);
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
+.x{
+  position: relative;
+
+  border: 1px solid transparent;
+  border-radius: 16px;
+
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)) padding-box,
+    var(--brandGradient) border-box;
+
   width: 40px;
   height: 40px;
   cursor: pointer;
-  font-size: 18px;
+
+  /* ховаємо текстовий символ */
+  font-size: 0;
+  color: transparent;
+  font-weight: 900;
+
+  display: grid;
+  place-items: center;
+}
+
+.x::before{
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  background: var(--brandGradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  font-size: 22px;
   line-height: 1;
 }
+
+.x:hover{ filter: brightness(1.03); }
+.x:active{ transform: scale(0.98); }
 
 .modalBody {
   padding: 14px 16px 16px;
@@ -125,7 +157,7 @@ input[type="date"] {
 }
 
 .field label {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   font-weight: 700;
 }
@@ -138,9 +170,11 @@ input[type="date"] {
   border-radius: 14px;
   border: 1px solid rgba(223, 230, 227, 0.95);
   outline: none;
-  background: #fff;
+  background: var(--bg);
   font: inherit;
   min-width: 0;
+  font-size: 1rem;
+  color: var(--ink);
 }
 
 .field textarea {
