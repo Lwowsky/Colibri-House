@@ -45,7 +45,7 @@ section {
 .tile {
   padding: 16px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--btnNew);
   border: 1px solid rgba(223, 230, 227, 0.95);
   box-shadow: 0 12px 30px rgba(10, 20, 20, 0.06);
 }
@@ -236,8 +236,21 @@ section {
   gap: 14px;
   padding: 12px 12px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius2);
+  background:
+    radial-gradient(
+      700px 320px at 0% 0%,
+      rgba(31, 122, 120, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 320px at 100% 0%,
+      rgba(202, 163, 74, 0.18),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(223, 230, 227, 0.95);
+  box-shadow: var(--shadow);
 }
 
 .accessItem b {

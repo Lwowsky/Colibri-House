@@ -3,7 +3,7 @@
   cursor: pointer;
   border-radius: 16px;
   padding: 11px 14px;
-  font-weight: 600;
+  font-weight: 700;
   transition: 0.15s ease;
   font-size: 14px;
   display: inline-flex;
@@ -41,10 +41,11 @@
 .btn.ghostNew {
   border: 1px solid transparent;
   background: var(--btnNew) border-box;
-  color: var(--ink);
+  color: var(--muted);
   box-shadow: 0 10px 24px rgba(10, 20, 20, 0.06);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  font-weight: 700;
 }
 .btn.ghostNew:hover{
   transform: translateY(-1px);
@@ -159,6 +160,7 @@
   flex-direction: column;
   gap: 8px;
   flex: 1;
+  background: var(--btnNew);
 }
 .menuTitle {
   margin: 0;
@@ -169,6 +171,7 @@
   color: var(--muted);
   font-size: 13px;
   line-height: 1.55;
+  font-weight: 700;
 }
 .menuBottom {
   margin-top: auto;
@@ -252,6 +255,7 @@
   margin: 10px 0 8px;
   color: var(--muted);
   line-height: 1.6;
+  font-weight: 700;
 }
 
 .dishCarousel {

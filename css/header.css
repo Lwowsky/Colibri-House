@@ -47,7 +47,7 @@ header {
 }
 .brand .wordmark span {
   font-size: 1rem;
-
+font-weight: 700;
   font-family: var(--font-main);
 }
 
@@ -171,8 +171,8 @@ nav {
 
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,0.18),
-    0 0 0 2px rgba(255,255,255,0.45),
-    0 0 0 3px rgba(0,0,0,0.16),
+    0 0 0 2px rgba(255,255,255,0.58),
+    0 0 0 3px rgba(0,0,0,0.12),
     0 10px 22px rgba(0,0,0,0.14);    /* трохи м’якше */
 
   transform: scale(1.01);            /* було 1.02 */

@@ -6,7 +6,8 @@ window.I18N.en = {
   nav_reserve: "Reservations",
   nav_access: "Access",
   open_maps: "Open in Google Maps",
-  kicker: "Home-style flavors • Warm atmosphere",
+  kicker_left: "Home-style flavors",
+  kicker_right: "Warm atmosphere",
   hero_title: "Ukrainian Cuisine in Japan",
   hero_desc:
     "We offer much more than just borscht and vareniki — our menu includes a variety of hot dishes and appetizers, so everyone can find something that fits their mood. Enjoy a comfortable space with warm service and attention to detail, plus a café-bar for a pleasant evening. If you’re not sure where to start, we’ll be happy to recommend favorites and help you choose the best option. The menu is available in English and Japanese",
