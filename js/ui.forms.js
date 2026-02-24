@@ -40,8 +40,13 @@
     { onSuccess, onError, beforeSend, afterSend } = {},
   ) {
     const url = form?.action;
-    if (!url) return;
-
+    if (!url || url.includes("PASTE_YOUR_ID")) {
+      showToast(
+        getDict()?.toast_form_link_missing ||
+          "Add Formspree URL to form action",
+      );
+      return;
+    }
     if (isHoneypotTripped(form)) return;
 
     try {
