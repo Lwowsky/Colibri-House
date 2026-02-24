@@ -83,7 +83,8 @@
 
   border: 1px solid transparent;
   background:
-    linear-gradient(rgba(25, 25, 25, 0.145), rgba(25, 25, 25, 0.145)) padding-box,
+    linear-gradient(rgba(25, 25, 25, 0.145), rgba(25, 25, 25, 0.145))
+      padding-box,
     linear-gradient(
         90deg,
         rgba(42, 123, 155, 1) 0%,
@@ -144,43 +145,6 @@
 #sheet .navlinks a:active {
   transform: scale(0.98);
 }
-
-/* Close button (gradient border + gradient X) */
-#sheet #closeSheet {
-  position: relative;
-  border: 1px solid transparent;
-  border-radius: 16px;
-  background:
-    linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92))
-      padding-box,
-    linear-gradient(
-        90deg,
-        rgba(42, 123, 155, 1) 0%,
-        rgba(87, 199, 133, 1) 50%,
-        rgba(58, 148, 60, 1) 100%
-      )
-      border-box;
-
-  /* hide original glyph so we don't see two X */
-  font-size: 0;
-  color: transparent;
-  font-weight: 900;
-}
-
-#sheet #closeSheet::before {
-  content: "✕";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: var(--brandGradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-size: 22px;
-  line-height: 1;
-}
-
 /* Language bar (like bottom icons + gradient border) */
 #sheet .sheetLang {
   margin-top: 10px;
