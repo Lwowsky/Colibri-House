@@ -213,16 +213,6 @@ section {
   background: rgba(31, 122, 120, 0.12);
 }
 
-.timeHint {
-  display: block;
-  margin-top: 4px;
-  font-size: 11px;
-  line-height: 1.2;
-  color: var(--muted);
-  text-align: center;
-  opacity: 0.9;
-}
-
 .accessList {
   display: grid;
   gap: 10px;
