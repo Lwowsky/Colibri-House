@@ -77,10 +77,9 @@ window.I18N.en = {
   about_feat_wc: "Restroom",
   about_feat_takeaway: "Takeaway / to-go",
   about_feat_reserve: "Table reservation",
-  about_feat_cash: "Cash payment",
+  about_feat_cash: "Payment methods: cash • card • QR code",
   about_feat_parking_off: "Parking",
   about_feat_access_off: "Wheelchair accessibility",
-  about_feat_card_off: "Card payment",
 
   mail_title: "Write to us",
   mail_sub: "We’ll reply as soon as possible.",

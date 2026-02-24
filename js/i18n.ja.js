@@ -78,10 +78,9 @@ window.I18N.ja = {
   about_feat_wc: "お手洗い",
   about_feat_takeaway: "テイクアウト",
   about_feat_reserve: "席予約",
-  about_feat_cash: "現金払い",
+  about_feat_cash: "お支払い方法：現金・カード・QRコード",
   about_feat_parking_off: "駐車場",
   about_feat_access_off: "車椅子対応",
-  about_feat_card_off: "カード払い",
 
   mail_title: "お問い合わせ",
   mail_sub: "できるだけ早く返信します。",

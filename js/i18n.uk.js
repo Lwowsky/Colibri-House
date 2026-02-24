@@ -73,10 +73,9 @@ window.I18N.uk = {
   about_feat_wc: "Туалет для гостей",
   about_feat_takeaway: "Takeaway / з собою",
   about_feat_reserve: "Бронювання столика",
-  about_feat_cash: "Оплата готівкою",
+  about_feat_cash: "Способи оплати: готівка • картка • QR-код",
   about_feat_parking_off: "Парковка",
   about_feat_access_off: "Доступність для візків",
-  about_feat_card_off: "Оплата картою",
   
   mail_title: "Написати нам",
   mail_sub: "Ми відповімо якнайшвидше.",
