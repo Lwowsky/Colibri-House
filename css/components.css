@@ -339,7 +339,7 @@
   height: 8px;
   border-radius: 999px;
   border: 0;
-  background: rgba(31, 122, 120, 0.25);
+  background: var(--brandGradient);
   cursor: pointer;
 }
 .carDot.isActive {

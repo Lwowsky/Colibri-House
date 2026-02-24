@@ -206,7 +206,7 @@ nav {
   display: block;
   width: 18px;
   height: 2px;
-  background: var(--ink);
+  background: var(--brandGradient);
   margin: 5px auto;
   border-radius: 999px;
 }
