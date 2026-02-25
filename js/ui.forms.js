@@ -55,10 +55,14 @@
     if (!form) return;
     if (isHoneypotTripped(form)) return;
 
+    let lastError = null;
+
     try {
       beforeSend?.();
 
       const payload = formToObject(form);
+      // DEBUG: подивитися що реально відправляється
+      console.log("Sending payload:", payload);
 
       const res = await fetch(SUPABASE_FN_URL, {
         method: "POST",
@@ -74,18 +78,21 @@
       }
 
       if (!res.ok || (json && json.ok === false)) {
-        console.error("Supabase send error:", {
+        lastError = {
           status: res.status,
           response: json,
           payload,
-        });
+        };
+        console.error("Supabase send error:", lastError);
         throw new Error("send_failed");
       }
 
-      onSuccess?.();
+      onSuccess?.(json);
     } catch (err) {
-      console.error("sendToSupabase failed:", err);
-      onError?.();
+      if (!lastError) {
+        console.error("sendToSupabase failed:", err);
+      }
+      onError?.(lastError);
     } finally {
       afterSend?.();
     }
@@ -146,18 +153,30 @@
         beforeSend: () => submitBtn?.setAttribute("disabled", "disabled"),
         afterSend: () => submitBtn?.removeAttribute("disabled"),
         onSuccess: () => {
-          if (mailHint) mailHint.style.display = "none";
+          if (mailHint) {
+            mailHint.style.display = "none";
+            mailHint.textContent = "";
+          }
           form.reset();
           document.dispatchEvent(new CustomEvent("app:mail-sent"));
         },
-        onError: () => {
-          console.error("mailForm submit failed");
+        onError: (errInfo) => {
+          console.error("mailForm submit failed:", errInfo);
+
+          const serverMsg =
+            errInfo?.response?.error ||
+            errInfo?.response?.details?.message ||
+            "send_failed";
+
           if (mailHint) {
             mailHint.style.display = "block";
             mailHint.textContent =
-              "Не вдалося надіслати. Спробуйте ще раз або використайте mailto.";
+              "Не вдалося надіслати. Причина: " + serverMsg;
           } else {
-            showToast(getDict()?.toast_failed || "Send failed. Try again.");
+            showToast(
+              getDict()?.toast_failed ||
+                "Не вдалося надіслати. Спробуйте ще раз.",
+            );
           }
         },
       });
