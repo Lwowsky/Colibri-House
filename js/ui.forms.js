@@ -38,14 +38,11 @@
     const data = {};
 
     for (const [key, value] of fd.entries()) {
-      if (key === "_gotcha") continue; // honeypot не відправляємо
+      if (key === "_gotcha") continue;
       data[key] = typeof value === "string" ? value.trim() : value;
     }
 
-    // мова сайту
     data.lang = document.documentElement.lang || "ja";
-
-    // тип форми
     data.formType = form?.id === "mailForm" ? "mail" : "reserve";
 
     return data;
@@ -77,11 +74,17 @@
       }
 
       if (!res.ok || (json && json.ok === false)) {
+        console.error("Supabase send error:", {
+          status: res.status,
+          response: json,
+          payload,
+        });
         throw new Error("send_failed");
       }
 
       onSuccess?.();
-    } catch {
+    } catch (err) {
+      console.error("sendToSupabase failed:", err);
       onError?.();
     } finally {
       afterSend?.();
@@ -111,7 +114,6 @@
         onSuccess: () => {
           form.reset();
 
-          // якщо в тебе кастомний time select — чистимо вручну
           const timeInput = form.querySelector("#timeInput");
           const timeHiddenLocal = form.querySelector("#timeHidden");
           if (timeInput) timeInput.value = "";
@@ -149,6 +151,7 @@
           document.dispatchEvent(new CustomEvent("app:mail-sent"));
         },
         onError: () => {
+          console.error("mailForm submit failed");
           if (mailHint) {
             mailHint.style.display = "block";
             mailHint.textContent =

@@ -2,7 +2,8 @@ import { serve } from "https://deno.land/std@0.224.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
@@ -38,31 +39,44 @@ serve(async (req) => {
       formType = "reserve",
       lang = "ja",
 
-      // reserve
+      // shared
       name = "",
       phone = "",
+
+      // reserve fields
       date = "",
       time = "",
       people = "",
       note = "",
 
-      // mail
+      // mail fields
       subject = "",
       message = "",
     } = payload ?? {};
 
-    if (!name || !phone) {
-      return json({ ok: false, error: "missing_required_fields" }, 400);
+    const isMailForm = formType === "mail";
+
+    // ✅ РОЗДІЛЕНА ВАЛІДАЦІЯ
+    if (isMailForm) {
+      if (!name || !phone || !subject || !message) {
+        return json({ ok: false, error: "missing_required_fields_mail" }, 400);
+      }
+    } else {
+      if (!name || !phone || !date || !time || !people) {
+        return json(
+          { ok: false, error: "missing_required_fields_reserve" },
+          400,
+        );
+      }
     }
 
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     const toEmail = Deno.env.get("TO_EMAIL");
+    const fromEmail = Deno.env.get("FROM_EMAIL") || "onboarding@resend.dev";
 
     if (!resendApiKey || !toEmail) {
       return json({ ok: false, error: "missing_server_secrets" }, 500);
     }
-
-    const isMailForm = formType === "mail";
 
     const emailSubject = isMailForm
       ? `📩 Повідомлення з сайту (${lang}) — ${subject || "Без теми"}`
@@ -117,7 +131,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Colibri House <onboarding@resend.dev>",
+        from: `Colibri House <${fromEmail}>`,
         to: [toEmail],
         subject: emailSubject,
         html,
@@ -129,7 +143,10 @@ serve(async (req) => {
 
     if (!resendRes.ok) {
       console.error("Resend error:", resendJson);
-      return json({ ok: false, error: "email_send_failed", details: resendJson }, 502);
+      return json(
+        { ok: false, error: "email_send_failed", details: resendJson },
+        502,
+      );
     }
 
     return json({
