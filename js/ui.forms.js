@@ -6,6 +6,9 @@
   const { $, createToast } = App;
   const { getDict } = I18n;
 
+  const SUPABASE_FN_URL =
+    "https://gpuutpvuxtfdtqlewctc.functions.supabase.co/reserve";
+
   let toast = null;
 
   function ensureToast() {
@@ -30,35 +33,53 @@
     );
   }
 
-  function syncFormLang() {
-    const lang = document.documentElement.lang || "ja";
-    $("#formLang")?.setAttribute("value", lang);
+  function formToObject(form) {
+    const fd = new FormData(form);
+    const data = {};
+
+    for (const [key, value] of fd.entries()) {
+      if (key === "_gotcha") continue; // honeypot не відправляємо
+      data[key] = typeof value === "string" ? value.trim() : value;
+    }
+
+    // мова сайту
+    data.lang = document.documentElement.lang || "ja";
+
+    // тип форми
+    data.formType = form?.id === "mailForm" ? "mail" : "reserve";
+
+    return data;
   }
 
-  async function sendFormspree(
+  async function sendToSupabase(
     form,
     { onSuccess, onError, beforeSend, afterSend } = {},
   ) {
-    const url = form?.action;
-    if (!url || url.includes("PASTE_YOUR_ID")) {
-      showToast(
-        getDict()?.toast_form_link_missing ||
-          "Add Formspree URL to form action",
-      );
-      return;
-    }
+    if (!form) return;
     if (isHoneypotTripped(form)) return;
 
     try {
       beforeSend?.();
 
-      const res = await fetch(url, {
+      const payload = formToObject(form);
+
+      const res = await fetch(SUPABASE_FN_URL, {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(form),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("send_failed");
+      let json = null;
+      try {
+        json = await res.json();
+      } catch {
+        json = null;
+      }
+
+      if (!res.ok || (json && json.ok === false)) {
+        throw new Error("send_failed");
+      }
+
       onSuccess?.();
     } catch {
       onError?.();
@@ -84,11 +105,18 @@
         return;
       }
 
-      await sendFormspree(form, {
+      await sendToSupabase(form, {
         beforeSend: () => submitBtn?.setAttribute("disabled", "disabled"),
         afterSend: () => submitBtn?.removeAttribute("disabled"),
         onSuccess: () => {
           form.reset();
+
+          // якщо в тебе кастомний time select — чистимо вручну
+          const timeInput = form.querySelector("#timeInput");
+          const timeHiddenLocal = form.querySelector("#timeHidden");
+          if (timeInput) timeInput.value = "";
+          if (timeHiddenLocal) timeHiddenLocal.value = "";
+
           document.dispatchEvent(new CustomEvent("app:reserve-sent"));
         },
         onError: () => {
@@ -112,10 +140,11 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      await sendFormspree(form, {
+      await sendToSupabase(form, {
         beforeSend: () => submitBtn?.setAttribute("disabled", "disabled"),
         afterSend: () => submitBtn?.removeAttribute("disabled"),
         onSuccess: () => {
+          if (mailHint) mailHint.style.display = "none";
           form.reset();
           document.dispatchEvent(new CustomEvent("app:mail-sent"));
         },
@@ -134,12 +163,10 @@
 
   function initAll() {
     ensureToast();
-    syncFormLang();
     initReserveFormOnce();
     initMailFormOnce();
   }
 
-  document.addEventListener("app:lang-changed", syncFormLang);
   document.addEventListener("DOMContentLoaded", initAll);
   document.body.addEventListener("htmx:load", initAll);
 })();
