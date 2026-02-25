@@ -6,8 +6,7 @@
   const { $, createToast } = App;
   const { getDict } = I18n;
 
-  const SUPABASE_FN_URL =
-    "https://gpuutpvuxtfdtqlewctc.functions.supabase.co/reserve";
+  const SUPABASE_FN_URL = "https://colibri-mail.vovapotaychuk.workers.dev";
 
   let toast = null;
 
