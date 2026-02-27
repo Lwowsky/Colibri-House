@@ -343,9 +343,9 @@
   cursor: pointer;
 }
 .carDot.isActive {
-  background: rgba(202, 163, 74, 0.95);
+  background: rgba(28, 72, 110, 0.95);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.65);
 }
-
 .dishModalBottom {
   display: flex;
   justify-content: space-between;
