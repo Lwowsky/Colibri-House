@@ -343,7 +343,7 @@
   cursor: pointer;
 }
 .carDot.isActive {
-  background: rgba(31, 122, 120, 0.9);
+  background: rgba(202, 163, 74, 0.95);
 }
 
 .dishModalBottom {

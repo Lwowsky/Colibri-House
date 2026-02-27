@@ -76,14 +76,14 @@ window.I18N.uk = {
   about_feat_cash: "Способи оплати: готівка • картка • QR-код",
   about_feat_parking_off: "Парковка",
   about_feat_access_off: "Доступність для візків",
-  
+
   mail_title: "Написати нам",
   mail_sub: "Ми відповімо якнайшвидше.",
   mail_close_aria: "Закрити",
   mail_name_label: "Імʼя",
   mail_phone_label: "Телефон",
-  mail_subject_label: "Тема",
-  mail_subject_ph: "Наприклад: Запит про меню",
+  mail_email_label: "Email",
+  mail_email_ph: "Вкажіть ваш email (наприклад, name@gmail.com)",
   mail_message_label: "Повідомлення",
   mail_message_ph: "Ваше повідомлення...",
   mail_cancel: "Скасувати",
