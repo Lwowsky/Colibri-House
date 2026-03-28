@@ -622,5 +622,29 @@
       "en": "Ice Cream",
       "ja": "アイスクリーム"
     }
+  },
+  {
+    "id": "menu-item-1774689045013",
+    "sort": 270,
+    "active": true,
+    "cat": "drinks",
+    "price": "¥0",
+    "img": "/content/uploads/menu/zakusky05-1774689069132.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "",
+      "en": "",
+      "ja": ""
+    },
+    "sub": {
+      "uk": "",
+      "en": "",
+      "ja": ""
+    },
+    "tag": {
+      "uk": "",
+      "en": "",
+      "ja": ""
+    }
   }
 ]
