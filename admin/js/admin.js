@@ -228,6 +228,14 @@
           ? `<img src="${escapeHtml(resolveAssetUrl(item.img))}" alt="${escapeHtml(item.title?.uk || item.id)}" />`
           : "<span>No image selected</span>";
 
+        const summary = `
+          <div class="card-summary">
+            <span class="summary-chip"><strong>${escapeHtml(item.price || "—")}</strong></span>
+            <span class="summary-chip">${escapeHtml(item.cat || "no-category")}</span>
+            <span class="summary-chip">Sort <strong>${escapeHtml(String(item.sort ?? 0))}</strong></span>
+          </div>
+        `;
+
         const translationBoxes = LANGS.map(
           (lang) => `
             <div class="translation-box">
@@ -254,8 +262,10 @@
               <div>
                 <h3>${escapeHtml(item.title?.uk || item.id || `Item ${index + 1}`)}</h3>
                 <small>ID: ${escapeHtml(item.id || "")}</small>
+                ${summary}
               </div>
               <div class="inline-actions">
+                <button class="btn btn-toggle" type="button" data-action="toggle-card">Згорнути</button>
                 <button class="btn btn-danger" type="button" data-action="delete-menu-item" data-index="${index}">Видалити</button>
               </div>
             </div>
@@ -327,7 +337,10 @@
                 <h3>${escapeHtml(category.label?.uk || category.id || `Category ${index + 1}`)}</h3>
                 <small>Category tab in menu</small>
               </div>
-              <button class="btn btn-danger" type="button" data-action="delete-category" data-index="${index}">Видалити</button>
+              <div class="inline-actions">
+                <button class="btn btn-toggle" type="button" data-action="toggle-card">Згорнути</button>
+                <button class="btn btn-danger" type="button" data-action="delete-category" data-index="${index}">Видалити</button>
+              </div>
             </div>
 
             <div class="card-grid">
@@ -738,6 +751,15 @@
       const action = button.dataset.action;
       const index = Number(button.dataset.index);
       const key = button.dataset.key;
+
+
+      if (action === "toggle-card") {
+        const card = button.closest(".admin-card");
+        if (!card) return;
+        card.classList.toggle("is-collapsed");
+        button.textContent = card.classList.contains("is-collapsed") ? "Розгорнути" : "Згорнути";
+        return;
+      }
 
       if (action === "delete-menu-item") {
         state.bundle.menu.splice(index, 1);
