@@ -55,6 +55,13 @@
     return trimmed.replace(/\/+$/, "");
   }
 
+  function normalizeAssetPath(value) {
+    const trimmed = String(value || "").trim();
+    if (!trimmed) return "";
+    if (/^https?:\/\//i.test(trimmed)) return trimmed;
+    return trimmed.replace(/^\/+/, "");
+  }
+
   function getInitialApiBase() {
     const fromQuery = new URLSearchParams(window.location.search).get("apiBase");
     if (fromQuery) return normalizeApiBase(fromQuery);
@@ -299,17 +306,16 @@
                   Image path / URL
                   <input data-field="img" type="text" value="${escapeHtml(item.img || "")}" placeholder="img/menu/item.jpg or /content/uploads/menu/item.jpg" />
                 </label>
+              </div>
 
-                <div class="uploader uploader-left">
+              <aside class="menu-item-media">
+                <div class="uploader">
                   <label>
                     Upload image to GitHub
                     <input data-upload-input type="file" accept="image/*" />
                   </label>
                   <small class="muted">Файл завантажиться в <code>content/uploads/menu</code> і шлях підставиться автоматично.</small>
                 </div>
-              </div>
-
-              <aside class="menu-item-media">
                 <div class="image-preview" data-image-preview>${preview}</div>
               </aside>
             </div>
@@ -450,7 +456,7 @@
         active: $("[data-field='active']", card)?.checked !== false,
         cat: valueOf($("[data-field='cat']", card), "mains"),
         price: valueOf($("[data-field='price']", card)),
-        img: valueOf($("[data-field='img']", card)),
+        img: normalizeAssetPath(valueOf($("[data-field='img']", card))),
         imgs: [],
         title: emptyTranslations(),
         sub: emptyTranslations(),
@@ -678,9 +684,12 @@
 
       const imgField = $("[data-field='img']", card);
       const preview = $("[data-image-preview]", card);
-      imgField.value = data.path;
-      preview.innerHTML = `<img src="${escapeHtml(resolveAssetUrl(data.path))}" alt="Uploaded image" />`;
-      showToast("Картинку завантажено в GitHub");
+      const normalizedPath = normalizeAssetPath(data.path);
+      imgField.value = normalizedPath;
+      const localPreviewUrl = URL.createObjectURL(file);
+      preview.innerHTML = `<img src="${escapeHtml(localPreviewUrl)}" alt="Uploaded image" />`;
+      preview.dataset.tempObjectUrl = localPreviewUrl;
+      showToast("Картинку завантажено. Тепер натисни «Зберегти в GitHub» для прив’язки до страви.");
     } catch (error) {
       showToast(error.message || "Не вдалося завантажити картинку.");
     } finally {
@@ -716,10 +725,17 @@
 
     els.addMenuItemButton?.addEventListener("click", () => {
       syncStateFromDom();
-      state.bundle.menu.push(defaultMenuItem());
+      const item = defaultMenuItem();
+      const currentMinSort = state.bundle.menu.reduce((min, entry) => Math.min(min, Number(entry.sort) || 0), Infinity);
+      item.sort = Number.isFinite(currentMinSort) ? currentMinSort - 10 : 10;
+      state.bundle.menu.unshift(item);
       renderMenuEditor();
       updateStats();
       activateTab("menu");
+      requestAnimationFrame(() => {
+        const firstCard = els.menuEditor?.querySelector('[data-entity="menu-item"]');
+        firstCard?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
 
     els.addCategoryButton?.addEventListener("click", () => {
@@ -804,7 +820,13 @@
       const card = input.closest('[data-entity="menu-item"]');
       const preview = card ? $("[data-image-preview]", card) : null;
       if (!preview) return;
-      const value = valueOf(input);
+      const value = normalizeAssetPath(valueOf(input));
+      input.value = value;
+      const previousObjectUrl = preview.dataset.tempObjectUrl;
+      if (previousObjectUrl) {
+        URL.revokeObjectURL(previousObjectUrl);
+        delete preview.dataset.tempObjectUrl;
+      }
       preview.innerHTML = value
         ? `<img src="${escapeHtml(resolveAssetUrl(value))}" alt="Preview" />`
         : "<span>No image selected</span>";
