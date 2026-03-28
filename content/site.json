@@ -1,0 +1,397 @@
+{
+  "brand_sub": {
+    "uk": "Українська кухня в Японії",
+    "en": "Ukrainian cuisine in Japan",
+    "ja": "日本で味わうウクライナ料理"
+  },
+  "nav_menu": {
+    "uk": "Меню",
+    "en": "Menu",
+    "ja": "メニュー"
+  },
+  "nav_about": {
+    "uk": "Про нас",
+    "en": "About",
+    "ja": "私たちについて"
+  },
+  "nav_reserve": {
+    "uk": "Бронювання",
+    "en": "Reservations",
+    "ja": "予約"
+  },
+  "nav_access": {
+    "uk": "Як дістатися",
+    "en": "Access",
+    "ja": "アクセス"
+  },
+  "open_maps": {
+    "uk": "Відкрити в Google Maps",
+    "en": "Open in Google Maps",
+    "ja": "Google マップで開く"
+  },
+  "kicker_left": {
+    "uk": "Домашні смаки",
+    "en": "Home-style flavors",
+    "ja": "家庭の味"
+  },
+  "kicker_right": {
+    "uk": "Тепла атмосфера",
+    "en": "Warm atmosphere",
+    "ja": "あたたかな雰囲気"
+  },
+  "hero_title": {
+    "uk": "Українська кухня в Японії",
+    "en": "Ukrainian Cuisine in Japan",
+    "ja": "日本のウクライナ料理"
+  },
+  "hero_desc": {
+    "uk": "Страв у нас більше, ніж борщ і вареники — у меню є різні гарячі позиції та закуски, щоб кожен знайшов щось під свій настрій. Це комфортний простір із теплою подачею та увагою до деталей, а також кафе-баром для приємного вечора. Якщо не знаєте, з чого почати, ми із задоволенням підкажемо й допоможемо обрати найкращий варіант. Меню доступне англійською та японською.",
+    "en": "We offer much more than just borscht and vareniki — our menu includes a variety of hot dishes and appetizers, so everyone can find something that fits their mood. Enjoy a comfortable space with warm service and attention to detail, plus a café-bar for a pleasant evening. If you’re not sure where to start, we’ll be happy to recommend favorites and help you choose the best option. The menu is available in English and Japanese",
+    "ja": "ボルシチやヴァレーニキだけでなく、さまざまな温かい料理や前菜をご用意しており、その日の気分に合わせてお選びいただけます。落ち着いた空間で、丁寧なサービスと細やかなこだわりをお楽しみください。カフェバーもございますので、ゆっくりとした夜の時間にもぴったりです。何を選べばよいか迷ったら、おすすめをご案内し、最適な一皿選びをお手伝いします。メニューは英語と日本語に対応しています。"
+  },
+  "hours_label": {
+    "uk": "Години:",
+    "en": "Hours:",
+    "ja": "営業時間:"
+  },
+  "hours": {
+    "uk": "17:00–23:00",
+    "en": "17:00–23:00",
+    "ja": "17:00–23:00"
+  },
+  "city_label": {
+    "uk": "Місто:",
+    "en": "City:",
+    "ja": "都市:"
+  },
+  "photo_caption": {
+    "uk": "Затишна атмосфера, українські смаки та гостинність.",
+    "en": "Cozy vibe, Ukrainian flavors, and hospitality.",
+    "ja": "落ち着いた雰囲気、ウクライナの味とおもてなし。"
+  },
+  "days_label": {
+    "uk": "Дні:",
+    "en": "Days:",
+    "ja": "営業日:"
+  },
+  "days": {
+    "uk": "Вт–Нд / Пн вихідний",
+    "en": "Tue–Sun / Mon closed",
+    "ja": "火〜日／月曜定休"
+  },
+  "city_value": {
+    "uk": "Йокогама",
+    "en": "Yokohama",
+    "ja": "横浜"
+  },
+  "menu_title": {
+    "uk": "Меню",
+    "en": "Menu",
+    "ja": "メニュー"
+  },
+  "about_title": {
+    "uk": "Про нас",
+    "en": "About",
+    "ja": "私たちについて"
+  },
+  "about_sub": {
+    "uk": "Традиційні рецепти, адаптовані з повагою до Японії.",
+    "en": "Traditional recipes, respectfully adapted in Japan.",
+    "ja": "伝統レシピを大切にしつつ、日本で心地よく。"
+  },
+  "about_card1_title": {
+    "uk": "Домашня традиція",
+    "en": "Home tradition",
+    "ja": "家庭の伝統"
+  },
+  "about_card1_desc": {
+    "uk": "Colibri House — це маленьке сімейне місце української кухні в Йокогамі, куди хочеться зайти «на щось тепле й знайоме». Ми готуємо з турботою, як для своїх: щоб було смачно, ситно й по-домашньому. У нас можна скуштувати українську класику — борщ, вареники та інші традиційні страви, які добре зігрівають і піднімають настрій. Ми завжди раді гостям і стараємося, щоб кожному було комфортно: можна взяти страви з собою (takeaway) або спокійно провести час у затишній атмосфері. Для зручності меню доступне англійською та японською мовами.",
+    "en": "Colibri House is a small family-run spot for Ukrainian food in Yokohama — a place to drop in for something warm and familiar. We cook with care, the way we would for our own: hearty, comforting, and truly homemade. Here you can try Ukrainian classics like borscht and vareniki, along with other traditional dishes that warm you up and lift your mood. We’re always happy to welcome guests and make everyone feel comfortable — you can grab your meal to go (takeaway) or enjoy a relaxed time in our cozy atmosphere. For your convenience, the menu is available in English and Japanese.",
+    "ja": "Colibri Houseは横浜にある小さな家族経営のウクライナ料理店です。「温かくてどこか懐かしいもの」を食べたくなったときに、ふらっと立ち寄れる場所を目指しています。私たちは自分たちの家族に作るように心を込めて料理し、しっかり満足できる家庭の味を大切にしています。ボルシチやヴァレーニキなどの定番料理をはじめ、体も心も温まる伝統的なウクライナ料理をお楽しみいただけます。テイクアウトも可能で、店内では落ち着いた雰囲気の中でゆっくりお過ごしいただけます。メニューは英語と日本語に対応しています。"
+  },
+  "about_card2_title": {
+    "uk": "Послуги для гостей",
+    "en": "Services for Guests",
+    "ja": "お客様向けサービス"
+  },
+  "about_card2_desc": {
+    "uk": "Є вегетаріанські опції, takeaway та кейтеринг.",
+    "en": "Vegetarian options, takeaway, and catering available.",
+    "ja": "ベジタリアン対応、テイクアウト、ケータリング。"
+  },
+  "reserve_title": {
+    "uk": "Бронювання",
+    "en": "Reservations",
+    "ja": "予約"
+  },
+  "reserve_sub": {
+    "uk": "Бронювання краще робити заздалегідь. Якщо запізнюєтесь — напишіть або зателефонуйте, ми зачекаємо. На запити відповідаємо протягом 48 годин, тож якщо потрібно швидше — найкраще зателефонувати (приймаємо дзвінки з 17:20 до 22:45). Понеділок — вихідний, працюємо з вівторка по неділю.",
+    "en": "It’s best to book in advance. If you’re running late, please message or call us — we’ll wait for you. We reply to requests within 48 hours, so if you need a faster response, the best option is to call (calls accepted from 17:20 to 22:45). We’re closed on Mondays and open from Tuesday to Sunday.",
+    "ja": "ご予約は事前のご連絡がおすすめです。遅れそうな場合は、メッセージまたはお電話でお知らせください。ご予約のご連絡は48時間以内に返信いたしますが、お急ぎの場合はお電話が最も早いです（受付時間：17:20〜22:45）。月曜日は定休日で、火曜日〜日曜日は営業しています。"
+  },
+  "cta_reserve": {
+    "uk": "Забронювати",
+    "en": "Reserve",
+    "ja": "予約する"
+  },
+  "cta_menu": {
+    "uk": "Дивитись меню",
+    "en": "View menu",
+    "ja": "メニューを見る"
+  },
+  "cta_review": {
+    "uk": "Написати відгук",
+    "en": "Write a review",
+    "ja": "口コミを書く"
+  },
+  "access_title": {
+    "uk": "Як дістатися",
+    "en": "Access",
+    "ja": "アクセス"
+  },
+  "addr_line1": {
+    "uk": "Colibri House, 〒232-0014 префектура Канаґава, Йокогама, район Мінамі, Йосіночо, 5-й квартал ヨシダビル テラスC",
+    "en": "Colibri House, 〒232-0014 Kanagawa, Yokohama, Minami Ward, Yoshinocho 5-chome ヨシダビル テラスC",
+    "ja": "Colibri House 〒232-0014 神奈川県横浜市南区吉野町5丁目 ヨシダビル テラスC"
+  },
+  "addr_label": {
+    "uk": "Адреса",
+    "en": "Address",
+    "ja": "住所"
+  },
+  "station_label": {
+    "uk": "Станція",
+    "en": "Station",
+    "ja": "最寄り駅"
+  },
+  "station_text": {
+    "uk": "Найближча станція: станція Йосіночо (Yoshinochō, 吉野町駅), вихід 3, ~2-3 хвилини пішки.",
+    "en": "Nearest station: Yoshinochō Station (Yokohama Subway Blue Line), Exit 3, ~2 min walk.",
+    "ja": "最寄り駅：吉野町駅（横浜市営地下鉄ブルーライン）3番出口から徒歩約2分。"
+  },
+  "copy_btn": {
+    "uk": "Копіювати",
+    "en": "Copy",
+    "ja": "コピー"
+  },
+  "time_placeholder": {
+    "uk": "Оберіть час",
+    "en": "Select a time",
+    "ja": "時間を選択"
+  },
+  "time_hint": {
+    "uk": "Доступно: 17:00–22:00",
+    "en": "Available: 17:00–22:00",
+    "ja": "利用可能: 17:00–22:00"
+  },
+  "f_time": {
+    "uk": "Час",
+    "en": "Time",
+    "ja": "時間"
+  },
+  "modal_title": {
+    "uk": "Бронювання столика",
+    "en": "Table reservation",
+    "ja": "席の予約"
+  },
+  "modal_sub": {
+    "uk": "Дзвінки приймаємо з 17:20 до 22:45. Запити через форму розглядаємо протягом 48 годин, тож якщо потрібно швидше — краще зателефонувати.",
+    "en": "We accept calls from 17:20 to 22:45. Requests submitted via the form are processed within 48 hours, so if you need a faster response, it’s best to call us.",
+    "ja": "お電話の受付時間は 17:20〜22:45 です。フォームからのご予約リクエストは 48時間以内 に対応いたしますので、お急ぎの場合は お電話 ください。"
+  },
+  "f_name": {
+    "uk": "Ім’я",
+    "en": "Name",
+    "ja": "お名前"
+  },
+  "f_phone": {
+    "uk": "Телефон",
+    "en": "Phone",
+    "ja": "電話番号"
+  },
+  "f_date": {
+    "uk": "Дата",
+    "en": "Date",
+    "ja": "日付"
+  },
+  "f_people": {
+    "uk": "Кількість",
+    "en": "People",
+    "ja": "人数"
+  },
+  "f_note": {
+    "uk": "Коментар",
+    "en": "Note",
+    "ja": "備考"
+  },
+  "f_note_ph": {
+    "uk": "Алергії, час, побажання…",
+    "en": "Allergies, time, requests...",
+    "ja": "アレルギー、時間、要望など…"
+  },
+  "cancel": {
+    "uk": "Скасувати",
+    "en": "Cancel",
+    "ja": "キャンセル"
+  },
+  "send": {
+    "uk": "Надіслати",
+    "en": "Send",
+    "ja": "送信"
+  },
+  "success_title": {
+    "uk": "Готово!",
+    "en": "Done!",
+    "ja": "送信完了"
+  },
+  "success_sub": {
+    "uk": "Повідомлення доставлено. Ми зв’яжемося з вами найближчим часом.",
+    "en": "Message delivered. We’ll contact you soon.",
+    "ja": "メッセージを送信しました。折り返しご連絡いたします。"
+  },
+  "success_ok": {
+    "uk": "OK",
+    "en": "OK",
+    "ja": "OK"
+  },
+  "toast_ok": {
+    "uk": "Запит надіслано! Ми зв’яжемося з вами.",
+    "en": "Request sent! We’ll contact you soon.",
+    "ja": "送信しました。折り返しご連絡いたします。"
+  },
+  "toast_failed": {
+    "uk": "Помилка відправки. Спробуйте ще раз або зателефонуйте.",
+    "en": "Sending failed. Please try again or call us.",
+    "ja": "送信に失敗しました。もう一度お試しください。お急ぎの場合はお電話ください。"
+  },
+  "toast_copied": {
+    "uk": "📋 Скопійовано",
+    "en": "📋 Copied",
+    "ja": "📋 コピーしました"
+  },
+  "toast_copy_failed": {
+    "uk": "❌ Не вдалося скопіювати",
+    "en": "❌ Copy failed",
+    "ja": "❌ コピーできませんでした"
+  },
+  "footer_note": {
+    "uk": "Українська кухня в Японії",
+    "en": "Ukrainian cuisine in Japan",
+    "ja": "日本のウクライナ料理店"
+  },
+  "back_to_top": {
+    "uk": "Наверх ↑",
+    "en": "Back to top ↑",
+    "ja": "トップへ ↑"
+  },
+  "features_on": {
+    "uk": "Доступно",
+    "en": "Available",
+    "ja": "利用可能"
+  },
+  "features_off": {
+    "uk": "Недоступно",
+    "en": "Not available",
+    "ja": "利用不可"
+  },
+  "about_feat_bar_cafe": {
+    "uk": "Бар",
+    "en": "Bar",
+    "ja": "バー"
+  },
+  "about_feat_veg": {
+    "uk": "Вегетаріанські опції",
+    "en": "Vegetarian options",
+    "ja": "ベジタリアン対応"
+  },
+  "about_feat_wc": {
+    "uk": "Туалет для гостей",
+    "en": "Restroom",
+    "ja": "お手洗い"
+  },
+  "about_feat_takeaway": {
+    "uk": "Takeaway / з собою",
+    "en": "Takeaway / to-go",
+    "ja": "テイクアウト"
+  },
+  "about_feat_reserve": {
+    "uk": "Бронювання столика",
+    "en": "Table reservation",
+    "ja": "席予約"
+  },
+  "about_feat_cash": {
+    "uk": "Способи оплати: готівка • картка • QR-код",
+    "en": "Payment methods: cash • card • QR code",
+    "ja": "お支払い方法：現金・カード・QRコード"
+  },
+  "about_feat_parking_off": {
+    "uk": "Парковка",
+    "en": "Parking",
+    "ja": "駐車場"
+  },
+  "about_feat_access_off": {
+    "uk": "Доступність для візків",
+    "en": "Wheelchair accessibility",
+    "ja": "車椅子対応"
+  },
+  "mail_title": {
+    "uk": "Написати нам",
+    "en": "Write to us",
+    "ja": "お問い合わせ"
+  },
+  "mail_sub": {
+    "uk": "Ми відповімо якнайшвидше.",
+    "en": "We’ll reply as soon as possible.",
+    "ja": "できるだけ早く返信します。"
+  },
+  "mail_close_aria": {
+    "uk": "Закрити",
+    "en": "Close",
+    "ja": "閉じる"
+  },
+  "mail_name_label": {
+    "uk": "Імʼя",
+    "en": "Name",
+    "ja": "お名前"
+  },
+  "mail_phone_label": {
+    "uk": "Телефон",
+    "en": "Phone",
+    "ja": "電話番号"
+  },
+  "mail_email_label": {
+    "uk": "Email",
+    "en": "Email",
+    "ja": "メールアドレス"
+  },
+  "mail_email_ph": {
+    "uk": "Вкажіть ваш email (наприклад, name@gmail.com)",
+    "en": "Enter your email (for example, name@gmail.com)",
+    "ja": "メールアドレスを入力してください（例：name@gmail.com）"
+  },
+  "mail_message_label": {
+    "uk": "Повідомлення",
+    "en": "Message",
+    "ja": "メッセージ"
+  },
+  "mail_message_ph": {
+    "uk": "Ваше повідомлення...",
+    "en": "Your message...",
+    "ja": "内容を入力してください…"
+  },
+  "mail_cancel": {
+    "uk": "Скасувати",
+    "en": "Cancel",
+    "ja": "キャンセル"
+  },
+  "mail_send": {
+    "uk": "Надіслати",
+    "en": "Send",
+    "ja": "送信"
+  },
+  "mail_hint_default": {
+    "uk": "",
+    "en": "",
+    "ja": ""
+  }
+}

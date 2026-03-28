@@ -6,7 +6,7 @@
   const { $, createToast } = App;
   const { getDict } = I18n;
 
-  const SUPABASE_FN_URL = "https://colibri-mail.vovapotaychuk.workers.dev";
+  const FORM_ENDPOINT_URL = "https://colibri-mail.vovapotaychuk.workers.dev";
 
   let toast = null;
 
@@ -47,7 +47,7 @@
     return data;
   }
 
-  async function sendToSupabase(
+  async function sendFormRequest(
     form,
     { onSuccess, onError, beforeSend, afterSend } = {},
   ) {
@@ -63,7 +63,7 @@
       // DEBUG: подивитися що реально відправляється
       console.log("Sending payload:", payload);
 
-      const res = await fetch(SUPABASE_FN_URL, {
+      const res = await fetch(FORM_ENDPOINT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -82,14 +82,14 @@
           response: json,
           payload,
         };
-        console.error("Supabase send error:", lastError);
+        console.error("Form send error:", lastError);
         throw new Error("send_failed");
       }
 
       onSuccess?.(json);
     } catch (err) {
       if (!lastError) {
-        console.error("sendToSupabase failed:", err);
+        console.error("sendFormRequest failed:", err);
       }
       onError?.(lastError);
     } finally {
@@ -114,7 +114,7 @@
         return;
       }
 
-      await sendToSupabase(form, {
+      await sendFormRequest(form, {
         beforeSend: () => submitBtn?.setAttribute("disabled", "disabled"),
         afterSend: () => submitBtn?.removeAttribute("disabled"),
         onSuccess: () => {
@@ -148,7 +148,7 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      await sendToSupabase(form, {
+      await sendFormRequest(form, {
         beforeSend: () => submitBtn?.setAttribute("disabled", "disabled"),
         afterSend: () => submitBtn?.removeAttribute("disabled"),
         onSuccess: () => {

@@ -1,11 +1,10 @@
-(function () {
+(() => {
   const App = window.App;
   if (!App) return;
 
   const { $, $$, escapeHtml } = App;
-
-  const DEFAULT_LANG = "ja";
-  const supported = ["uk", "en", "ja"];
+  const DEFAULT_LANG = window.ContentStore?.getDefaultLanguage?.() || "ja";
+  const supported = window.ContentStore?.getLanguages?.() || ["uk", "en", "ja"];
 
   let currentDict = null;
   let activeCat = null;
@@ -14,6 +13,7 @@
   function getMenuGrid() {
     return $("#menuGrid");
   }
+
   function getMenuTabs() {
     return $("#menuTabs");
   }
@@ -35,35 +35,6 @@
     });
   }
 
-  function buildTabs(dict) {
-    const menuTabs = getMenuTabs();
-    if (!menuTabs) return;
-
-    const cats = dict.menu_categories || [];
-    menuTabs.innerHTML = "";
-
-    if (!activeCat && cats.length) activeCat = cats[0].id;
-
-    cats.forEach((c) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "tabBtn";
-      b.dataset.cat = c.id;
-      b.setAttribute("role", "tab");
-      b.textContent = c.label;
-
-      b.addEventListener("click", () => {
-        activeCat = c.id;
-        setActiveTabUI();
-        renderMenu(filteredItems());
-      });
-
-      menuTabs.appendChild(b);
-    });
-
-    setActiveTabUI();
-  }
-
   function renderMenu(items) {
     const menuGrid = getMenuGrid();
     if (!menuGrid) return;
@@ -74,6 +45,7 @@
       const div = document.createElement("div");
       div.className = "menuCard";
 
+      div.dataset.id = it.id || "";
       div.dataset.title = it.title || "";
       div.dataset.desc = it.sub || "";
       div.dataset.price = it.price || "";
@@ -107,6 +79,49 @@
     });
   }
 
+  function buildTabs(dict) {
+    const menuTabs = getMenuTabs();
+    if (!menuTabs) return;
+
+    const cats = dict.menu_categories || [];
+    menuTabs.innerHTML = "";
+
+    if (!cats.length) {
+      activeCat = null;
+      return;
+    }
+
+    const availableCats = new Set(
+      (dict.menu_items || []).map((item) => item.cat || "mains"),
+    );
+
+    const visibleCats = cats.filter((category) => availableCats.has(category.id));
+    const tabs = visibleCats.length ? visibleCats : cats;
+
+    if (!activeCat || !tabs.some((category) => category.id === activeCat)) {
+      activeCat = tabs[0].id;
+    }
+
+    tabs.forEach((category) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "tabBtn";
+      button.dataset.cat = category.id;
+      button.setAttribute("role", "tab");
+      button.textContent = category.label;
+
+      button.addEventListener("click", () => {
+        activeCat = category.id;
+        setActiveTabUI();
+        renderMenu(filteredItems());
+      });
+
+      menuTabs.appendChild(button);
+    });
+
+    setActiveTabUI();
+  }
+
   function applyText(dict) {
     $$("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
@@ -119,18 +134,27 @@
     });
   }
 
-  function setLang(lang) {
-    if (!supported.includes(lang)) lang = DEFAULT_LANG;
+  function normalizeLang(raw) {
+    const lang = String(raw || "").toLowerCase().split("-")[0];
+    return supported.includes(lang) ? lang : DEFAULT_LANG;
+  }
+
+  async function setLang(lang) {
+    lang = normalizeLang(lang);
+
+    try {
+      await window.ContentStore?.ready?.();
+    } catch (error) {
+      console.error("Unable to apply translations", error);
+      return;
+    }
 
     localStorage.setItem("lang", lang);
     document.documentElement.lang = lang;
 
-    $$(".langbtn").forEach((b) =>
-      b.setAttribute(
-        "aria-pressed",
-        b.dataset.lang === lang ? "true" : "false",
-      ),
-    );
+    $$(".langbtn").forEach((b) => {
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+    });
 
     const dict = window.I18N?.[lang] || window.I18N?.[DEFAULT_LANG];
     if (!dict) return;
@@ -147,19 +171,14 @@
     return currentDict;
   }
 
-  window.AppI18n = { setLang, getDict };
+  window.AppI18n = {
+    setLang,
+    getDict,
+    ready: () => window.ContentStore?.ready?.() || Promise.resolve(),
+  };
 
-  document.body.addEventListener("htmx:load", (e) => {
-    const t = e.target;
-
-    if (
-      t?.id === "menu" ||
-      t?.querySelector?.("#menuGrid") ||
-      t?.querySelector?.("#menuTabs") ||
-      t?.querySelector?.("[data-i18n]") ||
-      t?.querySelector?.("[data-i18n-placeholder]")
-    ) {
-      setLang(localStorage.getItem("lang") || DEFAULT_LANG);
-    }
+  document.body.addEventListener("htmx:load", () => {
+    const lang = localStorage.getItem("lang") || DEFAULT_LANG;
+    setLang(lang);
   });
 })();

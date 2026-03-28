@@ -126,9 +126,13 @@
 
         S.collectVisibleItems?.();
 
-        const t = card.dataset.title || "";
-        const p = card.dataset.price || "";
-        const idx = S.items.findIndex((x) => x.title === t && x.price === p);
+        const id = card.dataset.id || "";
+        const title = card.dataset.title || "";
+        const price = card.dataset.price || "";
+        const idx = S.items.findIndex((item) => {
+          if (id && item.id) return item.id === id;
+          return item.title === title && item.price === price;
+        });
 
         S.openDishByIndex?.(idx >= 0 ? idx : 0);
       });

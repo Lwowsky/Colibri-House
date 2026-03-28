@@ -1,0 +1,74 @@
+[
+  {
+    "id": "dumplings",
+    "sort": 10,
+    "label": {
+      "uk": "Вареники",
+      "en": "Dumplings",
+      "ja": "ぎょうざ"
+    }
+  },
+  {
+    "id": "bliny",
+    "sort": 20,
+    "label": {
+      "uk": "Млинці",
+      "en": "Crepes",
+      "ja": "ブリニ"
+    }
+  },
+  {
+    "id": "mains",
+    "sort": 30,
+    "label": {
+      "uk": "Основні",
+      "en": "Mains",
+      "ja": "メイン"
+    }
+  },
+  {
+    "id": "salads",
+    "sort": 40,
+    "label": {
+      "uk": "Салати",
+      "en": "Salads",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "zakusky",
+    "sort": 50,
+    "label": {
+      "uk": "Закуски",
+      "en": "Appetizers",
+      "ja": "前菜"
+    }
+  },
+  {
+    "id": "pirozhki",
+    "sort": 60,
+    "label": {
+      "uk": "Пирожки",
+      "en": "Pirozhki",
+      "ja": "ピロシキ"
+    }
+  },
+  {
+    "id": "desserts",
+    "sort": 70,
+    "label": {
+      "uk": "Десерти",
+      "en": "Desserts",
+      "ja": "デザート"
+    }
+  },
+  {
+    "id": "drinks",
+    "sort": 80,
+    "label": {
+      "uk": "Напої",
+      "en": "Drinks",
+      "ja": "ドリンク"
+    }
+  }
+]

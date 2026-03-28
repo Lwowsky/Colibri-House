@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Colibri House Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/css/admin.css" />
+  </head>
+  <body>
+    <div class="admin-shell">
+      <section class="login-screen" id="loginScreen">
+        <div class="login-card">
+          <div class="login-brand">
+            <span class="eyebrow">Colibri House</span>
+            <h1>Адмін-панель контенту</h1>
+            <p>
+              Меню, ціни, переклади та фото зберігаються в JSON і комітяться прямо в GitHub через захищений серверний API.
+            </p>
+          </div>
+
+          <form id="loginForm" class="login-form" novalidate>
+            <label>
+              Логін
+              <input id="username" type="text" autocomplete="username" required />
+            </label>
+
+            <label>
+              Пароль
+              <input
+                id="password"
+                type="password"
+                autocomplete="current-password"
+                required
+              />
+            </label>
+
+            <button class="btn btn-primary" type="submit">Увійти</button>
+          </form>
+
+          <div class="notice">
+            <strong>Безпека:</strong> логін, пароль і GitHub token не зберігаються в коді сайту.
+            Верифікація відбувається на сервері, а зміни йдуть у GitHub через захищені env-змінні.
+          </div>
+          <p class="helper-text" id="loginMessage"></p>
+        </div>
+      </section>
+
+      <section class="app-screen hidden" id="appScreen">
+        <header class="app-header">
+          <div>
+            <span class="eyebrow">Admin</span>
+            <h1>Colibri House Content Manager</h1>
+            <p class="muted">
+              Редагуй меню, категорії та тексти одразу для української, англійської й японської мов.
+            </p>
+          </div>
+
+          <div class="app-actions">
+            <label class="commit-field">
+              Commit note
+              <input
+                id="commitMessage"
+                type="text"
+                placeholder="Наприклад: update spring menu prices"
+              />
+            </label>
+            <button class="btn btn-secondary" id="reloadButton" type="button">Оновити з GitHub</button>
+            <button class="btn btn-primary" id="saveButton" type="button">Зберегти в GitHub</button>
+            <button class="btn btn-ghost" id="logoutButton" type="button">Вийти</button>
+          </div>
+        </header>
+
+        <div class="toolbar-card">
+          <div class="toolbar-grid">
+            <div>
+              <div class="stat-label">GitHub save mode</div>
+              <div class="stat-value" id="apiBaseLabel">Same-origin API</div>
+            </div>
+            <div>
+              <div class="stat-label">Страв у меню</div>
+              <div class="stat-value" id="menuCount">0</div>
+            </div>
+            <div>
+              <div class="stat-label">Категорій</div>
+              <div class="stat-value" id="categoryCount">0</div>
+            </div>
+            <div>
+              <div class="stat-label">Текстових ключів</div>
+              <div class="stat-value" id="textCount">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Admin sections">
+          <button class="tab is-active" data-tab="menu" type="button">Меню</button>
+          <button class="tab" data-tab="categories" type="button">Категорії</button>
+          <button class="tab" data-tab="texts" type="button">Тексти сайту</button>
+        </div>
+
+        <section class="tab-panel" data-panel="menu">
+          <div class="section-head">
+            <div>
+              <h2>Меню</h2>
+              <p class="muted">Редагуй ціни, назви, фото, порядок і переклади для всіх мов.</p>
+            </div>
+            <button class="btn btn-secondary" id="addMenuItemButton" type="button">+ Додати страву</button>
+          </div>
+          <div id="menuEditor" class="stack"></div>
+        </section>
+
+        <section class="tab-panel hidden" data-panel="categories">
+          <div class="section-head">
+            <div>
+              <h2>Категорії</h2>
+              <p class="muted">Керує вкладками меню та їх порядком.</p>
+            </div>
+            <button class="btn btn-secondary" id="addCategoryButton" type="button">+ Додати категорію</button>
+          </div>
+          <div id="categoriesEditor" class="stack"></div>
+        </section>
+
+        <section class="tab-panel hidden" data-panel="texts">
+          <div class="section-head">
+            <div>
+              <h2>Тексти сайту</h2>
+              <p class="muted">Hero, About, Access, Reserve та інші тексти по всьому сайту.</p>
+            </div>
+            <button class="btn btn-secondary" id="addTextKeyButton" type="button">+ Додати текстовий ключ</button>
+          </div>
+          <div id="textsEditor" class="stack"></div>
+        </section>
+      </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="/admin/js/admin.js"></script>
+  </body>
+</html>

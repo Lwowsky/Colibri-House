@@ -59,6 +59,7 @@
         "";
 
       return {
+        id: card.dataset.id || "",
         title: card.dataset.title || "",
         desc: card.dataset.desc || "",
         price: card.dataset.price || "",

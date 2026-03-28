@@ -143,14 +143,15 @@
 }
 
 .menuImgWrap {
-  aspect-ratio: 4 / 3;
-  background: rgba(0, 0, 0, 0.04);
+  aspect-ratio: 3 / 2;
+  background: #fff;
   border-bottom: 1px solid rgba(223, 230, 227, 0.95);
 }
 .menuImgWrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 

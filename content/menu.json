@@ -1,0 +1,626 @@
+[
+  {
+    "id": "dumplings-varenyky-potato-mushrooms",
+    "sort": 10,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Вареники з картоплею та грибами",
+      "en": "Varenyky with Potato and Mushrooms",
+      "ja": "ヴァレーニキ ジャガイモとマッシュルーム添え"
+    },
+    "sub": {
+      "uk": "Вареники з картоплею та грибами, подані зі сметаною",
+      "en": "Varenyky filled with potato and mushrooms, served with sour cream",
+      "ja": "ポテトとマッシュルーム入りのヴァレーニキ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Вареники",
+      "en": "Varenyky",
+      "ja": "ヴァレーニキ"
+    }
+  },
+  {
+    "id": "dumplings-varenyky-cabbage",
+    "sort": 20,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Вареники з капустою",
+      "en": "Varenyky with Cabbage",
+      "ja": "ヴァレーニキ キャベツ入り"
+    },
+    "sub": {
+      "uk": "Вареники з капустою, подані зі сметаною",
+      "en": "Varenyky filled with cabbage, served with sour cream",
+      "ja": "キャベツ入りのヴァレーニキ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Вареники",
+      "en": "Varenyky",
+      "ja": "ヴァレーニキ"
+    }
+  },
+  {
+    "id": "dumplings-fried-varenyky-potato-mushrooms",
+    "sort": 30,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling03.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажені вареники з картоплею та грибами",
+      "en": "Fried Varenyky with Potato and Mushrooms",
+      "ja": "ヤキヴァレニキ ポテトとマッシュルーム"
+    },
+    "sub": {
+      "uk": "Смажені вареники з картоплею та грибами, подані зі сметаною",
+      "en": "Fried varenyky filled with potato and mushrooms, served with sour cream",
+      "ja": "ポテトとマッシュルーム入りのヤキヴァレーニキ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Вареники",
+      "en": "Varenyky",
+      "ja": "ヴァレーニキ"
+    }
+  },
+  {
+    "id": "dumplings-fried-varenyky-cabbage",
+    "sort": 40,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling03.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажені вареники з капустою",
+      "en": "Fried Varenyky with Cabbage",
+      "ja": "ヤキヴァレニキ キャベツ入り"
+    },
+    "sub": {
+      "uk": "Смажені вареники з капустою, подані зі сметаною",
+      "en": "Fried varenyky filled with cabbage, served with sour cream",
+      "ja": "キャベツ入りのヤキヴァレーニキ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Вареники",
+      "en": "Varenyky",
+      "ja": "ヴァレーニキ"
+    }
+  },
+  {
+    "id": "dumplings-pelmeni",
+    "sort": 50,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling02.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Пельмені",
+      "en": "Pelmeni",
+      "ja": "ペルメニ"
+    },
+    "sub": {
+      "uk": "Пельмені, подані зі сметаною",
+      "en": "Pelmeni, served with sour cream",
+      "ja": "ペルメニ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Пельмені",
+      "en": "Pelmeni",
+      "ja": "ペルメニ"
+    }
+  },
+  {
+    "id": "dumplings-fried-pelmeni",
+    "sort": 60,
+    "active": true,
+    "cat": "dumplings",
+    "price": "¥1300",
+    "img": "img/menu/dumpling04.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажені пельмені",
+      "en": "Fried Pelmeni",
+      "ja": "ヤキペリメニ"
+    },
+    "sub": {
+      "uk": "Смажені пельмені, подані зі сметаною",
+      "en": "Fried pelmeni, served with sour cream",
+      "ja": "ヤキペルメニ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Пельмені",
+      "en": "Pelmeni",
+      "ja": "ペルメニ"
+    }
+  },
+  {
+    "id": "bliny-meat",
+    "sort": 70,
+    "active": true,
+    "cat": "bliny",
+    "price": "¥800",
+    "img": "img/menu/bliny01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Млинці з м’ясом",
+      "en": "Crepes with Meat",
+      "ja": "ブリニ肉入り"
+    },
+    "sub": {
+      "uk": "Домашній рецепт млинців з м’ясною начинкою, подані зі сметаною",
+      "en": "Homestyle Crepes with a meat filling, served with sour cream",
+      "ja": "肉入りの手作りブリニ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Млинці",
+      "en": "Crepes",
+      "ja": "ブリニ"
+    }
+  },
+  {
+    "id": "bliny-cottage-cheese",
+    "sort": 80,
+    "active": true,
+    "cat": "bliny",
+    "price": "¥800",
+    "img": "img/menu/bliny02.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Млинці з кисломолочним сиром (творогом)",
+      "en": "Crepes with Cottage Cheese",
+      "ja": "ブリニ カッテージチーズ入り"
+    },
+    "sub": {
+      "uk": "Млинці з кисломолочним сиром (творогом), подані зі сметаною",
+      "en": "Crepes filled with cottage cheese, served with sour cream",
+      "ja": "カッテージチーズ入りのブリニ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Млинці",
+      "en": "Crepes",
+      "ja": "ブリニ"
+    }
+  },
+  {
+    "id": "mains-borscht",
+    "sort": 90,
+    "active": true,
+    "cat": "mains",
+    "price": "¥1500",
+    "img": "img/menu/borscht.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Борщ",
+      "en": "Borscht",
+      "ja": "ボルシチ"
+    },
+    "sub": {
+      "uk": "Буряковий суп зі сметаною",
+      "en": "Beet soup served with sour cream",
+      "ja": "ビーツのスープ。サワークリーム添え"
+    },
+    "tag": {
+      "uk": "Хіт",
+      "en": "Hit",
+      "ja": "人気"
+    }
+  },
+  {
+    "id": "mains-fried-chicken-honey-mustard",
+    "sort": 100,
+    "active": true,
+    "cat": "mains",
+    "price": "¥800",
+    "img": "img/menu/chicken.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажена курка з медово-гірчичним соусом",
+      "en": "Fried Chicken with Honey Mustard Sauce",
+      "ja": "ハニーマスタードソースの フライドチキン"
+    },
+    "sub": {
+      "uk": "Смажена курка з медово-гірчичним соусом",
+      "en": "Fried chicken with honey mustard sauce",
+      "ja": "ハニーマスタードソースの フライドチキン"
+    },
+    "tag": {
+      "uk": "Основне",
+      "en": "Main",
+      "ja": "メイン"
+    }
+  },
+  {
+    "id": "mains-fried-chicken-pineapple-cheese",
+    "sort": 110,
+    "active": true,
+    "cat": "mains",
+    "price": "¥1200",
+    "img": "img/menu/chicken01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажена курка з ананасом і сиром",
+      "en": "Fried Chicken with Pineapple and Cheese",
+      "ja": "パイナップルとチーズのフライドチキン"
+    },
+    "sub": {
+      "uk": "Смажена курка з ананасом і сиром",
+      "en": "Fried chicken with pineapple and cheese",
+      "ja": "パイナップルとチーズのフライドチキン"
+    },
+    "tag": {
+      "uk": "Основне",
+      "en": "Main",
+      "ja": "メイン"
+    }
+  },
+  {
+    "id": "salads-shuba",
+    "sort": 120,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1300",
+    "img": "img/menu/salad01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Шуба",
+      "en": "Olivier",
+      "ja": "オリヴィエ"
+    },
+    "sub": {
+      "uk": "Салат з оселедцем, буряком, картоплею та морквою",
+      "en": "Salad with sausage, potato, carrot, and green peas",
+      "ja": "ソーセージ、ポテト、にんじん、グリーンピースのサラダ"
+    },
+    "tag": {
+      "uk": "Хіт",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "salads-olivier",
+    "sort": 130,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1200",
+    "img": "img/menu/salad02.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Олів’є",
+      "en": "Mimosa",
+      "ja": "ミモザサラダ"
+    },
+    "sub": {
+      "uk": "Салат з ковбасою, картоплею, морквою та зеленим горошком",
+      "en": "Salad with fish, potato, carrot, and mayonnaise",
+      "ja": "魚、ポテト、にんじん、マヨネーズのサラダ"
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "salads-mimosa",
+    "sort": 140,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1200",
+    "img": "img/menu/salad03.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Мімоза",
+      "en": "Vinaigrette",
+      "ja": "ビネグレットサラダ"
+    },
+    "sub": {
+      "uk": "Салат з рибою, картоплею, морквою та майонезом",
+      "en": "Salad of boiled vegetables (beetroot, potato, carrot), pickles, and onion, dressed with oil.",
+      "ja": "茹で野菜（ビーツ、ポテト、にんじん）、ピクルス、玉ねぎのサラダ。オイルドレッシング"
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "salads-vinaigrette",
+    "sort": 150,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1200",
+    "img": "img/menu/salad04.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Вінегрет",
+      "en": "Beetroot with Garlic and Mayonnaise",
+      "ja": "サラダ、ニンニク入りビー ツとマヨネーズ"
+    },
+    "sub": {
+      "uk": "Салат із варених овочів (буряк, картопля, морква), солоних огірків та цибулі, заправлений олією.",
+      "en": "Salad with beetroot, garlic, and mayonnaise",
+      "ja": "ビーツ、にんにく、マヨネーズのサラダ"
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "salads-beetroot-garlic-mayo",
+    "sort": 160,
+    "active": true,
+    "cat": "salads",
+    "price": "¥700",
+    "img": "img/menu/salad05.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Буряк з часником і майонезом",
+      "en": "",
+      "ja": ""
+    },
+    "sub": {
+      "uk": "Салат з буряком, часником та майонезом",
+      "en": "",
+      "ja": ""
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "",
+      "ja": ""
+    }
+  },
+  {
+    "id": "salads-mozzarella",
+    "sort": 170,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1300",
+    "img": "img/menu/salad06.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Салат з моцарелою",
+      "en": "Mozzarella Salad",
+      "ja": "モッツァレラサラダ"
+    },
+    "sub": {
+      "uk": "Салат з моцарелою",
+      "en": "Salad with mozzarella",
+      "ja": "モッツァレラサラダ"
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "salads-avocado-honey-mustard",
+    "sort": 180,
+    "active": true,
+    "cat": "salads",
+    "price": "¥1300",
+    "img": "img/menu/salad07.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Салат з авокадо",
+      "en": "Avocado Salad",
+      "ja": "アボカドサラダ"
+    },
+    "sub": {
+      "uk": "Салат з авокадо під медово-гірчичним соусом",
+      "en": "Avocado salad with honey mustard sauce",
+      "ja": "ハニーマスタードソースのアボカドサラダ"
+    },
+    "tag": {
+      "uk": "Салат",
+      "en": "Salad",
+      "ja": "サラダ"
+    }
+  },
+  {
+    "id": "pirozhki-egg-cheese",
+    "sort": 190,
+    "active": true,
+    "cat": "pirozhki",
+    "price": "¥500",
+    "img": "img/menu/pirozhki.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Пиріжок з яйцем та сиром",
+      "en": "",
+      "ja": ""
+    },
+    "sub": {
+      "uk": "Пиріжок з яйцем та сиром, запечений до золотистої скоринки",
+      "en": "",
+      "ja": ""
+    },
+    "tag": {
+      "uk": "Пиріжки",
+      "en": "",
+      "ja": ""
+    }
+  },
+  {
+    "id": "pirozhki-cabbage",
+    "sort": 200,
+    "active": true,
+    "cat": "pirozhki",
+    "price": "¥500",
+    "img": "img/menu/pirozhki.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Пиріжок з капустою",
+      "en": "",
+      "ja": ""
+    },
+    "sub": {
+      "uk": "Пиріжок з капустою, запечений до золотистої скоринки",
+      "en": "",
+      "ja": ""
+    },
+    "tag": {
+      "uk": "Пиріжки",
+      "en": "",
+      "ja": ""
+    }
+  },
+  {
+    "id": "appetizers-breaded-shrimp",
+    "sort": 210,
+    "active": true,
+    "cat": "zakusky",
+    "price": "¥1200",
+    "img": "img/menu/zakusky02.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажені креветки в паніровці",
+      "en": "Fried Breaded Shrimp",
+      "ja": "エビフライ"
+    },
+    "sub": {
+      "uk": "Смажені креветки в паніровці",
+      "en": "Fried shrimp in breadcrumbs",
+      "ja": "エビフライ"
+    },
+    "tag": {
+      "uk": "Креветки",
+      "en": "Shrimp",
+      "ja": "エビ"
+    }
+  },
+  {
+    "id": "appetizers-ukrainian-salo",
+    "sort": 220,
+    "active": true,
+    "cat": "zakusky",
+    "price": "¥1000",
+    "img": "img/menu/zakusky03.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Сало",
+      "en": "Ukrainian Salo",
+      "ja": "サーロ"
+    },
+    "sub": {
+      "uk": "Сало подане з чорним хлібом",
+      "en": "Traditional cured pork fat served with black bread",
+      "ja": "黒パン添えのサーロ"
+    },
+    "tag": {
+      "uk": "Сало",
+      "en": "Ukrainian Salo",
+      "ja": "サーロ"
+    }
+  },
+  {
+    "id": "appetizers-fried-cheese-balls",
+    "sort": 230,
+    "active": true,
+    "cat": "zakusky",
+    "price": "¥800",
+    "img": "img/menu/zakusky04.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Смажені сирні кульки",
+      "en": "Fried Cheese Balls",
+      "ja": "フライドチーズボール"
+    },
+    "sub": {
+      "uk": "Смажені сирні кульки у фритюрі",
+      "en": "Deep-fried cheese balls",
+      "ja": "フライドチーズボール"
+    },
+    "tag": {
+      "uk": "Сирні кульки",
+      "en": "Cheese Balls",
+      "ja": "チーズボール"
+    }
+  },
+  {
+    "id": "appetizers-french-fries",
+    "sort": 240,
+    "active": true,
+    "cat": "zakusky",
+    "price": "¥1000",
+    "img": "img/menu/zakusky05.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Картопля фрі",
+      "en": "French Fries",
+      "ja": "フライドポテト"
+    },
+    "sub": {
+      "uk": "Смажена картопля фрі",
+      "en": "Crispy French fries",
+      "ja": "フライドポテト"
+    },
+    "tag": {
+      "uk": "Картопля фрі",
+      "en": "French Fries",
+      "ja": "フライドポテト"
+    }
+  },
+  {
+    "id": "desserts-chocolate-ice-cream",
+    "sort": 250,
+    "active": true,
+    "cat": "desserts",
+    "price": "¥400",
+    "img": "img/menu/dessert01.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Шоколадне морозиво",
+      "en": "Chocolate Ice Cream",
+      "ja": "チョコレートアイスクリーム"
+    },
+    "sub": {
+      "uk": "Шоколадне морозиво",
+      "en": "Chocolate ice cream",
+      "ja": "チョコレートアイスクリーム"
+    },
+    "tag": {
+      "uk": "Морозиво",
+      "en": "Ice Cream",
+      "ja": "アイスクリーム"
+    }
+  },
+  {
+    "id": "desserts-vanilla-ice-cream",
+    "sort": 260,
+    "active": true,
+    "cat": "desserts",
+    "price": "¥400",
+    "img": "img/menu/dessert02.jpg",
+    "imgs": [],
+    "title": {
+      "uk": "Ванільне морозиво",
+      "en": "Vanilla Ice Cream",
+      "ja": "バニラアイスクリーム"
+    },
+    "sub": {
+      "uk": "Ванільне морозиво",
+      "en": "Vanilla ice cream",
+      "ja": "バニラアイスクリーム"
+    },
+    "tag": {
+      "uk": "Морозиво",
+      "en": "Ice Cream",
+      "ja": "アイスクリーム"
+    }
+  }
+]

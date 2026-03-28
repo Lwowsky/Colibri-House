@@ -4,15 +4,15 @@
   if (!App || !I18n) return;
 
   const { $$ } = App;
-  const { setLang } = I18n;
+  const { setLang, ready } = I18n;
 
   const LANG_KEY = "lang";
   const ALLOWED = ["ja", "en", "uk"];
   const DEFAULT = "ja";
 
   function normalizeLang(raw) {
-    const v = String(raw || "").toLowerCase();
-    const short = v.split("-")[0];
+    const value = String(raw || "").toLowerCase();
+    const short = value.split("-")[0];
     return ALLOWED.includes(short) ? short : DEFAULT;
   }
 
@@ -22,51 +22,53 @@
         ? navigator.languages
         : [navigator.language || navigator.userLanguage || ""];
 
-    for (const l of langs) {
-      const short = normalizeLang(l);
+    for (const lang of langs) {
+      const short = normalizeLang(lang);
       if (ALLOWED.includes(short)) return short;
     }
     return DEFAULT;
   }
 
-  function applyLang(lang) {
-    setLang(normalizeLang(lang));
+  async function applyLang(lang) {
+    await ready?.();
+    await setLang(normalizeLang(lang));
   }
 
-  function autoLangOnce() {
+  async function autoLangOnce() {
     if (document.documentElement.dataset.langAutoInited === "1") return;
     document.documentElement.dataset.langAutoInited = "1";
 
     const saved = localStorage.getItem(LANG_KEY);
     if (saved && ALLOWED.includes(saved)) {
-      applyLang(saved);
+      await applyLang(saved);
       return;
     }
 
     const device = getDeviceLang();
     localStorage.setItem(LANG_KEY, device);
-    applyLang(device);
+    await applyLang(device);
   }
 
   function initLangButtonsOnce() {
-    $$(".langbtn").forEach((b) => {
-      if (b.dataset.inited === "1") return;
-      b.dataset.inited = "1";
+    $$(".langbtn").forEach((button) => {
+      if (button.dataset.inited === "1") return;
+      button.dataset.inited = "1";
 
-      b.addEventListener("click", () => {
-        const chosen = normalizeLang(b.dataset.lang);
+      button.addEventListener("click", async () => {
+        const chosen = normalizeLang(button.dataset.lang);
         localStorage.setItem(LANG_KEY, chosen);
-        applyLang(chosen);
+        await applyLang(chosen);
       });
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    autoLangOnce();
+  document.addEventListener("DOMContentLoaded", async () => {
+    await autoLangOnce();
     initLangButtonsOnce();
   });
 
-  document.body.addEventListener("htmx:load", () => {
+  document.body.addEventListener("htmx:load", async () => {
     initLangButtonsOnce();
+    await applyLang(localStorage.getItem(LANG_KEY) || DEFAULT);
   });
 })();
