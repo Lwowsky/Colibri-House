@@ -304,11 +304,9 @@
 
                 <label class="menu-item-image-path">
                   Image path / URL
-                  <input data-field="img" type="text" value="${escapeHtml(item.img || "")}" placeholder="img/menu/item.jpg or /content/uploads/menu/item.jpg" />
+                  <input data-field="img" type="text" value="${escapeHtml(item.img || "")}" placeholder="img/menu/item.jpg or content/uploads/menu/item.jpg" />
                 </label>
-              </div>
 
-              <aside class="menu-item-media">
                 <div class="uploader">
                   <label>
                     Upload image to GitHub
@@ -316,6 +314,9 @@
                   </label>
                   <small class="muted">Файл завантажиться в <code>content/uploads/menu</code> і шлях підставиться автоматично.</small>
                 </div>
+              </div>
+
+              <aside class="menu-item-media">
                 <div class="image-preview" data-image-preview>${preview}</div>
               </aside>
             </div>
