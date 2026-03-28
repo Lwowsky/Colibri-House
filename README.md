@@ -1,39 +1,58 @@
-# Colibri House — GitHub Admin (без бази даних, без Supabase)
+# Colibri House — GitHub Admin (без БД, з власною адмінкою)
 
-Цей пакет переводить сайт на JSON-контент і додає **власну адмінку** з безпечним логіном/паролем.
+Цей пакет робить 2 речі:
+- публічний сайт читає контент із `content/*.json`
+- адмінка редагує цей контент і комітить зміни прямо в GitHub через **серверний API**
 
-Що важливо:
-- **замовнику не потрібен GitHub-акаунт**
-- **логін, пароль і GitHub token не лежать у фронтенді**
-- адмінка працює через **серверний API**
-- зміни комітяться **прямо в GitHub repo**
-- сайт читає публічний контент із `content/*.json`
+## Важливо
+
+- **GitHub Pages може хостити тільки статичну частину**: сайт і `admin/`
+- **логін, збереження і upload картинок працюють через Node.js API**
+- тобто для продакшену потрібні **2 частини**:
+  1. `GitHub Pages` → публічний сайт + `admin/`
+  2. `Node server` → `/api/admin/*`
+
+## Що безпечно
+
+- логін і пароль **не лежать у фронтенді**
+- GitHub token **не лежить у фронтенді**
+- пароль зберігається як `scrypt` hash у `.env`
+- адмінка отримує короткоживучий підписаний токен тільки після логіну
+- усі записи в GitHub ідуть **тільки через сервер**
 
 ## Структура
 
-- `content/site.json` — всі тексти сайту (`uk`, `en`, `ja`)
+- `content/site.json` — тексти сайту `uk/en/ja`
 - `content/categories.json` — категорії меню
-- `content/menu.json` — позиції меню, ціни, картинки, переклади
-- `admin/index.html` — адмінка
+- `content/menu.json` — меню, ціни, фото, переклади
+- `admin/index.html` — UI адмінки
 - `admin/css/admin.css`
 - `admin/js/admin.js`
-- `server/index.js` — власний бекенд API + статичний сервер
-- `tools/generate-admin-password-hash.mjs` — генератор безпечного хешу пароля
+- `server/index.js` — Node API + локальний сервер
+- `tools/generate-admin-password-hash.mjs` — генератор хешу пароля
 
-## Як працює безпека
+---
 
-1. Клієнт відкриває `/admin`
-2. Логін і пароль відправляються на **сервер**
-3. Сервер перевіряє пароль по `scrypt`-хешу з env-змінної
-4. Якщо все ок — сервер ставить `HttpOnly` cookie
-5. Браузер **не бачить** пароль, хеш або GitHub token
-6. Коли натискаєш `Зберегти`, сервер комітить нові JSON у GitHub через token з env
+## 1. Локальний запуск
 
-Секрети не потрапляють у `admin.js` або публічний сайт.
+```bash
+npm install
+cp .env.example .env
+```
 
-## Потрібні env змінні
+Потім заповни `.env` і запусти:
 
-Створи `.env` на основі `.env.example`:
+```bash
+npm run dev
+```
+
+Локально буде:
+- `http://localhost:3000/`
+- `http://localhost:3000/admin/`
+
+---
+
+## 2. Env змінні
 
 ```env
 PORT=3000
@@ -45,100 +64,197 @@ GITHUB_REPO_OWNER=your-github-username-or-org
 GITHUB_REPO_NAME=your-repo-name
 GITHUB_REPO_BRANCH=main
 CONTENT_DIR=content
+ADMIN_ALLOWED_ORIGIN=http://localhost:3000,https://lwowsky.github.io
 ```
 
-## Як згенерувати хеш пароля
+### `ADMIN_ALLOWED_ORIGIN`
+Це список origin-ів, з яких дозволено відкривати адмінку.
+
+Для GitHub Pages лиши щось типу:
+
+```env
+ADMIN_ALLOWED_ORIGIN=https://lwowsky.github.io
+```
+
+Якщо тестуєш локально і на GitHub Pages одночасно:
+
+```env
+ADMIN_ALLOWED_ORIGIN=http://localhost:3000,https://lwowsky.github.io
+```
+
+---
+
+## 3. Як згенерувати пароль
+
+Ти сам придумуєш пароль, наприклад:
+
+```txt
+ColibriAdmin2026!
+```
+
+Потім запускаєш:
 
 ```bash
-node tools/generate-admin-password-hash.mjs "YourStrongPassword"
+node tools/generate-admin-password-hash.mjs "ColibriAdmin2026!"
 ```
 
-Скопіюй результат у `ADMIN_PASSWORD_HASH`.
+Команда поверне рядок виду:
 
-## Який GitHub token потрібен
+```txt
+scrypt$...$...
+```
 
-Зроби **fine-grained personal access token** з доступом тільки до потрібного репозиторію.
+Його вставляєш у `.env`:
 
-Мінімально потрібно:
+```env
+ADMIN_PASSWORD_HASH=scrypt$...$...
+```
+
+### Пароль міняється кожного разу?
+Ні.
+
+- ти входиш **тим самим звичайним паролем**, який придумав
+- у `.env` лежить **не пароль**, а його хеш
+- якщо ти заново перегенеруєш хеш для того самого пароля, рядок може бути іншим — це нормально
+- але пароль для входу сам по собі **не змінюється**, поки ти його сам не змінюєш
+
+---
+
+## 4. Який GitHub token потрібен
+
+Зроби **fine-grained personal access token** тільки для цього repo.
+
+Потрібно:
 - `Contents: Read and write`
 - `Metadata: Read`
 
-## Локальний запуск
+Цього достатньо для:
+- читання `content/*.json`
+- комітів у repo
+- завантаження картинок у `content/uploads/...`
 
-```bash
-npm install
-cp .env.example .env
-npm run dev
+---
+
+## 5. Як це працює на GitHub Pages
+
+### Статична частина
+Ти можеш залишити:
+- сайт на `https://lwowsky.github.io/Colibri-House/`
+- адмінку на `https://lwowsky.github.io/Colibri-House/admin/`
+
+### Серверна частина
+Node API треба задеплоїти окремо, наприклад на:
+- Render
+- Railway
+- VPS
+- будь-який Node hosting
+
+Наприклад API буде жити тут:
+
+```txt
+https://colibri-admin-api.onrender.com
 ```
 
-Сайт буде доступний на:
-- `http://localhost:3000/`
-- `http://localhost:3000/admin/`
+### Що робити в адмінці на GitHub Pages
+Відкриваєш:
 
-## Що саме редагується в адмінці
+```txt
+https://lwowsky.github.io/Colibri-House/admin/
+```
+
+і в полі **API base URL** вставляєш:
+
+```txt
+https://colibri-admin-api.onrender.com
+```
+
+Після цього:
+- натискаєш **Зберегти API адресу**
+- натискаєш **Перевірити API**
+- логінишся
+- редагуєш контент
+
+Адреса API збережеться в цьому браузері.
+
+---
+
+## 6. Що редагується в адмінці
 
 ### Меню
-- назва (`uk/en/ja`)
-- опис (`uk/en/ja`)
-- tag (`uk/en/ja`)
+- title `uk/en/ja`
+- description `uk/en/ja`
+- tag `uk/en/ja`
 - ціна
 - категорія
-- порядок
-- активність
-- картинка
-- додавання нової страви
-- видалення страви
+- sort
+- active
+- image path
+- upload картинки
+- додавання нових страв
+- видалення страв
 
 ### Категорії
-- `id`
-- label у 3 мовах
-- порядок
+- id
+- label `uk/en/ja`
+- sort
 
 ### Тексти сайту
-- будь-які ключі, які сайт читає через `data-i18n`
-- наприклад `hero_title`, `reserve_title`, `access_title`
+- будь-який текстовий ключ по сайту
+- `hero_title`, `reserve_title`, `access_title` тощо
+- для `uk/en/ja`
 
-## Завантаження картинок
+---
 
-Коли в адмінці вибираєш файл:
-- він відправляється на сервер
-- сервер завантажує його в GitHub у `content/uploads/menu/`
-- у поле картинки автоматично підставляється шлях
+## 7. Upload картинок
 
-## Як відбувається збереження
+При upload:
+- файл іде на Node API
+- API пушить його в GitHub repo
+- шлях автоматично підставляється в поле картинки
 
-При натисканні `Зберегти в GitHub` сервер:
-- бере нові `site.json`, `categories.json`, `menu.json`
-- створює commit у GitHub
-- твоя платформа хостингу підтягує зміни як звичайний deploy із repo
+За замовчуванням menu images заливаються в:
 
-## Деплой
+```txt
+content/uploads/menu/
+```
 
-Цей пакет найкраще запускати там, де є **Node.js сервер**:
-- VPS
-- Railway
-- Render
-- Fly.io
-- будь-який хостинг з Node
+---
 
-### Важливо
-Якщо твій сайт зараз лежить на **чистому static hosting без Node**, сама адмінка UI відкриється, але API для логіну/збереження не працюватиме. Для безпечного логіну і комітів у GitHub потрібен серверний runtime.
+## 8. Для чого потрібні 2 частини
 
-## Що вже змінено в публічному сайті
+Тому що **GitHub Pages не вміє**:
+- перевіряти логін/пароль на сервері
+- приховувати GitHub token
+- комітити зміни в repo без серверного шару
 
-- сайт більше не залежить від ручного редагування `js/i18n.uk.js`, `js/i18n.en.js`, `js/i18n.ja.js`
-- контент тепер береться з `content/*.json`
-- логіка перемикання мов збережена
-- меню, категорії та тексти працюють з JSON
+Саме тому:
+- UI можна тримати на GitHub Pages
+- безпечний API треба тримати окремо
 
-## Примітка про старі файли
+---
 
-У вихідному архіві були старі файли `supabase/`, але в цьому пакеті вони **не використовуються**.
-
-## Рекомендації по продакшену
+## 9. Рекомендації
 
 - використовуй тільки HTTPS
-- зроби довгий `ADMIN_SESSION_SECRET`
-- не давай GitHub token доступ ширше, ніж потрібно
-- краще мати окремий repo тільки під цей сайт
-- регулярно роби backup `.env`
+- постав довгий `ADMIN_SESSION_SECRET`
+- токен GitHub дай тільки на один repo
+- для продакшену краще мати окремий repo під сайт
+- не коміть `.env`
+- відкривай адмінку на GitHub Pages тільки як:
+
+```txt
+https://lwowsky.github.io/Colibri-House/admin/
+```
+
+зі слешем у кінці
+
+---
+
+## 10. Що вже виправлено в цьому архіві
+
+- `admin/` коректно стилізується на GitHub Pages
+- `/admin` автоматично редіректить на `/admin/`
+- статичні файли адмінки підтягуються правильними шляхами
+- адмінка вміє працювати з **окремим API base URL**
+- Node API підтримує крос-доменний доступ для GitHub Pages
+- авторизація може йти через підписаний bearer token, а не тільки same-origin cookie

@@ -10,7 +10,12 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/admin/css/admin.css" />
+    <script>
+      if (/\/admin$/.test(location.pathname)) {
+        location.replace(location.pathname + "/" + location.search + location.hash);
+      }
+    </script>
+    <link rel="stylesheet" href="css/admin.css" />
   </head>
   <body>
     <div class="admin-shell">
@@ -42,6 +47,18 @@
 
             <button class="btn btn-primary" type="submit">Увійти</button>
           </form>
+
+          <div class="api-config">
+            <label>
+              API base URL
+              <input id="apiBaseInput" type="url" placeholder="https://your-admin-api.example.com" />
+            </label>
+            <div class="inline-actions">
+              <button class="btn btn-secondary" id="saveApiBaseButton" type="button">Зберегти API адресу</button>
+              <button class="btn btn-ghost" id="testApiBaseButton" type="button">Перевірити API</button>
+            </div>
+            <p class="helper-text" id="apiBaseMessage"></p>
+          </div>
 
           <div class="notice">
             <strong>Безпека:</strong> логін, пароль і GitHub token не зберігаються в коді сайту.
@@ -139,6 +156,6 @@
     </div>
 
     <div class="toast" id="toast"></div>
-    <script src="/admin/js/admin.js"></script>
+    <script src="js/admin.js"></script>
   </body>
 </html>

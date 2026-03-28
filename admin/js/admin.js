@@ -1,5 +1,10 @@
 (() => {
   const LANGS = ["uk", "en", "ja"];
+  const STORAGE_KEYS = {
+    apiBase: "colibriAdminApiBase",
+    token: "colibriAdminToken",
+  };
+  const STATIC_ROOT = new URL("../", window.location.href);
   const state = {
     bundle: {
       site: {},
@@ -7,6 +12,8 @@
       menu: [],
     },
     activeTab: "menu",
+    apiBase: "",
+    authToken: sessionStorage.getItem(STORAGE_KEYS.token) || "",
   };
 
   const $ = (selector, root = document) => root.querySelector(selector);
@@ -19,6 +26,10 @@
     usernameInput: $("#username"),
     passwordInput: $("#password"),
     loginMessage: $("#loginMessage"),
+    apiBaseInput: $("#apiBaseInput"),
+    apiBaseMessage: $("#apiBaseMessage"),
+    saveApiBaseButton: $("#saveApiBaseButton"),
+    testApiBaseButton: $("#testApiBaseButton"),
     apiBaseLabel: $("#apiBaseLabel"),
     menuCount: $("#menuCount"),
     categoryCount: $("#categoryCount"),
@@ -38,10 +49,45 @@
 
   let toastTimer = null;
 
+  function normalizeApiBase(value) {
+    const trimmed = String(value || "").trim();
+    if (!trimmed) return "";
+    return trimmed.replace(/\/+$/, "");
+  }
+
+  function getInitialApiBase() {
+    const fromQuery = new URLSearchParams(window.location.search).get("apiBase");
+    if (fromQuery) return normalizeApiBase(fromQuery);
+    const fromStorage = localStorage.getItem(STORAGE_KEYS.apiBase);
+    if (fromStorage) return normalizeApiBase(fromStorage);
+    return "";
+  }
+
+  function setApiBase(value, options = {}) {
+    const normalized = normalizeApiBase(value);
+    state.apiBase = normalized;
+    if (els.apiBaseInput) els.apiBaseInput.value = normalized;
+    if (els.apiBaseLabel) els.apiBaseLabel.textContent = normalized || "Same-origin API";
+    if (options.persist === false) return;
+    if (normalized) localStorage.setItem(STORAGE_KEYS.apiBase, normalized);
+    else localStorage.removeItem(STORAGE_KEYS.apiBase);
+  }
+
+  function setApiBaseMessage(message, type = "") {
+    if (!els.apiBaseMessage) return;
+    els.apiBaseMessage.textContent = message || "";
+    els.apiBaseMessage.className = "helper-text";
+    if (type) els.apiBaseMessage.classList.add(`is-${type}`);
+  }
+
+  function apiUrl(path) {
+    return state.apiBase ? `${state.apiBase}${path}` : path;
+  }
+
   async function apiRequest(path, options = {}) {
     const init = {
       method: options.method || "GET",
-      credentials: "same-origin",
+      credentials: state.apiBase ? "omit" : "same-origin",
       headers: {},
     };
 
@@ -50,9 +96,18 @@
       init.body = JSON.stringify(options.json);
     }
 
-    const res = await fetch(path, init);
+    if (state.authToken) {
+      init.headers.Authorization = `Bearer ${state.authToken}`;
+    }
+
+    const res = await fetch(apiUrl(path), init);
     const contentType = res.headers.get("content-type") || "";
     const data = contentType.includes("application/json") ? await res.json() : await res.text();
+
+    if (res.status === 401 && state.authToken) {
+      state.authToken = "";
+      sessionStorage.removeItem(STORAGE_KEYS.token);
+    }
 
     if (!res.ok || (data && typeof data === "object" && data.ok === false)) {
       const message = typeof data === "object" && data?.error ? data.error : `Request failed (${res.status})`;
@@ -65,7 +120,7 @@
   function resolveAssetUrl(path) {
     if (!path) return "";
     if (/^https?:\/\//i.test(path)) return path;
-    return new URL(path.replace(/^\/+/, ""), `${window.location.origin}/`).toString();
+    return new URL(path.replace(/^\/+/, ""), STATIC_ROOT).toString();
   }
 
   function showToast(message) {
@@ -480,13 +535,18 @@
     setLoading(els.loginForm.querySelector("button[type='submit']"), true, "Вхід...");
 
     try {
-      await apiRequest("/api/admin/login", {
+      const data = await apiRequest("/api/admin/login", {
         method: "POST",
         json: {
           username: valueOf(els.usernameInput),
           password: els.passwordInput.value,
         },
       });
+
+      if (data?.token) {
+        state.authToken = data.token;
+        sessionStorage.setItem(STORAGE_KEYS.token, data.token);
+      }
 
       els.passwordInput.value = "";
       showApp();
@@ -557,6 +617,8 @@
     } catch {
       // ignore
     }
+    state.authToken = "";
+    sessionStorage.removeItem(STORAGE_KEYS.token);
     showLogin();
     showToast("Сесію завершено");
   }
@@ -609,11 +671,30 @@
     }
   }
 
+  async function handleTestApi() {
+    try {
+      setLoading(els.testApiBaseButton, true, "Перевірка...");
+      setApiBase(valueOf(els.apiBaseInput));
+      const data = await apiRequest("/api/admin/health");
+      setApiBaseMessage(`API OK: ${data.repo}@${data.branch}`, "success");
+      showToast("API доступний");
+    } catch (error) {
+      setApiBaseMessage(error.message || "Не вдалося підключитися до API.", "error");
+    } finally {
+      setLoading(els.testApiBaseButton, false);
+    }
+  }
+
   function bindStaticEvents() {
     els.loginForm?.addEventListener("submit", handleLogin);
     els.saveButton?.addEventListener("click", handleSave);
     els.reloadButton?.addEventListener("click", handleReload);
     els.logoutButton?.addEventListener("click", handleLogout);
+    els.saveApiBaseButton?.addEventListener("click", () => {
+      setApiBase(valueOf(els.apiBaseInput));
+      setApiBaseMessage(state.apiBase ? "API адресу збережено в цьому браузері." : "Використовується same-origin API.", "success");
+    });
+    els.testApiBaseButton?.addEventListener("click", handleTestApi);
 
     els.addMenuItemButton?.addEventListener("click", () => {
       syncStateFromDom();
@@ -704,6 +785,10 @@
   }
 
   function init() {
+    setApiBase(getInitialApiBase(), { persist: false });
+    if (window.location.hostname.endsWith("github.io") && !state.apiBase) {
+      setApiBaseMessage("Для GitHub Pages вкажи адресу Node API, наприклад https://your-admin-api.onrender.com", "error");
+    }
     bindStaticEvents();
     tryRestoreSession();
   }

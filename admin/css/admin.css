@@ -460,3 +460,18 @@ button {
     flex-direction: column;
   }
 }
+
+
+.api-config {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fbfdfd;
+  border: 1px solid #dfe8eb;
+  display: grid;
+  gap: 12px;
+}
+
+.api-config .inline-actions {
+  justify-content: flex-start;
+}

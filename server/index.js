@@ -13,6 +13,10 @@ const CONTENT_DIR = (process.env.CONTENT_DIR || 'content').replace(/^\/+|\/+$/g,
 const COOKIE_NAME = 'colibri_admin_session';
 const SESSION_TTL_SECONDS = 60 * 60 * 12;
 const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
+const ALLOWED_ORIGINS = String(process.env.ADMIN_ALLOWED_ORIGIN || '')
+  .split(',')
+  .map((value) => value.trim())
+  .filter(Boolean);
 const app = express();
 
 app.disable('x-powered-by');
@@ -22,6 +26,20 @@ app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  next();
+});
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin && (ALLOWED_ORIGINS.includes('*') || ALLOWED_ORIGINS.includes(origin))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  }
+  if (req.method === 'OPTIONS') {
+    res.status(204).end();
+    return;
+  }
   next();
 });
 
@@ -98,6 +116,22 @@ function verifySessionCookie(cookieValue, secret) {
   return parsed;
 }
 
+function getBearerToken(req) {
+  const header = String(req.headers.authorization || '');
+  const match = header.match(/^Bearer\s+(.+)$/i);
+  return match ? match[1].trim() : '';
+}
+
+function resolveSession(req, secret) {
+  const bearer = getBearerToken(req);
+  if (bearer) {
+    const session = verifySessionCookie(bearer, secret);
+    if (session) return session;
+  }
+  const cookies = parseCookies(req.headers.cookie || '');
+  return verifySessionCookie(cookies[COOKIE_NAME], secret);
+}
+
 function setSession(res, username, secret, secure) {
   const token = makeSessionCookie(username, secret);
   const parts = [
@@ -153,8 +187,7 @@ function requireAuth(req, res, next) {
     res.status(500).json({ ok: false, error: error.message });
     return;
   }
-  const cookies = parseCookies(req.headers.cookie || '');
-  const session = verifySessionCookie(cookies[COOKIE_NAME], config.sessionSecret);
+  const session = resolveSession(req, config.sessionSecret);
   if (!session || session.u !== config.adminUsername) {
     res.status(401).json({ ok: false, error: 'Unauthorized' });
     return;
@@ -299,8 +332,7 @@ function assertJsonArray(value, label) {
 app.get('/api/admin/session', (req, res) => {
   try {
     const config = getConfig();
-    const cookies = parseCookies(req.headers.cookie || '');
-    const session = verifySessionCookie(cookies[COOKIE_NAME], config.sessionSecret);
+    const session = resolveSession(req, config.sessionSecret);
     res.json({ authenticated: !!session && session.u === config.adminUsername, username: session?.u || null });
   } catch (error) {
     res.status(500).json({ ok: false, error: error.message });
@@ -320,8 +352,9 @@ app.post('/api/admin/login', async (req, res) => {
       res.status(401).json({ ok: false, error: 'Невірний логін або пароль.' });
       return;
     }
+    const token = makeSessionCookie(username, config.sessionSecret);
     setSession(res, username, config.sessionSecret, isSecureRequest(req));
-    res.json({ ok: true, username });
+    res.json({ ok: true, username, token });
   } catch (error) {
     res.status(500).json({ ok: false, error: error.message });
   }
@@ -398,7 +431,7 @@ app.get('/api/admin/health', async (_req, res) => {
 });
 
 app.get('/admin', (_req, res) => {
-  res.sendFile(path.join(ROOT, 'admin', 'index.html'));
+  res.redirect(302, '/admin/');
 });
 app.get('/admin/', (_req, res) => {
   res.sendFile(path.join(ROOT, 'admin', 'index.html'));
