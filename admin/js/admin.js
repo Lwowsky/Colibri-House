@@ -270,43 +270,47 @@
               </div>
             </div>
 
-            <div class="card-grid">
-              <label>
-                Item ID
-                <input data-field="id" type="text" value="${escapeHtml(item.id || "")}" />
-              </label>
-              <label>
-                Category
-                <select data-field="cat">${categoryOptions}</select>
-              </label>
-              <label>
-                Price
-                <input data-field="price" type="text" value="${escapeHtml(item.price || "")}" />
-              </label>
-              <label>
-                Sort
-                <input data-field="sort" type="number" value="${escapeHtml(item.sort || 0)}" />
-              </label>
-              <label class="toggle-row">
-                <input data-field="active" type="checkbox" ${item.active !== false ? "checked" : ""} />
-                <span>Visible on site</span>
-              </label>
-              <div></div>
+            <div class="menu-item-layout">
+              <div class="menu-item-main">
+                <div class="card-grid menu-item-fields">
+                  <label>
+                    Item ID
+                    <input data-field="id" type="text" value="${escapeHtml(item.id || "")}" />
+                  </label>
+                  <label>
+                    Category
+                    <select data-field="cat">${categoryOptions}</select>
+                  </label>
+                  <label>
+                    Price
+                    <input data-field="price" type="text" value="${escapeHtml(item.price || "")}" />
+                  </label>
+                  <label>
+                    Sort
+                    <input data-field="sort" type="number" value="${escapeHtml(item.sort || 0)}" />
+                  </label>
+                  <label class="toggle-row span-4">
+                    <input data-field="active" type="checkbox" ${item.active !== false ? "checked" : ""} />
+                    <span>Visible on site</span>
+                  </label>
+                </div>
 
-              <label class="span-4">
-                Image path / URL
-                <input data-field="img" type="text" value="${escapeHtml(item.img || "")}" placeholder="img/menu/item.jpg or /content/uploads/menu/item.jpg" />
-              </label>
-
-              <div class="uploader span-2">
-                <label>
-                  Upload image to GitHub
-                  <input data-upload-input type="file" accept="image/*" />
+                <label class="menu-item-image-path">
+                  Image path / URL
+                  <input data-field="img" type="text" value="${escapeHtml(item.img || "")}" placeholder="img/menu/item.jpg or /content/uploads/menu/item.jpg" />
                 </label>
-                <small class="muted">Файл завантажиться в <code>content/uploads/menu</code> і шлях підставиться автоматично.</small>
               </div>
 
-              <div class="image-preview span-6" data-image-preview>${preview}</div>
+              <aside class="menu-item-media">
+                <div class="uploader">
+                  <label>
+                    Upload image to GitHub
+                    <input data-upload-input type="file" accept="image/*" />
+                  </label>
+                  <small class="muted">Файл завантажиться в <code>content/uploads/menu</code> і шлях підставиться автоматично.</small>
+                </div>
+                <div class="image-preview" data-image-preview>${preview}</div>
+              </aside>
             </div>
 
             <div class="translation-grid">${translationBoxes}</div>
